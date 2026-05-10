@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Yang Cheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* ─── Pagehead sidemeta — email + address appended below the standard label/value pairs ─── */
+  .pagehead .sidemeta { padding-bottom: 0; }
+  .ph-divider {
+    border-top: 1px solid var(--line);
+    margin: 18px 0 16px;
+  }
+  .ph-email a {
+    font-family: 'Newsreader', serif; font-style: italic;
+    font-size: 26px; line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--fg); text-decoration: none;
+    border-bottom: 1px solid var(--line); padding-bottom: 4px;
+    display: inline-block; margin-bottom: 16px;
+    transition: color 0.15s, border-color 0.15s;
+    text-transform: none;
+  }
+  .ph-email a:hover { color: var(--accent); border-color: var(--accent); }
+  .ph-address {
+    font-family: 'Geist', sans-serif; font-size: 12.5px;
+    letter-spacing: 0; text-transform: none;
+    color: var(--fg); line-height: 1.65; font-weight: 400;
+  }
+  .ph-address strong {
+    font-family: 'Newsreader', serif;
+    font-weight: 500; font-size: 14px;
+    display: block; margin-bottom: 2px;
+  }
+  .ph-label {
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    display: block; margin-bottom: 4px;
+  }
+
+  /* ─── "How to reach out" — three intent cards ─── */
+  .reach-out h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 36px; font-weight: 300; letter-spacing: -0.015em;
+    margin: 0 0 8px;
+  }
+  .reach-out h2 em { font-style: italic; color: var(--accent); }
+  .reach-out .ro-lede {
+    font-size: 14px; color: var(--muted);
+    margin: 0 0 28px; max-width: 62ch;
+  }
+  .reach-out-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .reach-card {
+    background: var(--card); border: 1px solid var(--line);
+    padding: 26px 24px; display: flex; flex-direction: column; gap: 12px;
+    border-left: 4px solid var(--accent);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .reach-card:hover { transform: translateY(-2px); border-left-color: var(--fg); }
+  .reach-card .rc-tag {
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    font-weight: 500;
+  }
+  .reach-card h3 {
+    font-family: 'Newsreader', serif; font-size: 22px;
+    font-weight: 400; line-height: 1.25; letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .reach-card h3 em { font-style: italic; color: var(--accent); }
+  .reach-card p {
+    font-size: 13.5px; line-height: 1.55; color: var(--fg);
+    margin: 0; text-wrap: pretty;
+  }
+  .reach-card ul {
+    list-style: none; padding: 0; margin: 0;
+    font-size: 12.5px; line-height: 1.6; color: var(--fg);
+  }
+  .reach-card ul li {
+    padding-left: 16px; position: relative;
+  }
+  .reach-card ul li::before {
+    content: '·'; position: absolute; left: 4px; top: -3px;
+    color: var(--accent); font-weight: 600; font-size: 18px;
+  }
+
+  @media (max-width: 900px) {
+    .ph-email a { font-size: 22px; }
+    .reach-out-grid { grid-template-columns: 1fr; gap: 14px; }
+    .reach-card { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="mark" href="index.html">Yang Cheng</a>
+    <nav>
+      <a href="about.html">About</a>
+      <span class="navgroup">
+        <span class="navgroup-label">Research<span class="ng-caret">▾</span></span>
+        <div class="navmenu">
+          <a href="research.html"><span class="nm-kicker">Overview</span>All research themes</a>
+          <a href="livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
+          <a href="workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
+          <a href="migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
+        </div>
+      </span>
+      <a href="impact.html">Make an Impact</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a href="assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
+    </nav>
+  </header>
+
+  <section class="pagehead">
+    <div class="tag">Get in touch</div>
+    <div>
+      <h1>Say <em>hello</em>.</h1>
+      <p class="desc">Email is the best way to reach me — I read everything and try to respond within a week. Three common reasons people write, and what helps me reply faster, are below.</p>
+    </div>
+    <div class="sidemeta">
+      <div class="ph-email"><a href="mailto:cheng297@wisc.edu">cheng297@wisc.edu</a></div>
+      <span class="ph-label">Mailing address</span>
+      <div class="ph-address">
+        <strong>Yang Cheng</strong>
+        Postdoctoral Research Associate<br>
+        Department of Agricultural &amp; Applied Economics<br>
+        University of Wisconsin–Madison<br>
+        321 Taylor Hall · 427 Lorch Street<br>
+        Madison, WI 53705
+      </div>
+    </div>
+  </section>
+
+  <section class="reach-out">
+    <h2>How to <em>reach out</em></h2>
+    <p class="ro-lede">Mention which of these your note is about — it helps me sort and reply faster.</p>
+
+    <div class="reach-out-grid">
+      <div class="reach-card">
+        <div class="rc-tag">For collaboration</div>
+        <h3>Research <em>collaboration</em></h3>
+        <p>Working together on rural livability, the green economy, or migration. Most useful to send up front:</p>
+        <ul>
+          <li>The research question you're chasing</li>
+          <li>Methods or data you have access to</li>
+          <li>Where in the timeline you are</li>
+          <li>Constraints (deadlines, funding, IRB)</li>
+        </ul>
+      </div>
+
+      <div class="reach-card">
+        <div class="rc-tag">For office hours / catch-up</div>
+        <h3>Coffee or a <em>catch-up</em></h3>
+        <p>Just to talk — about research, methods, or navigating academic life. Email a few days ahead and:</p>
+        <ul>
+          <li>Suggest two or three windows that work for you</li>
+          <li>Note in-person (Madison) or video</li>
+          <li>A line on what you'd like to discuss</li>
+        </ul>
+      </div>
+
+      <div class="reach-card">
+        <div class="rc-tag">For invitations &amp; press</div>
+        <h3>Invited talks, briefings, <em>press</em></h3>
+        <p>For invited talks, panels, briefing requests, or podcast/press inquiries, please mention up front:</p>
+        <ul>
+          <li>The audience and format</li>
+          <li>Expected length and the rough date</li>
+          <li>Outlet or affiliation, and any deadline</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="sf-col">
+      <h4>Navigate</h4>
+      <div class="sf-nav">
+        <a href="research.html">Research</a>
+        <div class="sf-sub">
+          <a href="livability.html">Rural Livability</a>
+          <a href="workforce.html">Green Economy</a>
+          <a href="migration.html">Migration</a>
+        </div>
+        <a href="impact.html">Make an Impact</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="sf-col sf-contact">
+      <h4>Contact</h4>
+      <div class="sf-email"><a href="mailto:cheng297@wisc.edu">cheng297@wisc.edu</a></div>
+      <div class="sf-socials">
+        <a href="https://github.com/yangcheng258" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/yangcheng2019/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
+        <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
+      </div>
+      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+    </div>
+  </footer>
+  <div class="site-footer-bottom">
+    <span>© 2026 Yang Cheng</span>
+  </div>
+</div>
+<script>
+  (function(){
+    var tb = document.querySelector('.topbar');
+    if(!tb) return;
+    var on = function(){ tb.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', on, {passive:true}); on();
+  })();
+</script>
+</body>
+</html>

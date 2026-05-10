@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lumen — Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { background: '#FFFFFF', ink: '#000000', muted: '#6F6F6F' },
+        fontFamily: {
+          serif: ['"Instrument Serif"', 'serif'],
+          sans:  ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html, body { background: #FFFFFF; }
+  body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #000; -webkit-font-smoothing: antialiased; }
+
+  /* fade-rise animations */
+  @keyframes fade-rise {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-rise         { animation: fade-rise 0.8s ease-out both; }
+  .animate-fade-rise-delay   { animation: fade-rise 0.8s ease-out 0.2s both; }
+  .animate-fade-rise-delay-2 { animation: fade-rise 0.8s ease-out 0.4s both; }
+
+  /* video opacity is driven by JS; start invisible to avoid flash */
+  #bgVideo { opacity: 0; transition: opacity 80ms linear; }
+
+  /* tighten the headline tracking exactly per spec */
+  .headline {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -2.46px;
+    color: #000;
+  }
+  .headline em { font-style: italic; color: #6F6F6F; }
+
+  /* Hover scale on CTA */
+  .cta {
+    transition: transform 200ms ease, background-color 200ms ease;
+  }
+  .cta:hover { transform: scale(1.03); }
+
+  /* Nav link hover */
+  .nav-link { transition: color 200ms ease; }
+  .nav-link:hover { color: #000; }
+</style>
+</head>
+<body class="bg-background">
+
+  <main class="relative min-h-screen w-full overflow-hidden">
+
+    <!-- Background video layer -->
+    <div class="absolute z-0 pointer-events-none" style="top:300px; inset:auto 0 0 0;">
+      <video
+        id="bgVideo"
+        class="w-full h-auto block"
+        muted
+        playsinline
+        preload="auto"
+        autoplay
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"
+      ></video>
+      <!-- gradient overlay over the video -->
+      <div class="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="relative z-10">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-6">
+        <a href="#" class="font-serif text-3xl tracking-tight text-ink leading-none">
+          Lumen<sup class="text-sm align-super ml-0.5">®</sup>
+        </a>
+        <ul class="hidden md:flex items-center gap-8 text-sm">
+          <li><a href="#" class="nav-link" style="color:#000000">Home</a></li>
+          <li><a href="#" class="nav-link" style="color:#6F6F6F">Studio</a></li>
+          <li><a href="#" class="nav-link" style="color:#6F6F6F">About</a></li>
+          <li><a href="#" class="nav-link" style="color:#6F6F6F">Journal</a></li>
+          <li><a href="#" class="nav-link" style="color:#6F6F6F">Reach Us</a></li>
+        </ul>
+        <a href="#" class="cta rounded-full px-6 py-2.5 text-sm bg-ink text-white">
+          Begin Journey
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section
+      class="relative z-10 flex flex-col items-center justify-center text-center px-6 pb-40"
+      style="padding-top: calc(8rem - 75px);"
+    >
+      <h1 class="headline animate-fade-rise text-5xl sm:text-7xl md:text-8xl max-w-7xl">
+        Beyond <em>silence,</em> we build <em>the&nbsp;eternal.</em>
+      </h1>
+
+      <p class="animate-fade-rise-delay text-base sm:text-lg max-w-2xl mt-8 leading-relaxed" style="color:#6F6F6F">
+        Building platforms for brilliant minds, fearless makers, and thoughtful souls.
+        Through the noise, we craft digital havens for deep work and pure flows.
+      </p>
+
+      <a href="#" class="cta animate-fade-rise-delay-2 rounded-full px-14 py-5 text-base mt-12 bg-ink text-white">
+        Begin Journey
+      </a>
+    </section>
+
+  </main>
+
+<script>
+  // ----- Video fade-in/out loop, mirroring the React useEffect spec -----
+  (function () {
+    const video = document.getElementById('bgVideo');
+    if (!video) return;
+
+    const FADE = 0.5;       // seconds
+    let raf = null;
+    let resetting = false;
+
+    function setOpacity(o) {
+      // Clamp + write
+      const v = Math.max(0, Math.min(1, o));
+      video.style.opacity = String(v);
+    }
+
+    function tick() {
+      if (!resetting && !video.paused && !video.ended) {
+        const t = video.currentTime;
+        const d = video.duration || 0;
+
+        if (d > 0 && isFinite(d)) {
+          if (t < FADE) {
+            setOpacity(t / FADE);                 // fade in
+          } else if (t > d - FADE) {
+            setOpacity(Math.max(0, (d - t) / FADE)); // fade out
+          } else {
+            setOpacity(1);
+          }
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    video.addEventListener('loadeddata', () => {
+      setOpacity(0);
+      video.play().catch(() => {});
+    });
+
+    video.addEventListener('ended', () => {
+      resetting = true;
+      setOpacity(0);
+      setTimeout(() => {
+        try {
+          video.currentTime = 0;
+          const p = video.play();
+          if (p && p.catch) p.catch(() => {});
+        } finally {
+          resetting = false;
+        }
+      }, 100);
+    });
+
+    // Kick things off
+    raf = requestAnimationFrame(tick);
+
+    // Try to autoplay (muted) on first user gesture if the browser blocks it
+    const tryPlay = () => { video.play().catch(() => {}); };
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') tryPlay();
+    });
+    window.addEventListener('pointerdown', tryPlay, { once: true });
+  })();
+</script>
+</body>
+</html>

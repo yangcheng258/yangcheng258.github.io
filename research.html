@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Research — Yang Cheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  :root { --bg:#f6f4ef; --fg:#1a1a1a; --muted:#6a6a66; --line:#d8d4ca; --card:#fbfaf6; --accent:#4a5d3a; }
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{font-family:'Geist',ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+  .shell{max-width:1200px;margin:0 auto;padding:32px 56px 120px}
+
+  /* Topbar — matches livability.html / workforce.html */
+  .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin-bottom:24px;background:rgba(246,244,239,.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s,padding .2s}
+  .topbar.scrolled{border-bottom-color:var(--line);padding:12px 0}
+  .topbar .mark{font-family:'Newsreader',serif;font-style:italic;font-size:22px;text-decoration:none;color:var(--fg)}
+  .topbar nav{display:flex;gap:28px;align-items:center}
+  .topbar nav > a, .topbar nav .navgroup > a{color:var(--fg);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;position:relative}
+  .topbar nav > a[aria-current], .topbar nav .navgroup > a[aria-current]{color:var(--accent)}
+  .topbar nav > a:hover, .topbar nav .navgroup > a:hover{color:var(--accent)}
+  .navgroup{position:relative}
+  .navgroup > a::before{content:'▾';font-size:8px;margin-left:5px;color:var(--muted)}
+  .navgroup .navmenu{position:absolute;top:calc(100% + 12px);left:-16px;min-width:240px;background:var(--bg);border:1px solid var(--line);padding:6px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s,visibility .15s;box-shadow:0 8px 24px rgba(0,0,0,.06);z-index:60}
+  .navgroup:hover .navmenu, .navgroup:focus-within .navmenu{opacity:1;visibility:visible;transform:translateY(0)}
+  .navgroup::after{content:'';position:absolute;left:0;right:0;top:100%;height:14px}
+  .navgroup .navmenu a{display:block;padding:10px 12px;font-size:13px;color:var(--fg);text-decoration:none}
+  .navgroup .navmenu a:hover{background:var(--card);color:var(--accent)}
+  .navgroup .navmenu .nm-kicker{display:block;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+
+  /* Hero / overview */
+  .page-hero{
+    padding: 56px 0 64px;
+    border-top: 2px solid var(--fg);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+    position: relative;
+  }
+  .page-hero .tag{
+    position:absolute; top:-12px; left:0;
+    background:var(--bg); padding-right:16px;
+    font-family:'Geist Mono',monospace; font-size:11px;
+    letter-spacing:.15em; text-transform:uppercase; color:var(--muted);
+  }
+  .page-hero h1{
+    font-family:'Newsreader',serif;
+    font-size: 88px; line-height: 0.98; letter-spacing:-0.03em;
+    font-weight: 300; margin: 16px 0 32px; text-wrap: balance;
+    max-width: 16ch;
+  }
+  .page-hero h1 em{font-style:italic;color:var(--accent)}
+  .page-hero .lede{
+    font-family:'Newsreader',serif; font-size: 22px;
+    line-height: 1.55; font-weight: 300;
+    margin: 0; max-width: 65ch;
+  }
+
+  /* Two large theme cards */
+  .theme-cards{
+    display: grid; grid-template-columns: 1fr; gap: 24px;
+  }
+  .theme-card{
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    gap: 48px;
+    align-items: center;
+    padding: 56px 48px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--fg);
+    position: relative;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .theme-card:hover{ background:#fff; border-color:var(--fg); transform: translateY(-2px); }
+  .theme-card:hover .tc-arrow{ transform: translateX(6px); color: var(--accent); }
+
+  .tc-num{
+    font-family:'Geist Mono',monospace; font-size:11px;
+    letter-spacing:.15em; text-transform:uppercase; color:var(--muted);
+  }
+  .tc-num strong{
+    display:block; font-family:'Newsreader',serif;
+    font-size: 84px; font-weight: 300; color: var(--accent);
+    line-height: 1; margin-top: 8px;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  .tc-body h2{
+    font-family:'Newsreader',serif; font-size: 44px; line-height: 1.05;
+    font-weight: 400; letter-spacing:-0.02em; margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .tc-body h2 em{ font-style:italic; color: var(--accent); }
+  .tc-body p{
+    font-family:'Newsreader',serif; font-size: 18px;
+    line-height: 1.55; font-weight: 300;
+    margin: 0; color: var(--fg);
+    max-width: 56ch;
+  }
+  .tc-body .tc-meta{
+    margin-top: 20px;
+    display:flex; gap: 28px; flex-wrap: wrap;
+    font-family:'Geist Mono',monospace; font-size:10px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+  }
+  .tc-body .tc-meta strong{ color: var(--fg); font-weight: 500; }
+  .tc-arrow{
+    font-family:'Newsreader',serif;
+    font-size: 56px; line-height: 1; color: var(--muted);
+    transition: transform .25s ease, color .25s ease;
+    align-self: center;
+    padding-left: 16px;
+  }
+
+  /* Footer / footnav */
+  .footnav{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:24px 0 16px;border-top:1px solid var(--line);margin-top:96px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .footnav a{color:var(--fg);text-decoration:none}.footnav a:hover{color:var(--accent)}
+  .footnav .fn-dot{color:var(--line)}
+  .footnav .fn-cv{color:var(--accent);border-bottom:1px solid var(--accent)}
+  .footer{margin-top:0;padding:24px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--muted)}
+  .footer a{color:var(--fg);text-decoration:none}.footer a:hover{color:var(--accent)}
+  .footer .links{display:flex;gap:20px}
+
+  @media (max-width: 900px){
+    .shell{padding: 24px 24px 80px}
+    .page-hero h1{font-size: 56px}
+    .theme-card{grid-template-columns: 1fr; gap: 24px; padding: 40px 28px}
+    .tc-body h2{font-size: 32px}
+    .tc-arrow{display:none}
+  }
+
+  @media (max-width: 600px) {
+    .page-hero h1 { font-size: 38px; line-height: 1.05; }
+    .page-hero .lede { font-size: 17px; }
+    .theme-card { padding: 28px 20px; gap: 16px; }
+    .tc-num strong { font-size: 56px; }
+    .tc-body h2 { font-size: 26px; }
+    .tc-body p { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="mark" href="index.html">Yang Cheng</a>
+    <nav>
+      <a href="about.html">About</a>
+      <span class="navgroup">
+        <span class="navgroup-label" aria-current="page">Research<span class="ng-caret">▾</span></span>
+        <div class="navmenu">
+          <a href="research.html"><span class="nm-kicker">Overview</span>All research themes</a>
+          <a href="livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
+          <a href="workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
+          <a href="migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
+        </div>
+      </span>
+      <a href="impact.html">Make an Impact</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    <a href="assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="tag">Research</div>
+    <h1>Two threads, <em>one question.</em></h1>
+    <p class="lede">My research sits at the meeting point of two questions: how to measure what makes a rural place worth living in, and how to measure what counts as green work. One thread runs on community-capitals and spatial methods at the U.S. county scale; the other on bottom-up, NLP-built measures of green tasks and skills, applied to wage and labor-market questions.</p>
+  </section>
+
+  <div class="theme-cards">
+    <a class="theme-card" href="livability.html">
+      <div class="tc-num">Theme<strong>01</strong></div>
+      <div class="tc-body">
+        <h2>Rural <em>Livability</em> &amp; Quality of Life</h2>
+        <p>How can community-capitals data plus resident judgment be combined into spatially-informed measures of well-being at the county level? This thread compares seven index-construction techniques on a single 3,100-county dataset and reframes livability from amenity-shopping toward "place capacity" — what places possess, not just what people choose. With Tessa Conroy and Steven Deller (UW–Madison).</p>
+        <div class="tc-meta">
+          <span>Counties<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">~3,100 contiguous U.S.</strong></span>
+          <span>Method paper<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">PiRS, 2026</strong></span>
+          <span>Active since<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">2024</strong></span>
+        </div>
+      </div>
+      <div class="tc-arrow">→</div>
+    </a>
+
+    <a class="theme-card" href="workforce.html">
+      <div class="tc-num">Theme<strong>02</strong></div>
+      <div class="tc-body">
+        <h2>Workforce &amp; the <em>Green Economy</em></h2>
+        <p>What counts as a green job, and where are green skills concentrated? This thread builds bottom-up greenness measures from O*NET task content using natural language processing — the Task Greenness Score and the Occupational Greenness Potential (OGP) Index — and uses them to track the green wage premium from 2006 through 2024. With Susan Chen and Andrew Katz (Virginia Tech).</p>
+        <div class="tc-meta">
+          <span>Greenness measure<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">OGP Index</strong></span>
+          <span>Wage panel<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">BLS-OES 2006–2024</strong></span>
+          <span>Active since<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">2022</strong></span>
+        </div>
+      </div>
+      <div class="tc-arrow">→</div>
+    </a>
+
+    <a class="theme-card" href="migration.html">
+      <div class="tc-num">Theme<strong>03</strong></div>
+      <div class="tc-body">
+        <h2>Migration &amp; <em>Place Choice</em></h2>
+        <p>How do life-cycle stage, housing market conditions, and place characteristics shape where people move and why? A newer thread that takes the spatial-livability framing into household decisions over the life course — pulling from the life-course migration, housing-constraint, and demographic-subgroup literatures.</p>
+        <div class="tc-meta">
+          <span>Stage<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">Lit-review complete</strong></span>
+          <span>Audience<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">NERSA Early Career</strong></span>
+          <span>Active since<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">2026</strong></span>
+        </div>
+      </div>
+      <div class="tc-arrow">→</div>
+    </a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="sf-col">
+      <h4>Navigate</h4>
+      <div class="sf-nav">
+        <a href="research.html">Research</a>
+        <div class="sf-sub">
+          <a href="livability.html">Rural Livability</a>
+          <a href="workforce.html">Green Economy</a>
+          <a href="migration.html">Migration</a>
+        </div>
+        <a href="impact.html">Make an Impact</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="sf-col sf-contact">
+      <h4>Contact</h4>
+      <div class="sf-email"><a href="mailto:cheng297@wisc.edu">cheng297@wisc.edu</a></div>
+      <div class="sf-socials">
+        <a href="https://github.com/yangcheng258" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/yangcheng2019/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
+        <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
+      </div>
+      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+    </div>
+  </footer>
+  <div class="site-footer-bottom">
+    <span>© 2026 Yang Cheng</span>
+  </div>
+</div>
+<script>
+  (function(){
+    var tb = document.querySelector('.topbar');
+    if(!tb) return;
+    var on = function(){ tb.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', on, {passive:true}); on();
+  })();
+</script>
+</body>
+</html>

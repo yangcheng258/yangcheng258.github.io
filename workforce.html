@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Workforce &amp; the Green Economy — Yang Cheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  :root { --bg:#f6f4ef; --fg:#1a1a1a; --muted:#6a6a66; --line:#d8d4ca; --card:#fbfaf6; --accent:#4a5d3a; }
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{font-family:'Geist',ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+  .shell{max-width:1200px;margin:0 auto;padding:32px 56px 120px}
+  .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin-bottom:24px;background:rgba(246,244,239,.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s,padding .2s}
+  .topbar.scrolled{border-bottom-color:var(--line);padding:12px 0}
+  .topbar .mark{font-family:'Newsreader',serif;font-style:italic;font-size:22px;text-decoration:none;color:var(--fg)}
+  .topbar nav{display:flex;gap:28px;align-items:center}
+  .topbar nav > a, .topbar nav .navgroup > a{color:var(--fg);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;position:relative}
+  .topbar nav > a[aria-current], .topbar nav .navgroup > a[aria-current]{color:var(--accent)}
+  .topbar nav > a:hover, .topbar nav .navgroup > a:hover{color:var(--accent)}
+  .navgroup{position:relative}
+  .navgroup > a::before{content:'▾';font-size:8px;margin-left:5px;color:var(--muted)}
+  .navgroup .navmenu{position:absolute;top:calc(100% + 12px);left:-16px;min-width:240px;background:var(--bg);border:1px solid var(--line);padding:6px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s,visibility .15s;box-shadow:0 8px 24px rgba(0,0,0,.06);z-index:60}
+  .navgroup:hover .navmenu, .navgroup:focus-within .navmenu{opacity:1;visibility:visible;transform:translateY(0)}
+  .navgroup::after{content:'';position:absolute;left:0;right:0;top:100%;height:14px}
+  .navgroup .navmenu a{display:block;padding:10px 12px;font-size:13px;color:var(--fg);text-decoration:none}
+  .navgroup .navmenu a:hover{background:var(--card);color:var(--accent)}
+  .navgroup .navmenu .nm-kicker{display:block;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .backlink{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;gap:8px;padding-top:18px;padding-bottom:40px}
+  .backlink:hover{color:var(--accent)}
+  .footer{margin-top:96px;padding:32px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--muted)}
+  .footer a{color:var(--fg);text-decoration:none}.footer a:hover{color:var(--accent)}
+  .footer .links{display:flex;gap:20px}
+
+  /* Hero */
+  .wf-hero {
+    padding: 32px 0 72px;
+    border-top: 2px solid var(--fg);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 72px;
+    position: relative;
+    display: block;
+  }
+  .wf-hero .tag {
+    position: absolute; top: -12px; left: 0;
+    background: var(--bg); padding-right: 16px;
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  }
+  .wf-hero h1 {
+    font-family: 'Newsreader', serif;
+    font-size: 96px; line-height: 0.98; letter-spacing: -0.03em;
+    font-weight: 300; margin: 32px 0 32px; text-wrap: balance;
+    max-width: 18ch;
+  }
+  .wf-hero h1 em { font-style: italic; color: var(--accent); }
+  .wf-hero .lede {
+    font-family: 'Newsreader', serif; font-size: 22px;
+    line-height: 1.5; font-weight: 300; color: var(--fg);
+    margin: 0 0 40px; text-wrap: pretty; max-width: none;
+  }
+  .wf-hero .lede::first-letter {
+    font-size: 72px; line-height: 0.85; float: left;
+    padding: 6px 10px 0 0; font-weight: 400; font-style: italic;
+    color: var(--accent);
+  }
+  .wf-hero .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+    padding-top: 28px; border-top: 1px solid var(--line);
+  }
+  .wf-hero .stats div {
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+  .wf-hero .stats strong {
+    display: block; font-family: 'Newsreader', serif;
+    font-size: 32px; font-weight: 300; color: var(--fg);
+    text-transform: none; letter-spacing: -0.01em;
+    margin-top: 4px;
+  }
+
+  /* Theme-grouped sections */
+  .theme-block { margin-bottom: 96px; }
+  .theme-block-head {
+    margin-bottom: 40px;
+    padding: 48px 40px 40px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--accent);
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px;
+    align-items: start;
+    position: relative;
+  }
+  .theme-block-head .tb-letter {
+    position: absolute; top: 24px; right: 32px;
+    font-family: 'Newsreader', serif; font-style: italic;
+    font-size: 120px; line-height: 1; font-weight: 300;
+    color: var(--accent); opacity: 0.12; letter-spacing: -0.04em;
+    pointer-events: none;
+  }
+  .theme-block-head .tb-num {
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+    display: block; margin-bottom: 14px; font-weight: 500;
+  }
+  .theme-block-head h2 {
+    font-family: 'Newsreader', serif; font-size: 52px;
+    font-weight: 300; letter-spacing: -0.025em; margin: 0;
+    line-height: 1; text-wrap: balance;
+  }
+  .theme-block-head h2 em { font-style: italic; color: var(--accent); }
+  .theme-block-head .tb-desc {
+    font-size: 15px; line-height: 1.6; color: var(--fg); margin: 0;
+    text-wrap: pretty; padding-top: 8px;
+  }
+
+  /* Publication rows */
+  .pub-full-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .pub-full { border-bottom: 1px solid var(--line); transition: background 0.2s; }
+  .pub-full.open { background: var(--card); }
+  .pub-full .pf-row {
+    display: grid; grid-template-columns: 88px 1.8fr 1fr 220px 24px;
+    gap: 24px; padding: 14px 12px 14px var(--pub-indent, 30px); align-items: baseline;
+    cursor: pointer;
+  }
+  .pub-full:hover > .pf-row { background: var(--card); }
+  .pub-full .pf-toggle {
+    font-family: 'Geist Mono', monospace; font-size: 12px;
+    color: var(--muted); transition: transform 0.25s, color 0.15s;
+    transform-origin: center; text-align: center;
+    line-height: 1;
+  }
+  .pub-full:hover .pf-toggle { color: var(--accent); }
+  .pub-full.open .pf-toggle { transform: rotate(90deg); color: var(--accent); }
+  .pub-full .pf-abstract {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .pub-full.open .pf-abstract { grid-template-rows: 1fr; }
+  .pub-full .pf-abstract-inner {
+    overflow: hidden; padding: 0 12px 0 124px;
+  }
+  .pub-full.open .pf-abstract-inner { padding: 4px 12px 22px 124px; }
+  .pub-full .pf-abstract p {
+    font-family: 'Newsreader', serif; font-size: 15px;
+    line-height: 1.55; color: var(--fg); margin: 0 0 12px;
+    max-width: 68ch; text-wrap: pretty;
+  }
+  .pub-full .pf-keywords { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pub-full .pf-keywords span {
+    font-family: 'Geist Mono', monospace; font-size: 9px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); padding: 3px 7px;
+    border: 1px solid var(--line); background: var(--bg);
+  }
+  .pub-full .pf-year {
+    font-family: 'Newsreader', serif; font-size: 20px; font-weight: 400;
+    color: var(--fg); letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .pub-full .pf-year small {
+    display: block;
+    font-family: 'Geist Mono', monospace; font-size: 9px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+    font-weight: 500; margin-top: 2px;
+  }
+  .pub-full .pf-title h3 {
+    font-family: 'Newsreader', serif; font-size: 17px;
+    font-weight: 400; line-height: 1.25; letter-spacing: -0.005em;
+    margin: 0 0 4px; text-wrap: balance;
+  }
+  .pub-full .pf-title .pf-authors { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .pub-full .pf-venue {
+    font-family: 'Newsreader', serif; font-style: italic;
+    font-size: 13px; line-height: 1.35; color: var(--fg);
+  }
+  .pub-full .pf-venue .pf-status {
+    display: block; font-family: 'Geist Mono', monospace; font-style: normal;
+    font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-top: 3px;
+  }
+  .pub-full .pf-links { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pub-full .pf-links a {
+    display: inline-block; padding: 2px 6px;
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--fg); text-decoration: none;
+    border: 1px solid var(--line); background: var(--bg);
+    transition: all 0.15s;
+  }
+  .pub-full .pf-links a:hover {
+    background: var(--accent); border-color: var(--accent); color: var(--bg);
+  }
+
+  /* Link color inside pub-full — match livability */
+  .pub-full .pf-links a {
+    background: var(--fg); color: var(--bg); border: 1px solid var(--fg);
+  }
+  .pub-full .pf-links a:hover {
+    background: var(--accent); border-color: var(--accent); color: var(--bg);
+  }
+
+  /* Tweaks panel */
+  #tweaks {
+    position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+    background: var(--card); border: 1px solid var(--line);
+    padding: 16px 18px 14px; width: 260px;
+    font-family: 'Geist', system-ui, sans-serif;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    display: none;
+  }
+  #tweaks.on { display: block; }
+  #tweaks .tw-title {
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  #tweaks .tw-title b { color: var(--fg); font-weight: 500; }
+  #tweaks label {
+    display: block; font-size: 11px; color: var(--muted);
+    margin: 10px 0 6px; font-family: 'Geist Mono', monospace;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  #tweaks .swatches { display: flex; gap: 6px; }
+  #tweaks .sw {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid var(--line); cursor: pointer; padding: 0;
+  }
+  #tweaks .sw.active { border-color: var(--fg); }
+  #tweaks .toggle-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--fg); margin: 6px 0;
+  }
+  #tweaks button.tg {
+    background: var(--bg); border: 1px solid var(--line);
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    padding: 4px 10px; cursor: pointer; color: var(--fg);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  #tweaks button.tg.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  #tweaks input[type=range] { width: 100%; }
+
+  @media (max-width: 900px) {
+    .wf-hero h1 { font-size: 56px; }
+    .theme-block-head { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
+    .pub-full .pf-row { grid-template-columns: 1fr; gap: 8px; }
+    .pub-full .pf-abstract-inner, .pub-full.open .pf-abstract-inner { padding-left: 12px; }
+    .wf-hero .stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="mark" href="index.html">Yang Cheng</a>
+    <nav>
+      <a href="about.html">About</a>
+      <span class="navgroup">
+        <span class="navgroup-label" aria-current="page">Research<span class="ng-caret">▾</span></span>
+        <div class="navmenu">
+          <a href="research.html"><span class="nm-kicker">Overview</span>All research themes</a>
+          <a href="livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
+          <a href="workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
+          <a href="migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
+        </div>
+      </span>
+      <a href="impact.html">Make an Impact</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    <a href="assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
+    </nav>
+  </header>
+
+  <a class="backlink" href="index.html">← Back to home</a>
+
+  <section class="wf-hero">
+    <div class="tag">Research theme · 02</div>
+    <h1>Workforce &amp; the <em>green economy</em></h1>
+    <p class="lede">What counts as a green job, and where are green skills concentrated in the U.S. labor market? My dissertation built bottom-up greenness measures from O*NET task content using natural language processing — the Task Greenness Score and the Occupational Greenness Potential (OGP) Index. The current line of work uses those measures to track the green wage premium from 2006 through 2024 and to map green-skill exposure across regions, including the Appalachian coal-mining communities that may bear the heaviest transition costs.</p>
+    <div class="stats">
+      <div>Greenness measure<strong>OGP Index</strong></div>
+      <div>Wage panel<strong>BLS-OES 2006–2024</strong></div>
+      <div>Built on<strong>O*NET-SOC 2018</strong></div>
+      <div>Active since<strong>2022</strong></div>
+    </div>
+  </section>
+
+  <!-- Theme A -->
+  <section class="theme-block">
+    <div class="theme-block-head">
+      <div>
+        <span class="tb-num">Section A · Building the OGP Index</span>
+        <h2>Building the <em>OGP Index</em></h2>
+      </div>
+      <p class="tb-desc">The measurement infrastructure underneath everything else in this thread — bottom-up greenness scores built from O*NET task content via NLP and clustering, defended at Virginia Tech in 2024 and extended in active collaboration with Susan Chen and Andrew Katz.</p>
+      <div class="tb-letter">A</div>
+    </div>
+
+    <div class="pub-full-list">
+      <!-- AUTO-GENERATED PUBS:workforce-A START · run `python3 build.py` -->
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <div class="pf-title">
+          <h3>Using Natural Language Processing to Measure the Greenness of Jobs</h3>
+          <div class="pf-authors">Chen, S., Cheng, Y. & Katz, A.</div>
+        </div>
+        <div class="pf-venue">Working paper.<span class="pf-status">Drafted</span></div>
+        <div class="pf-links">
+          <a href="#">PDF</a>
+          <a href="#">DOI</a>
+          <a href="#">Code</a>
+          <a href="#">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Bottom-up greenness measurement from O*NET task descriptions using natural language processing and clustering. The methodological foundation underneath the wage-premium and green-skills work.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2024<small>Dissertation</small></div>
+        <div class="pf-title">
+          <h3>Tasks, Skills, and Jobs in the Green Economy</h3>
+          <div class="pf-authors">Cheng, Y. (advisor: Susan E. Chen)</div>
+        </div>
+        <div class="pf-venue">Ph.D., Virginia Tech, Department of Agricultural & Applied Economics.<span class="pf-status">Published</span></div>
+        <div class="pf-links">
+          <a href="#">PDF</a>
+          <a href="#">DOI</a>
+          <a href="#">Code</a>
+          <a href="#">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Three-chapter dissertation. Chapter 1 builds the Task Greenness Score and the Occupational Greenness Potential (OGP) Index from O*NET task content via NLP and clustering, identifying five occupation groups and a ~3% unconditional green wage premium for 2019–2020. Chapter 2 maps green-skill exposure across the U.S. with a focus on Appalachian coal-mining communities. Chapter 3 examines green ARRA stimulus and finds it negatively correlated with wages and job creation, with cross-region manufacturing spillovers. Committee: Andrew Katz, Suqin Ge, Jeffrey Alwang.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+        <!-- AUTO-GENERATED PUBS:workforce-A END -->
+    </div>
+  </section>
+
+  <section class="theme-block">
+    <div class="theme-block-head">
+      <div>
+        <span class="tb-num">Section B · Green wage premium</span>
+        <h2>Green <em>wage premium</em></h2>
+      </div>
+      <p class="tb-desc">What the OGP Index gets you when applied to wage-panel data. A faithful Vona, Marin &amp; Consoli (2019) replication, extended through 2024 with a custom SOC-vintage crosswalk that handles four BLS transitional waves.</p>
+      <div class="tb-letter">B</div>
+    </div>
+
+    <div class="pub-full-list">
+      <!-- AUTO-GENERATED PUBS:workforce-B START · run `python3 build.py` -->
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <div class="pf-title">
+          <h3>Replicating and extending the green wage premium with the OGP Index, 2006–2024</h3>
+          <div class="pf-authors">Cheng, Y., Chen, S. & Katz, A.</div>
+        </div>
+        <div class="pf-venue">Working paper.<span class="pf-status">In progress</span></div>
+        <div class="pf-links">
+          <a href="#">PDF</a>
+          <a href="#">DOI</a>
+          <a href="#">Code</a>
+          <a href="#">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Faithful replication of Vona, Marin & Consoli (2019) over 2006–2014, extended through 2024 using the OGP Index. Custom SOC-vintage crosswalk handles four BLS transitional waves (2009→2010, 2010→2011, 2016→2017, 2018→2019). Four canonical figures locked May 2026; replication audit complete.</p>
+          <div class="pf-keywords"><span>green</span> <span>datasci</span></div>
+        </div></div>
+      </div>
+        <!-- AUTO-GENERATED PUBS:workforce-B END -->
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="sf-col">
+      <h4>Navigate</h4>
+      <div class="sf-nav">
+        <a href="research.html">Research</a>
+        <div class="sf-sub">
+          <a href="livability.html">Rural Livability</a>
+          <a href="workforce.html">Green Economy</a>
+          <a href="migration.html">Migration</a>
+        </div>
+        <a href="impact.html">Make an Impact</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="sf-col sf-contact">
+      <h4>Contact</h4>
+      <div class="sf-email"><a href="mailto:cheng297@wisc.edu">cheng297@wisc.edu</a></div>
+      <div class="sf-socials">
+        <a href="https://github.com/yangcheng258" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/yangcheng2019/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
+        <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
+      </div>
+      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+    </div>
+  </footer>
+  <div class="site-footer-bottom">
+    <span>© 2026 Yang Cheng</span>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.pub-full .pf-row').forEach(row => {
+    row.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      row.parentElement.classList.toggle('open');
+    });
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('role', 'button');
+    row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        row.parentElement.classList.toggle('open');
+      }
+    });
+  });
+</script>
+
+<style id="dropcap-style">
+  /* Mobile responsive — narrow-screen overrides for hero, theme blocks, pub rows */
+  @media (max-width: 720px) {
+    .live-hero, .wf-hero { padding: 16px 0 36px; margin-bottom: 40px; }
+    .live-hero h1, .wf-hero h1 { font-size: 44px; line-height: 1.05; margin: 16px 0 16px; max-width: 100%; }
+    .live-hero .lede, .wf-hero .lede { font-size: 17px; margin-bottom: 24px; }
+    .live-hero .lede::first-letter, .wf-hero .lede::first-letter { font-size: 56px; padding: 4px 8px 0 0; }
+    .live-hero .dropcap::first-letter { font-size: 56px; padding: 4px 8px 0 0; }
+    .live-hero .stats, .wf-hero .stats { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 20px; }
+    .live-hero .stats strong, .wf-hero .stats strong { font-size: 18px; }
+    .live-hero .stats div, .wf-hero .stats div { font-size: 9px; }
+
+    .theme-block { margin-bottom: 56px; }
+    .theme-block-head { grid-template-columns: 1fr; gap: 18px; padding: 24px 20px; }
+    .theme-block-head h2 { font-size: 30px; }
+    .theme-block-head .tb-letter { display: none; }
+    .theme-block-head .tb-desc { font-size: 13px; }
+    .theme-block-head .tb-num { font-size: 10px; }
+
+    .pub-full .pf-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 14px 12px;
+    }
+    .pub-full .pf-year, .pub-full .pf-venue, .pub-full .pf-toggle { font-size: 11px; }
+    .pub-full .pf-year small { display: inline; margin-left: 6px; }
+    .pub-full .pf-title h3 { font-size: 17px; }
+    .pub-full .pf-authors { font-size: 12px; }
+    .pub-full .pf-links { gap: 10px; flex-wrap: wrap; }
+    .pub-full .pf-abstract-inner { padding: 0 12px 0 12px; }
+    .pub-full.open .pf-abstract-inner { padding: 4px 12px 18px 12px; }
+    .pub-full .pf-toggle { display: none; }
+  }
+</style>
+
+<!-- Tweaks panel -->
+<div id="tweaks" aria-hidden="true">
+  <div class="tw-title"><b>Tweaks</b><span>workforce</span></div>
+
+  <label>Accent color</label>
+  <div class="swatches" id="tw-swatches">
+    <button class="sw" data-c="#4a5d3a" style="background:#4a5d3a" title="Livability green"></button>
+    <button class="sw" data-c="#8a5a2a" style="background:#8a5a2a" title="Ochre"></button>
+    <button class="sw" data-c="#2a4a6a" style="background:#2a4a6a" title="Deep blue"></button>
+    <button class="sw" data-c="#6a2a2a" style="background:#6a2a2a" title="Oxblood"></button>
+    <button class="sw" data-c="#3a3a3a" style="background:#3a3a3a" title="Mono"></button>
+  </div>
+
+  <label>Hero stats</label>
+  <div class="toggle-row">
+    <span>Show stats bar</span>
+    <button class="tg" id="tw-stats">ON</button>
+  </div>
+
+  <label>Drop cap</label>
+  <div class="toggle-row">
+    <span>Show on lede</span>
+    <button class="tg" id="tw-dropcap">ON</button>
+  </div>
+
+  <label>Body scale <span id="tw-scale-val" style="text-transform:none;letter-spacing:0">100%</span></label>
+  <input type="range" id="tw-scale" min="90" max="115" step="5" value="100">
+
+  <label>Pub indent <span id="tw-indent-val" style="text-transform:none;letter-spacing:0">30px</span></label>
+  <input type="range" id="tw-indent" min="0" max="80" step="2" value="30">
+</div>
+
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#4a5d3a",
+    "showStats": true,
+    "showDropcap": true,
+    "scale": 100,
+    "pubIndent": 30
+  }/*EDITMODE-END*/;
+
+  let state = {...TWEAK_DEFAULTS};
+
+  function applyState() {
+    document.documentElement.style.setProperty('--accent', state.accent);
+    const stats = document.querySelector('.wf-hero .stats');
+    if (stats) stats.style.display = state.showStats ? '' : 'none';
+    document.getElementById('dropcap-style').textContent = state.showDropcap
+      ? ''
+      : '.wf-hero .lede::first-letter{font-size:inherit;float:none;padding:0;color:inherit;font-style:inherit;font-weight:inherit;}';
+    document.documentElement.style.fontSize = (state.scale / 100 * 16) + 'px';
+    document.documentElement.style.setProperty('--pub-indent', state.pubIndent + 'px');
+    document.getElementById('tw-indent').value = state.pubIndent;
+    document.getElementById('tw-indent-val').textContent = state.pubIndent + 'px';
+    // update UI state
+    document.querySelectorAll('#tw-swatches .sw').forEach(b => {
+      b.classList.toggle('active', b.dataset.c === state.accent);
+    });
+    const st = document.getElementById('tw-stats');
+    st.classList.toggle('on', state.showStats);
+    st.textContent = state.showStats ? 'ON' : 'OFF';
+    const dc = document.getElementById('tw-dropcap');
+    dc.classList.toggle('on', state.showDropcap);
+    dc.textContent = state.showDropcap ? 'ON' : 'OFF';
+    document.getElementById('tw-scale').value = state.scale;
+    document.getElementById('tw-scale-val').textContent = state.scale + '%';
+  }
+
+  function persist(edits) {
+    try { window.parent.postMessage({type: '__edit_mode_set_keys', edits}, '*'); } catch(e) {}
+  }
+
+  // Edit-mode protocol — listener first, then announce
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') {
+      document.getElementById('tweaks').classList.add('on');
+    } else if (d.type === '__deactivate_edit_mode') {
+      document.getElementById('tweaks').classList.remove('on');
+    }
+  });
+  try { window.parent.postMessage({type: '__edit_mode_available'}, '*'); } catch(e) {}
+
+  // Wire controls
+  document.querySelectorAll('#tw-swatches .sw').forEach(b => {
+    b.addEventListener('click', () => {
+      state.accent = b.dataset.c;
+      applyState(); persist({accent: state.accent});
+    });
+  });
+  document.getElementById('tw-stats').addEventListener('click', () => {
+    state.showStats = !state.showStats;
+    applyState(); persist({showStats: state.showStats});
+  });
+  document.getElementById('tw-dropcap').addEventListener('click', () => {
+    state.showDropcap = !state.showDropcap;
+    applyState(); persist({showDropcap: state.showDropcap});
+  });
+  document.getElementById('tw-scale').addEventListener('input', (e) => {
+    state.scale = +e.target.value;
+    applyState(); persist({scale: state.scale});
+  });
+  document.getElementById('tw-indent').addEventListener('input', (e) => {
+    state.pubIndent = +e.target.value;
+    applyState(); persist({pubIndent: state.pubIndent});
+  });
+
+  applyState();
+</script>
+<script>
+  (function(){
+    var tb = document.querySelector('.topbar');
+    if(!tb) return;
+    var on = function(){ tb.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', on, {passive:true}); on();
+  })();
+</script>
+</body>
+</html>

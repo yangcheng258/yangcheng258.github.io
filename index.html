@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yang Cheng — Livability &amp; the uneven shape of work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* Index-only: full-bleed hero with looping video background */
+  .hero-wrap {
+    position: relative;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+    min-height: calc(100vh - 80px);
+    overflow: hidden;
+    background: var(--bg);
+    display: flex;
+    align-items: flex-start;          /* text up top instead of vertically centered */
+    justify-content: center;
+  }
+  .hero-video-layer {
+    position: absolute; left: 0; right: 0; top: 220px; bottom: 0;
+    z-index: 0; pointer-events: none;
+  }
+  .hero-video-layer video {
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: center;
+    opacity: 0; transition: opacity 80ms linear;
+    /* No mix-blend-mode and no muted filter — video plays at full saturation, fully visible. */
+  }
+  .hero-video-layer .v-overlay {
+    position: absolute; inset: 0;
+    /* Just a subtle 8% fade at the top so the video does not start with a hard edge.
+       No extended cream zone — the video stays visible. */
+    background: linear-gradient(to bottom, var(--bg) 0%, rgba(246,244,239,0) 8%, rgba(246,244,239,0) 100%);
+  }
+  .hero {
+    position: relative; z-index: 10;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;     /* top padding reduced so text sits high on the cream */
+  }
+  .hero .kicker {
+    font-family: 'Newsreader', serif; font-style: italic;
+    font-size: 18px; color: var(--accent); margin-bottom: 24px;
+    animation: hero-fade-rise 0.8s ease-out both;
+  }
+  .hero h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -0.0245em;
+    color: var(--fg);
+    max-width: 16ch;
+    margin: 0;
+    text-wrap: balance;
+    animation: hero-fade-rise 0.8s ease-out both;
+  }
+  .hero h1 em { font-style: italic; color: var(--muted); font-weight: 400; }
+  .hero .amp { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero .lede {
+    font-family: 'Geist', sans-serif;
+    font-size: 18px; line-height: 1.6;
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 32px 0 0;
+    text-wrap: pretty;
+    animation: hero-fade-rise 0.8s ease-out 0.2s both;
+  }
+  .hero .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 48px;
+    padding: 18px 52px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Geist', sans-serif;
+    font-size: 15px; font-weight: 500; letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    animation: hero-fade-rise 0.8s ease-out 0.4s both;
+  }
+  .hero .hero-cta:hover { transform: scale(1.03); background: #3d4d2f; }
+
+  @keyframes hero-fade-rise {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Index page uses zero bottom padding on shell + zero margin on footer
+     so the hero meets the footer with no cream gap in between. */
+  .shell { padding-bottom: 0; }
+  .site-footer { margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="mark" href="index.html">Yang Cheng</a>
+    <nav>
+      <a href="about.html">About</a>
+      <span class="navgroup">
+        <span class="navgroup-label">Research<span class="ng-caret">▾</span></span>
+        <div class="navmenu">
+          <a href="research.html"><span class="nm-kicker">Overview</span>All research themes</a>
+          <a href="livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
+          <a href="workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
+          <a href="migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
+        </div>
+      </span>
+      <a href="impact.html">Make an Impact</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    <a href="assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
+    </nav>
+  </header>
+
+  <section class="hero-wrap">
+    <div class="hero-video-layer">
+      <video id="bgVideo" muted playsinline preload="auto" autoplay
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"></video>
+      <div class="v-overlay"></div>
+    </div>
+    <section class="hero">
+      <div class="kicker">Postdoc · UW–Madison · Ag &amp; Applied Econ</div>
+      <h1>On <em>livability,</em> <span class="amp">&amp;</span> <em>the uneven shape of work.</em></h1>
+      <p class="lede">My research sits at the meeting point of two questions: how to measure what makes a rural place worth living in, and how to measure what counts as green work.</p>
+      <a class="hero-cta" href="research.html">Explore Research →</a>
+    </section>
+  </section>
+
+  <footer class="site-footer">
+    <div class="sf-col">
+      <h4>Navigate</h4>
+      <div class="sf-nav">
+        <a href="research.html">Research</a>
+        <div class="sf-sub">
+          <a href="livability.html">Rural Livability</a>
+          <a href="workforce.html">Green Economy</a>
+          <a href="migration.html">Migration</a>
+        </div>
+        <a href="impact.html">Make an Impact</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="sf-col sf-contact">
+      <h4>Contact</h4>
+      <div class="sf-email"><a href="mailto:cheng297@wisc.edu">cheng297@wisc.edu</a></div>
+      <div class="sf-socials">
+        <a href="https://github.com/yangcheng258" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/yangcheng2019/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
+        <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
+      </div>
+      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+    </div>
+  </footer>
+  <div class="site-footer-bottom">
+    <span>© 2026 Yang Cheng</span>
+  </div>
+</div>
+<script>
+  (function(){
+    var tb = document.querySelector('.topbar');
+    if(tb){
+      var on = function(){ tb.classList.toggle('scrolled', window.scrollY > 8); };
+      window.addEventListener('scroll', on, {passive:true}); on();
+    }
+
+    // Hero video fade-in/fade-out loop (Hero.html spec)
+    var video = document.getElementById('bgVideo');
+    if(!video) return;
+    var FADE = 0.5;
+    var resetting = false;
+    var setOpacity = function(o){ video.style.opacity = String(Math.max(0, Math.min(1, o))); };
+    var tick = function(){
+      if (!resetting && !video.paused && !video.ended) {
+        var t = video.currentTime;
+        var d = video.duration || 0;
+        if (d > 0 && isFinite(d)) {
+          if (t < FADE) setOpacity(t / FADE);
+          else if (t > d - FADE) setOpacity(Math.max(0, (d - t) / FADE));
+          else setOpacity(1);
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    video.addEventListener('loadeddata', function(){ setOpacity(0); video.play().catch(function(){}); });
+    video.addEventListener('ended', function(){
+      resetting = true; setOpacity(0);
+      setTimeout(function(){
+        try { video.currentTime = 0; var p = video.play(); if (p && p.catch) p.catch(function(){}); }
+        finally { resetting = false; }
+      }, 100);
+    });
+    requestAnimationFrame(tick);
+    var tryPlay = function(){ video.play().catch(function(){}); };
+    document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible') tryPlay(); });
+    window.addEventListener('pointerdown', tryPlay, { once: true });
+  })();
+</script>
+</body>
+</html>

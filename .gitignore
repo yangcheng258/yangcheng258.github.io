@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Server / build
+*.log
+
+# Local-only (uncomment if you don't want them pushed)
+# UPDATING.md
+# CLAUDE.md
