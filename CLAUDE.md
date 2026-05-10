@@ -6,7 +6,10 @@ This file is read automatically when Claude opens this project. It captures the 
 
 ## What this is
 
-Yang Cheng's personal academic website. Static HTML/CSS/JS, no framework. Designed for hosting on GitHub Pages.
+Yang Cheng's personal academic website. Static HTML/CSS/JS, no framework. Hosted on GitHub Pages.
+
+**Live at:** https://yangcheng258.github.io/
+**Repo:** https://github.com/yangcheng258/yangcheng258.github.io (public, `main` branch)
 
 **Owner:** Yang Cheng — Postdoctoral Research Associate, Department of Agricultural & Applied Economics, UW–Madison.
 
@@ -125,8 +128,33 @@ Available section keys:
 | Update CV | Drop `assets/pdfs/CV.pdf` (no edits needed — link is hardcoded) |
 | Update bio / hero / contact text | Hand-edit `about.html` / `index.html` / `contact.html` (these are one-off) |
 | Site-wide find/replace | Search for the literal value (email, URL, etc.) and replace across files |
+| Deploy a change | `python3 build.py && git add -A && git commit -m "..." && git push` — Pages updates in ~30s |
 
 Full guide for the user: `UPDATING.md` (in project root).
+
+---
+
+## Deployment (GitHub Pages)
+
+The site is deployed via GitHub Pages from the `main` branch root of `yangcheng258/yangcheng258.github.io`.
+
+**Critical file: `.nojekyll`** (empty file at repo root) — disables GitHub's default Jekyll processing. Without it, Pages tries to parse the site as a Jekyll project and 404s on most pages because folders starting with `_` (like `posts/_template-post.html` or any `_template.html`) are hidden from output. Don't delete this file.
+
+**Deploy loop:**
+```bash
+python3 build.py                                # regenerate auto-gen sections
+git add -A
+git commit -m "Describe the change"
+git push                                        # Pages picks up commit, updates in ~30s
+```
+
+No CI, no GitHub Actions — Pages serves the repo as-is.
+
+**Local preview:**
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000/
+```
 
 ---
 
@@ -159,3 +187,33 @@ The user is a researcher, not a developer. Their preferred workflow:
 - Wire `content/talks/`, `content/briefings/`, `content/teaching/` to their respective `impact/*.html` subpages (no real entries yet, so deferred)
 - Consider migrating to a static site generator (Hugo / Eleventy / Astro) when content volume exceeds ~100 items per type — current Python script is fine until then
 - The hero video src is a CloudFront URL from the original design tool; should be self-hosted in `assets/videos/` for long-term reliability
+
+---
+
+## Open question for the next session
+
+The user asked, right before this session ended:
+
+> "Sometimes when I want to hide some of the data or some of the files, how can I do that? A lot of people will scrape my data, so I need to make it not publicly available on GitHub. If I make it publicly available, people will be able to get it, so how do I hide it?"
+
+**Context.** The repo `yangcheng258/yangcheng258.github.io` is currently public so GitHub Pages can serve it on the free tier. Anything in the repo (including `assets/pdfs/`, `assets/data/`, future `content/` files) is world-readable and trivially scrapable.
+
+**Options to lay out for the user when this comes back up:**
+
+1. **Make the repo private** — As of 2023, GitHub Pages on the free tier supports private repos for `username.github.io` user-sites *only if you upgrade to Pro/Team*. On the free plan, private-repo Pages requires a paid plan. So this is "$4/mo to flip a switch."
+
+2. **Keep repo public, host private files elsewhere** — Cheapest. Drop sensitive datasets in:
+   - A private Google Drive / Dropbox folder, link with "request access"
+   - A private GitHub repo (no Pages), share via collaborator invite
+   - An institutional file server (UW–Madison Box, OneDrive)
+   - Zenodo with restricted access
+   
+   The site links out to those locations with a "request access" note. Public site, private data.
+
+3. **Two repos, one private** — Keep `yangcheng258.github.io` public (only the rendered HTML/CSS/JS that's already meant to be public). Move sensitive files (data, drafts, working PDFs) to a private repo or a `private/` folder excluded via `.gitignore`. The build script would need a flag for "draft mode" so private content doesn't accidentally appear in HTML output.
+
+4. **Per-file `.gitignore`** — Simplest if the user just wants to keep specific files off GitHub. Add patterns like `assets/data/raw/`, `*.csv`, `_drafts/` to `.gitignore`. Files stay on local disk, never uploaded. No protection if already pushed (need `git rm --cached` + force push to scrub history).
+
+5. **Robots / scrape deterrents** — `robots.txt` and `<meta name="robots" content="noindex">` discourage well-behaved crawlers (Google, Bing) but do nothing against scrapers. Not real protection — only signals intent.
+
+**Recommendation when user returns:** Ask which kind of file they want to hide (a) draft papers / working PDFs, (b) raw datasets, (c) personal info like full CV with phone number, (d) something else — the right answer differs sharply by category.

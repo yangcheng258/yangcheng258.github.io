@@ -1,5 +1,7 @@
 # How to update the site
 
+**Live at:** https://yangcheng258.github.io/
+
 The site is **template-driven**. Every paper, post, dataset, code release, talk, briefing, and course is one small HTML file. A build script (`python3 build.py`) reads them and rewrites the rest of the site automatically.
 
 You do not edit livability.html, workforce.html, resources.html, or any other "main" page to add a paper. You add a content file and run the build.
@@ -158,14 +160,25 @@ python3 -m http.server 8000
 ```
 Open http://localhost:8000/ in your browser.
 
-## Push to GitHub Pages
+## Deploy (push to GitHub Pages)
 
-1. `git init` in this folder, push to a new GitHub repo.
-2. Repo Settings → Pages → Source: `main` branch, root.
-3. Live at `https://<username>.github.io/<repo>/`.
-4. For a custom domain: add a `CNAME` file with the domain, point DNS at GitHub Pages.
+The site is **already deployed** — every push to `main` updates https://yangcheng258.github.io/ in about 30 seconds. There's no build step on GitHub's side; Pages just serves the files in the repo as-is.
 
-Run `python3 build.py` before each push so the rendered HTML reflects your latest content.
+The deploy loop:
+
+```bash
+python3 build.py                          # regenerate auto-gen sections from content/
+git add -A
+git commit -m "Describe the change"
+git push
+# wait ~30 seconds, hard-refresh the live site
+```
+
+That's the whole loop. No CI, no GitHub Actions, no Vercel — just push.
+
+**Important: do not delete `.nojekyll`** (empty file at project root). It tells GitHub Pages "skip Jekyll processing." Without it, files in folders starting with `_` (like our `_template.html` files) get hidden, and pages 404.
+
+For a custom domain later: add a `CNAME` file with the domain, point DNS at GitHub Pages.
 
 ---
 
