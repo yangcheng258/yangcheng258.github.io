@@ -14,9 +14,9 @@ Yang Cheng's personal academic website. Static HTML/CSS/JS, no framework. Hosted
 **Owner:** Yang Cheng — Postdoctoral Research Associate, Department of Agricultural & Applied Economics, UW–Madison.
 
 **Two research themes (active) + one in lit-review:**
-1. Rural Livability & Quality of Life (livability.html) — methods, wellbeing, housing/health
-2. Workforce & the Green Economy (workforce.html) — OGP Index, NLP greenness, Vona wage-premium replication
-3. Migration & Place Choice (migration.html) — lit-review stage
+1. Rural Livability & Quality of Life (research/livability.html) — methods, wellbeing, housing/health
+2. Workforce & the Green Economy (research/workforce.html) — OGP Index, NLP greenness, Vona wage-premium replication
+3. Migration & Place Choice (research/migration.html) — lit-review stage
 
 ---
 
@@ -70,11 +70,11 @@ Available section keys:
 |---|---|---|
 | `index.html` | Home — hero with looping video + "Explore Research →" CTA | hand-edited only |
 | `about.html` | Bio + sidebar | hand-edited only |
-| `research.html` | Research overview — 3 theme cards | hand-edited only |
-| `livability.html` | Theme 01 — 3 sections (A/B/C) with auto-injected pub blocks | 3 marker pairs |
-| `workforce.html` | Theme 02 — 2 sections (A/B) | 2 marker pairs |
-| `migration.html` | Theme 03 — empty Featured Publications section | 1 marker pair |
-| `impact.html` | Make-an-Impact category grid + list (placeholders commented out) | n/a (commented) |
+| `research/index.html` | Research overview — 3 theme cards | hand-edited only |
+| `research/livability.html` | Theme 01 — 3 sections (A/B/C) with auto-injected pub blocks | 3 marker pairs |
+| `research/workforce.html` | Theme 02 — 2 sections (A/B) | 2 marker pairs |
+| `research/migration.html` | Theme 03 — empty Featured Publications section | 1 marker pair |
+| `impact/index.html` | Make-an-Impact category grid + list (placeholders commented out) | n/a (commented) |
 | `resources.html` | Filterable library (grid + sectioned list views) | 7 marker pairs |
 | `contact.html` | Email/address + "How to reach out" intent cards | hand-edited only |
 | `impact/policy-briefings.html` etc. | Stub pages for impact subcategories | not yet wired to build |
@@ -111,7 +111,7 @@ Available section keys:
 
 **Placeholder (still to be replaced when ready):**
 - Talks, briefings, teaching content (folders empty — `_template.html` only)
-- Some entries in `impact.html` are commented-out placeholders, ready to uncomment when real entries exist
+- Some entries in `impact/index.html` are commented-out placeholders, ready to uncomment when real entries exist
 - `Hero.html` and `index_v1.html` are legacy files from the original design bundle — left in place but not linked
 
 ---

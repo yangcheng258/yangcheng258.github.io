@@ -14,7 +14,7 @@ From the project root (the folder containing this file):
 WHAT IT HANDLES
 ───────────────
 1. posts/*.html             → resources.html (grid + sections)
-2. content/publications/    → livability.html · workforce.html · migration.html · resources.html
+2. content/publications/    → research/{livability,workforce,migration}.html · resources.html
 3. content/code-data/       → resources.html (datasets/code sections + grid) · impact/public-good.html
 4. content/talks/           → impact/talks.html (when implemented)
 5. content/briefings/       → impact/policy-briefings.html (when implemented)
@@ -335,9 +335,9 @@ def inject_publications_to_theme_pages(pubs: list[dict]):
         by_section[sec].sort(key=lambda p: p['meta'].get('year', ''), reverse=True)
 
     targets = [
-        ('livability.html', ['livability-A', 'livability-B', 'livability-C']),
-        ('workforce.html',  ['workforce-A', 'workforce-B']),
-        ('migration.html',  ['migration']),
+        ('research/livability.html', ['livability-A', 'livability-B', 'livability-C']),
+        ('research/workforce.html',  ['workforce-A', 'workforce-B']),
+        ('research/migration.html',  ['migration']),
     ]
 
     for filepath, sections in targets:
@@ -348,6 +348,8 @@ def inject_publications_to_theme_pages(pubs: list[dict]):
         for sec in sections:
             items = by_section.get(sec, [])
             body = '\n'.join(gen_pub_full_block(p) for p in items)
+            # Theme pages live in research/ — fix root-relative asset/post links
+            body = body.replace('href="assets/', 'href="../assets/').replace('href="posts/', 'href="../posts/')
             html = replace_marker(html, f'PUBS:{sec}', body)
         write_if_changed(filepath, html)
 

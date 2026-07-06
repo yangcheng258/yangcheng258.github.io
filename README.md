@@ -29,6 +29,41 @@ build.py            ← scans content/ + posts/ → injects HTML between marker 
 shared.css          ← design tokens (Geist + Newsreader, accent moss green)
 ```
 
+## File index
+
+What every file is, at a glance. **Don't rename the `.html` files at root** — their names are the public URLs (e.g. `yangcheng258.github.io/research/livability.html`), and `index.html` is what GitHub Pages serves as the homepage.
+
+### Pages (public URLs)
+
+| File | What it is |
+|---|---|
+| `index.html` | **Landing page** — hero with looping video + "Explore Research →" |
+| `about.html` | Bio + sidebar |
+| `research/index.html` | Research overview — the 3 theme cards |
+| `research/livability.html` | Theme 01 · Rural Livability & Quality of Life |
+| `research/workforce.html` | Theme 02 · Workforce & the Green Economy |
+| `research/migration.html` | Theme 03 · Migration & Place Choice (lit-review stage) |
+| `impact/index.html` | Make-an-Impact overview (category grid) |
+| `impact/teaching.html` … | Impact subcategory pages (teaching, talks, media, policy-briefings, extension, conferences, consulting, public-good) |
+| `resources.html` | Filterable library of all publications, code & data |
+| `contact.html` | Email, office address, "how to reach out" cards |
+
+### Source & machinery (not public-facing)
+
+| File / folder | What it is |
+|---|---|
+| `content/publications/` | One file per paper — `YYYY-slug.html` (e.g. `2026-air.html`) |
+| `content/code-data/` | One file per dataset / code release |
+| `content/talks/` · `briefings/` · `teaching/` | Same pattern; only `_template.html` so far |
+| `posts/` | Blog posts — `YYYY-MM-DD-slug.html` |
+| `build.py` | Reads `content/` + `posts/`, regenerates the auto-gen sections |
+| `shared.css` | Design system (fonts, colors, layout) |
+| `UPDATING.md` · `content/README.md` · `CLAUDE.md` | How-to docs |
+| `Hero.html` | Legacy design reference — not linked from the site |
+| `.nojekyll` | Required by GitHub Pages — **never delete** |
+
+**Naming convention going forward:** pages keep plain descriptive names (they're URLs); content files are `YYYY-slug.html` so they sort chronologically inside their type folder — the folder itself is the category, so no prefix needed.
+
 ## Local development
 
 ```bash

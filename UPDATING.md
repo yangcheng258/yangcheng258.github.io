@@ -4,7 +4,7 @@
 
 The site is **template-driven**. Every paper, post, dataset, code release, talk, briefing, and course is one small HTML file. A build script (`python3 build.py`) reads them and rewrites the rest of the site automatically.
 
-You do not edit livability.html, workforce.html, resources.html, or any other "main" page to add a paper. You add a content file and run the build.
+You do not edit research/livability.html, research/workforce.html, resources.html, or any other "main" page to add a paper. You add a content file and run the build.
 
 ---
 
@@ -196,7 +196,7 @@ When you run it:
 6. Leaves everything outside the markers untouched
 
 If a paper has `pub:sections="livability-A,resources"`, the build:
-- Generates a `pub-full` block for livability.html Section A
+- Generates a `pub-full` block for research/livability.html Section A
 - Generates a `post-card` for resources.html grid
 - Generates a `record-row` for resources.html sections-view Paper section
 
