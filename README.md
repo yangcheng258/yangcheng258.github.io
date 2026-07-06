@@ -45,7 +45,7 @@ What every file is, at a glance. **Don't rename the `.html` files at root** — 
 | `research/migration.html` | Theme 03 · Migration & Place Choice (lit-review stage) |
 | `impact/index.html` | Make-an-Impact overview (category grid) |
 | `impact/teaching.html` … | Impact subcategory pages (teaching, talks, media, policy-briefings, extension, conferences, consulting, public-good) |
-| `resources.html` | Filterable library of all publications, code & data |
+| `resources.html` | The living library — posts, tutorials, datasets, code, reading lists, CV. (Papers live on the Research pages; talks & briefings under Make an Impact) |
 | `contact.html` | Email, office address, "how to reach out" cards |
 
 ### Source & machinery (not public-facing)

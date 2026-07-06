@@ -371,21 +371,18 @@ def inject_into_resources(posts: list[dict], pubs: list[dict], code_data: list[d
     code_sorted  = sorted(res_code, key=lambda c: c['meta'].get('year', ''), reverse=True)
 
     # === GRID VIEW: unified marker — posts + pubs + code-data ===
+    # Papers no longer appear on resources.html — they live on the research theme pages.
     grid_cards = (
         [gen_post_grid_card(p) for p in posts_sorted]
-        + [gen_pub_grid_card(p) for p in pubs_sorted]
         + [gen_code_grid_card(c) for c in code_sorted]
     )
     html = replace_marker(html, 'RESOURCES GRID', '\n'.join(grid_cards))
 
     # === SECTIONS VIEW: posts split by type ===
-    for stype in ('tutorial', 'news', 'paper', 'event'):
-        if stype == 'paper':
-            # Paper section = pubs (not just posts of type "paper")
-            rows = '\n'.join(gen_pub_section_row(p) for p in pubs_sorted)
-        else:
-            stype_posts = [p for p in posts_sorted if p['meta'].get('type') == stype]
-            rows = '\n'.join(gen_post_section_row(p) for p in stype_posts)
+    # (paper/event sections removed — papers → research pages, events → impact)
+    for stype in ('tutorial', 'news'):
+        stype_posts = [p for p in posts_sorted if p['meta'].get('type') == stype]
+        rows = '\n'.join(gen_post_section_row(p) for p in stype_posts)
         html = replace_marker(html, f'POSTS SECTION:{stype}', rows)
 
     # === SECTIONS VIEW: code-data split by subtype ===
@@ -395,8 +392,6 @@ def inject_into_resources(posts: list[dict], pubs: list[dict], code_data: list[d
     html = replace_marker(html, 'CODE',    '\n'.join(gen_code_section_row(c) for c in code_only))
 
     # Empty markers (no content yet) — pass empty bodies
-    html = replace_marker(html, 'TEACHING', '')
-    html = replace_marker(html, 'TALKS',    '')
     html = replace_marker(html, 'READING',  '')
 
     write_if_changed(RESOURCES_FILE, html)

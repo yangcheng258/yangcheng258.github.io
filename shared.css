@@ -9,7 +9,8 @@
   --footer-bg: #e8e3d5;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; overflow-x: hidden; }
+html { margin: 0; padding: 0; }
+body { margin: 0; padding: 0; overflow-x: hidden; overflow-x: clip; }
 body {
   font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
   background: var(--bg);
@@ -695,3 +696,18 @@ body {
   .impact-cat .ic-thumb { aspect-ratio: 21/9; }
   .post-card .pc-thumb { aspect-ratio: 21/9; }
 }
+
+
+/* ── Coming-soon placeholders (impact categories awaiting real entries) ── */
+.impact-cat.is-soon { border: 1px dashed var(--line); }
+.impact-cat.is-soon .ic-thumb { opacity: 0.5; filter: saturate(0.55); }
+.impact-cat.is-soon .ic-num::after { content: " · Coming soon"; color: var(--accent); }
+.ic-soon {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-family: 'Newsreader', serif; font-style: italic;
+  font-size: 14px; line-height: 1.5; color: var(--muted);
+}
+.ic-soon span { color: var(--accent); font-style: normal; }
+.record-row.is-soon h4 { font-weight: 300; font-style: italic; color: var(--muted); }
+.record-row.is-soon .rr-date { color: var(--accent); }

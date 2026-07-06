@@ -59,7 +59,7 @@ Available section keys:
 - `livability-A` (Methods) · `livability-B` (Wellbeing) · `livability-C` (Housing & rural health)
 - `workforce-A` (OGP Index) · `workforce-B` (Wage premium)
 - `migration`
-- `resources`
+- `resources` (code-data only — publications with this key are ignored on resources.html since the July 2026 rescope)
 - `impact-public-good` (for code-data only)
 
 ---
@@ -75,7 +75,7 @@ Available section keys:
 | `research/workforce.html` | Theme 02 — 2 sections (A/B) | 2 marker pairs |
 | `research/migration.html` | Theme 03 — empty Featured Publications section | 1 marker pair |
 | `impact/index.html` | Make-an-Impact category grid + list (placeholders commented out) | n/a (commented) |
-| `resources.html` | Filterable library (grid + sectioned list views) | 7 marker pairs |
+| `resources.html` | Living library: posts, tutorials, datasets, code, reading lists, CV — papers/talks/teaching removed (live on Research & Impact) | 6 marker pairs |
 | `contact.html` | Email/address + "How to reach out" intent cards | hand-edited only |
 | `impact/policy-briefings.html` etc. | Stub pages for impact subcategories | not yet wired to build |
 

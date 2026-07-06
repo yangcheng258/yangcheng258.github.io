@@ -52,11 +52,11 @@ That's it. No HTML editing across multiple files, no copy-paste between cards.
    ```
 2. Edit the meta tags + abstract in the new file. The most important meta tag is:
    ```html
-   <meta name="pub:sections" content="livability-B,resources">
+   <meta name="pub:sections" content="livability-B">
    ```
    This tells the build script which page-sections to feature the paper on. Multi-section is just comma-separated.
 
-   Allowed sections: `livability-A` · `livability-B` · `livability-C` · `workforce-A` · `workforce-B` · `migration` · `resources`
+   Allowed sections for papers: `livability-A` · `livability-B` · `livability-C` · `workforce-A` · `workforce-B` · `migration`. (Papers no longer appear on resources.html — that page carries posts, datasets, code, and reading lists.)
 3. Run `python3 build.py`. The paper appears on every named section.
 
 ### A new code release / dataset
@@ -89,7 +89,7 @@ Open `content/publications/2026-pirs-methods.html`. Change the `<meta name="pub:
 
 ### Move a paper to a different theme section
 
-Open the paper's content file. Change `<meta name="pub:sections">` (e.g. `livability-A,resources` → `livability-B,resources`). Run build. Paper moves to the new section, disappears from the old.
+Open the paper's content file. Change `<meta name="pub:sections">` (e.g. `livability-A` → `livability-B`). Run build. Paper moves to the new section, disappears from the old.
 
 ### Delete a paper
 
@@ -128,7 +128,7 @@ Save Claude's reply to disk. Run build. Done.
 | `pub:type` | `article` · `working-paper` · `book-chapter` · `dissertation` · `report` |
 | `pub:status` | `published` · `in-revision` · `in-progress` · `drafted` |
 | `pub:themes` (space-sep) | `rural` · `qol` · `green` · `housing` · `health` · `datasci` · `ai` |
-| `pub:sections` (comma-sep) | `livability-A` · `livability-B` · `livability-C` · `workforce-A` · `workforce-B` · `migration` · `resources` |
+| `pub:sections` (comma-sep) | `livability-A` · `livability-B` · `livability-C` · `workforce-A` · `workforce-B` · `migration` |
 | `code:subtype` | `dataset` · `code` |
 | `code:sections` | `resources` · `impact-public-good` |
 | `post:type` | `tutorial` · `news` · `paper` · `event` |
@@ -189,16 +189,13 @@ When you run it:
 2. Parses each file's `<meta name="ns:...">` tags + `<body>` content
 3. Sorts by date (newest first)
 4. Generates the right HTML format per destination:
-   - Theme pages (livability/workforce/migration) get `<div class="pub-full">` blocks
-   - resources.html grid gets `<a class="post-card">` cards
-   - resources.html sections get `<a class="record-row">` rows
+   - Theme pages (livability/workforce/migration) get `<div class="pub-full">` blocks (papers)
+   - resources.html grid gets `<a class="post-card">` cards (posts + code-data only)
+   - resources.html sections get `<a class="record-row">` rows (tutorials, news, datasets, code)
 5. Writes inside `<!-- AUTO-GENERATED ... START / END -->` markers
 6. Leaves everything outside the markers untouched
 
-If a paper has `pub:sections="livability-A,resources"`, the build:
-- Generates a `pub-full` block for research/livability.html Section A
-- Generates a `post-card` for resources.html grid
-- Generates a `record-row` for resources.html sections-view Paper section
+If a paper has `pub:sections="livability-A"`, the build generates a `pub-full` block for research/livability.html Section A. Papers appear only on theme pages; resources.html is the home of posts, datasets, code, and reading lists.
 
 All from one source file. Edit it once, propagates everywhere.
 
