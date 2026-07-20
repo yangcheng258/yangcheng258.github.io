@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palette — 千里江山图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500&family=Newsreader:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f6f4ef; --fg:#1a1a1a; --muted:#6a6a66; --line:#d8d4ca; --card:#fbfaf6; --accent:#4a5d3a; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:'Geist',sans-serif; }
+  a { color: var(--accent); }
+  a:hover { color: #3d4d2f; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-family:'Newsreader',serif; font-weight:400; font-size:34px; margin:0 0 6px; }
+  h1 em { font-style:italic; color:var(--accent); }
+  .sub { color:var(--muted); font-size:14px; margin:0 0 36px; }
+  .src { display:flex; gap:20px; align-items:flex-start; margin-bottom:40px; }
+  .src img { width: 280px; border-radius: 8px; box-shadow: 0 10px 26px rgba(26,26,26,.14); }
+  .src p { font-size:14px; color:var(--muted); line-height:1.6; max-width: 46ch; margin:0; }
+  .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+  .sw { background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .sw .chip { height: 92px; }
+  .sw .meta { padding: 12px 14px 14px; }
+  .sw .name { font-size:13px; font-weight:500; margin:0 0 3px; }
+  .sw .hexv { font-family:'Geist Mono',monospace; font-size:12px; color:var(--muted); }
+  .sw .note { font-size:11.5px; color:var(--muted); margin-top:6px; line-height:1.45; }
+  .compare { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .compare h2 { font-family:'Newsreader',serif; font-weight:400; font-size:21px; margin:0 0 14px; }
+  .pair { display:flex; align-items:center; gap:10px; font-size:13px; margin:8px 0; }
+  .dot { width:22px; height:22px; border-radius:5px; border:1px solid rgba(0,0,0,.08); }
+  .pair code { font-family:'Geist Mono',monospace; font-size:12px; color:var(--muted); }
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr 1fr; } .src { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Mineral palette — <em>A Thousand Li of Rivers and Mountains</em></h1>
+  <p class="sub">Six colors sampled from the scroll (your crop + the hero band). Nothing applied to the site yet.</p>
+
+  <div class="src">
+    <img src="assets/images/qianli-crop.png" alt="Detail crop of the painting">
+    <p>The blues are azurite (石青), the greens malachite (石绿) — the two mineral pigments the scroll is famous for, sitting on gold-toned silk. Sampled as real pixel values, then curated to six usable tones.</p>
+  </div>
+
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#244c71"></div><div class="meta"><p class="name">Azurite, deep</p><span class="hexv">#244c71</span><p class="note">The dark blue of the rock faces. Strong enough for text on cream.</p></div></div>
+    <div class="sw"><div class="chip" style="background:#2f5b84"></div><div class="meta"><p class="name">Azurite, bright</p><span class="hexv">#2f5b84</span><p class="note">The vivid blue of the boulders in your crop. Natural second accent.</p></div></div>
+    <div class="sw"><div class="chip" style="background:#4d6c78"></div><div class="meta"><p class="name">Azurite, misted</p><span class="hexv">#4d6c78</span><p class="note">The hazy blue of the far peaks. Quiet — good for secondary UI.</p></div></div>
+    <div class="sw"><div class="chip" style="background:#4c5d2f"></div><div class="meta"><p class="name">Malachite, deep</p><span class="hexv">#4c5d2f</span><p class="note">Nearly identical to your existing moss accent — the site already speaks this color.</p></div></div>
+    <div class="sw"><div class="chip" style="background:#6b9462"></div><div class="meta"><p class="name">Malachite, pale</p><span class="hexv">#6b9462</span><p class="note">The lit green of the terraces. Works for hovers, tints, tags.</p></div></div>
+    <div class="sw"><div class="chip" style="background:#9c7d42"></div><div class="meta"><p class="name">Silk gold</p><span class="hexv">#9c7d42</span><p class="note">The aged-silk ground. Warm metallic neutral for small details.</p></div></div>
+  </div>
+
+  <div class="compare">
+    <h2>Against the current site tokens</h2>
+    <div class="pair"><span class="dot" style="background:#4a5d3a"></span><code>#4a5d3a</code> current accent (moss)</div>
+    <div class="pair"><span class="dot" style="background:#4c5d2f"></span><code>#4c5d2f</code> malachite deep — a near-twin, so the painting already harmonizes</div>
+    <div class="pair"><span class="dot" style="background:#2f5b84"></span><code>#2f5b84</code> azurite bright — the one genuinely <em>new</em> hue the scroll would add</div>
+  </div>
+</div>
+</body>
+</html>

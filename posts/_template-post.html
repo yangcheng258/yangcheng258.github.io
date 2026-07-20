@@ -20,12 +20,22 @@
 <!-- ─── POST METADATA · build.py reads these ───────────────────────────────────
      Edit the four content="..." values below.  Don't rename the meta names. -->
 <meta name="post:date"        content="2026-05-09">
-<meta name="post:type"        content="tutorial">  <!-- tutorial | news | paper | event -->
+<meta name="post:type"        content="tutorial">  <!-- tutorial | post | news | paper | event -->
 <meta name="post:theme"       content="ai">         <!-- ai | datasci | rural | qol | green | housing | health -->
 <meta name="post:description" content="One-line summary, shown on the card in resources.html and in link previews.">
 <!-- ──────────────────────────────────────────────────────────────────────── -->
 
 <title>[Post Title] — Yang Cheng</title>
+  <meta name="description" content="A post by Yang Cheng.">
+  <link rel="canonical" href="https://yangcheng258.github.io/posts/_template-post.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content=", the four post:* meta tags below, and the body. 3. Run `python3 build.py` from the project root. → That auto-generates the card on resources.html — no manual editing of resources.html needed. ═══════════════════════════════════════════════════════════════════════════════ --> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- ─── POST METADATA · build.py reads these ─────────────────────────────────── Edit the four content="..." values below. Don't rename the meta names. --> <meta name="post:date" content="2026-05-09"> <meta name="post:type" content="tutorial"> <!-- tutorial | post | news | paper | event --> <meta name="post:theme" content="ai"> <!-- ai | datasci | rural | qol | green | housing | health --> <meta name="post:description" content="One-line summary, shown on the card in resources.html and in link previews."> <!-- ──────────────────────────────────────────────────────────────────────── --> <title>[Post Title] — Yang Cheng">
+  <meta property="og:description" content="A post by Yang Cheng.">
+  <meta property="og:url" content="https://yangcheng258.github.io/posts/_template-post.html">
+  <meta property="og:image" content="https://yangcheng258.github.io/assets/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
@@ -90,28 +100,9 @@
     <a class="mark" href="../index.html">Yang Cheng</a>
     <nav>
       <a href="../about.html">About</a>
-      <span class="navgroup">
-        <span class="navgroup-label">Research<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="../research/index.html"><span class="nm-kicker">Overview</span>All research themes</a>
-          <a href="../research/livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
-          <a href="../research/workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
-          <a href="../research/migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
-        </div>
-      </span>
-      <span class="navgroup">
-        <span class="navgroup-label">Make an Impact<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="../impact/index.html"><span class="nm-kicker">Overview</span>The full record</a>
-          <a href="../impact/teaching.html"><span class="nm-kicker">01</span>Teaching &amp; Mentoring</a>
-          <a href="../impact/policy-briefings.html"><span class="nm-kicker">02</span>Policy Briefings &amp; Reports</a>
-          <a href="../impact/talks.html"><span class="nm-kicker">03</span>Conference &amp; Talks</a>
-          <a href="../impact/extension.html"><span class="nm-kicker">04</span>Extension &amp; Outreach</a>
-          <a href="../impact/media.html"><span class="nm-kicker">05</span>Media &amp; Press</a>
-          <a href="../impact/public-good.html"><span class="nm-kicker">06</span>Public Good</a>
-        </div>
-      </span>
+      <a class="nav-soon" href="../impact/index.html">Make an Impact<small>in progress</small></a>
       <a href="../resources.html">Resources</a>
+      <a href="../life.html">Life</a>
       <a href="../contact.html">Contact</a>
       <a href="../assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
     </nav>
@@ -157,14 +148,15 @@
     <div class="sf-col">
       <h4>Navigate</h4>
       <div class="sf-nav">
-        <a href="../research/index.html">Research</a>
+        <a href="../index.html#research">Research</a>
         <div class="sf-sub">
-          <a href="../research/livability.html">Rural Livability</a>
-          <a href="../research/workforce.html">Green Economy</a>
-          <a href="../research/migration.html">Migration</a>
+          <a href="../index.html#livability">Rural Livability</a>
+          <a href="../index.html#workforce">Green Economy</a>
+          <a href="../index.html#migration">Migration</a>
         </div>
-        <a href="../impact/index.html">Make an Impact</a>
+        <a class="sf-soon" href="../impact/index.html">Make an Impact<small>in progress</small></a>
         <a href="../resources.html">Resources</a>
+        <a href="../life.html">Life</a>
         <a href="../contact.html">Contact</a>
       </div>
     </div>
@@ -177,12 +169,9 @@
         <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
         <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
       </div>
-      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+      <div class="sf-disclaimer">All opinions and errors are my own. © 2026 Yang Cheng. Made with Claude Design by Anthropic.</div>
     </div>
   </footer>
-  <div class="site-footer-bottom">
-    <span>© 2026 Yang Cheng</span>
-  </div>
 </div>
 <script>
   (function(){

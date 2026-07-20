@@ -4,142 +4,167 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Research — Yang Cheng</title>
+<meta name="description" content="Three research themes on one page: rural livability &amp; quality of life, workforce &amp; the green economy, and migration &amp; place choice — with expandable publication lists.">
+  <link rel="canonical" href="https://yangcheng258.github.io/research/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Research — Yang Cheng">
+  <meta property="og:description" content="Three research themes on one page — rural livability, the green workforce, and migration — with expandable publication lists.">
+  <meta property="og:url" content="https://yangcheng258.github.io/research/index.html">
+  <meta property="og:image" content="https://yangcheng258.github.io/assets/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared.css">
 <style>
-  :root { --bg:#f6f4ef; --fg:#1a1a1a; --muted:#6a6a66; --line:#d8d4ca; --card:#fbfaf6; --accent:#4a5d3a; }
-  *{box-sizing:border-box}html,body{margin:0;padding:0}
-  body{font-family:'Geist',ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
-  .shell{max-width:1200px;margin:0 auto;padding:32px 56px 120px}
+  /* ---- foldable theme sections ---- */
+  .theme-fold { border: 1px solid var(--line); background: var(--card); margin-bottom: 26px; }
+  /* per-theme accent tint (cascades to kickers, italics, chips, chevrons) */
+  #livability { --accent: #4a5d3a; border-left: 3px solid #4a5d3a; }
+  #workforce  { --accent: #43706b; border-left: 3px solid #43706b; }
+  #migration  { --accent: #8a5c2e; border-left: 3px solid #8a5c2e; }
+  .tf-head {
+    display: grid; grid-template-columns: 148px 1fr auto 30px; gap: 34px; align-items: center;
+    width: 100%; text-align: left; background: none; border: 0; padding: 24px 32px;
+    cursor: pointer; font: inherit; color: inherit;
+  }
+  .tf-head .badge { width: 148px; height: 148px; }
+  .tf-kicker {
+    font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--accent); font-weight: 500;
+  }
+  .tf-title h2 {
+    font-family: 'Newsreader', serif; font-size: 34px; font-weight: 400;
+    letter-spacing: -0.015em; line-height: 1.1; margin: 8px 0 10px; text-wrap: balance;
+  }
+  .tf-title h2 em { font-style: italic; color: var(--accent); }
+  .tf-desc { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); max-width: 58ch; }
+  .tf-count {
+    font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+  }
+  .tf-chev {
+    font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--muted);
+    transition: transform .3s, color .15s; text-align: center; line-height: 1;
+  }
+  .tf-head:hover .tf-chev { color: var(--accent); }
+  .theme-fold.open .tf-chev { transform: rotate(90deg); color: var(--accent); }
+  .tf-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .38s ease; }
+  .theme-fold.open .tf-body { grid-template-rows: 1fr; }
+  .tf-body-inner { overflow: hidden; padding: 0 32px; }
+  .theme-fold.open .tf-body-inner { padding-bottom: 26px; }
+  .tf-note {
+    font-family: 'Newsreader', serif; font-style: italic; font-size: 16px;
+    color: var(--muted); margin: 18px 2px 0; max-width: 70ch;
+  }
+  .tf-more {
+    display: inline-block; margin-top: 18px; white-space: nowrap;
+    font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--fg); text-decoration: none;
+    border-bottom: 1px solid var(--line); padding-bottom: 2px;
+  }
+  .tf-more:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* Topbar — matches livability.html / workforce.html */
-  .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin-bottom:24px;background:rgba(246,244,239,.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s,padding .2s}
-  .topbar.scrolled{border-bottom-color:var(--line);padding:12px 0}
-  .topbar .mark{font-family:'Newsreader',serif;font-style:italic;font-size:22px;text-decoration:none;color:var(--fg)}
-  .topbar nav{display:flex;gap:28px;align-items:center}
-  .topbar nav > a, .topbar nav .navgroup > a{color:var(--fg);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;position:relative}
-  .topbar nav > a[aria-current], .topbar nav .navgroup > a[aria-current]{color:var(--accent)}
-  .topbar nav > a:hover, .topbar nav .navgroup > a:hover{color:var(--accent)}
-  .navgroup{position:relative}
-  .navgroup > a::before{content:'▾';font-size:8px;margin-left:5px;color:var(--muted)}
-  .navgroup .navmenu{position:absolute;top:calc(100% + 12px);left:-16px;min-width:240px;background:var(--bg);border:1px solid var(--line);padding:6px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s,visibility .15s;box-shadow:0 8px 24px rgba(0,0,0,.06);z-index:60}
-  .navgroup:hover .navmenu, .navgroup:focus-within .navmenu{opacity:1;visibility:visible;transform:translateY(0)}
-  .navgroup::after{content:'';position:absolute;left:0;right:0;top:100%;height:14px}
-  .navgroup .navmenu a{display:block;padding:10px 12px;font-size:13px;color:var(--fg);text-decoration:none}
-  .navgroup .navmenu a:hover{background:var(--card);color:var(--accent)}
-  .navgroup .navmenu .nm-kicker{display:block;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  /* ---- publication rows (same look as theme pages) ---- */
+  .pub-full-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .pub-full { border-bottom: 1px solid var(--line); transition: background 0.2s; }
+  .pub-full.open { background: var(--bg); }
+  .pub-full .pf-row {
+    display: grid; grid-template-columns: 52px minmax(0, 1fr) 116px 24px;
+    grid-template-areas: "year h3 h3 toggle" "year meta links toggle";
+    gap: 2px 14px; padding: 14px 12px; align-items: start; cursor: pointer;
+  }
+  .pub-full .pf-row > .pf-year { grid-area: year; }
+  .pub-full .pf-row > h3 { grid-area: h3; min-width: 0; }
+  .pub-full .pf-meta { grid-area: meta; min-width: 0; }
+  .pub-full .pf-row > .pf-links { grid-area: links; }
+  .pub-full .pf-row > .pf-toggle { grid-area: toggle; align-self: center; }
+  .pub-full:hover > .pf-row { background: var(--bg); }
+  .pub-full .pf-toggle {
+    font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--muted);
+    transition: transform 0.25s, color 0.15s; text-align: center; line-height: 1;
+  }
+  .pub-full:hover .pf-toggle { color: var(--accent); }
+  .pub-full.open .pf-toggle { transform: rotate(90deg); color: var(--accent); }
+  .pub-full .pf-abstract { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+  .pub-full.open .pf-abstract { grid-template-rows: 1fr; }
+  .pub-full .pf-abstract-inner { overflow: hidden; padding: 0 12px 0 78px; }
+  .pub-full.open .pf-abstract-inner { padding: 4px 12px 22px 78px; }
+  .pub-full .pf-abstract p {
+    font-family: 'Newsreader', serif; font-size: 15px; line-height: 1.55;
+    color: var(--fg); margin: 0 0 12px; max-width: 68ch; text-wrap: pretty;
+  }
+  .pub-full .pf-keywords { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pub-full .pf-keywords span {
+    font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); padding: 2px 6px;
+    border: 1px solid var(--line); background: var(--card);
+  }
+  .pub-full .pf-year { font-family: 'Newsreader', serif; font-size: 20px; font-weight: 400; line-height: 1.1; }
+  .pub-full .pf-year small {
+    display: block; font-family: 'Geist Mono', monospace; font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    font-weight: 500; margin-top: 2px;
+  }
+  .pub-full .pf-row > h3 {
+    font-family: 'Newsreader', serif; font-size: 18px; font-weight: 400;
+    line-height: 1.3; margin: 0 0 4px;
+    text-wrap: pretty;
+  }
+  .pub-full .pf-row > h3 a { color: inherit; text-decoration: none; transition: color 0.15s; }
+  .pub-full .pf-row > h3 a:hover { color: var(--accent); }
+  .pub-full .pf-type {
+    font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); border: 1px solid var(--line);
+    padding: 1px 5px; margin-left: 8px; white-space: nowrap; vertical-align: 2px;
+  }
+  .pub-full .pf-meta .pf-venue { margin-top: 4px; }
+  .pub-full .pf-links a[href="#"] {
+    background: transparent; color: var(--muted); border: 1px solid var(--line);
+    pointer-events: none;
+  }
+  .pub-full .pf-meta .pf-authors { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .pub-full .pf-venue { font-family: 'Newsreader', serif; font-style: italic; font-size: 13px; line-height: 1.35; }
+  .pub-full .pf-venue .pf-status {
+    display: block; font-family: 'Geist Mono', monospace; font-style: normal;
+    font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-top: 3px;
+  }
+  .pub-full .pf-links { display: grid; grid-template-columns: repeat(2, 54px); gap: 3px; justify-content: end; align-self: end; width: 100%; }
+  .pub-full .pf-links a {
+    display: inline-block; padding: 1px 0; text-align: center; background: var(--accent); color: var(--bg);
+    border: 1px solid var(--accent); text-decoration: none; white-space: nowrap;
+    font-family: 'Geist Mono', monospace; font-size: 8px;
+    letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.15s;
+  }
+  .pub-full .pf-links a:hover { background: var(--azurite); border-color: var(--azurite); color: var(--bg); }
 
-  /* Hero / overview */
-  .page-hero{
-    padding: 56px 0 64px;
-    border-top: 2px solid var(--fg);
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 64px;
-    position: relative;
-  }
-  .page-hero .tag{
-    position:absolute; top:-12px; left:0;
-    background:var(--bg); padding-right:16px;
-    font-family:'Geist Mono',monospace; font-size:11px;
-    letter-spacing:.15em; text-transform:uppercase; color:var(--muted);
-  }
-  .page-hero h1{
-    font-family:'Newsreader',serif;
-    font-size: 88px; line-height: 0.98; letter-spacing:-0.03em;
-    font-weight: 300; margin: 16px 0 32px; text-wrap: balance;
-    max-width: 16ch;
-  }
-  .page-hero h1 em{font-style:italic;color:var(--accent)}
-  .page-hero .lede{
-    font-family:'Newsreader',serif; font-size: 22px;
-    line-height: 1.55; font-weight: 300;
-    margin: 0; max-width: 65ch;
-  }
+  /* ---- sticky theme headers: pin while the list scrolls, hand off to the next ---- */
+  .theme-fold { scroll-margin-top: 76px; }
+  .tf-head { position: sticky; top: 56px; z-index: 10; background: var(--card); }
+  .theme-fold.open .tf-head { border-bottom: 1px solid var(--line); }
+  .tf-head { transition: grid-template-columns .3s ease, padding .3s ease; }
+  .tf-head .badge { transition: width .3s ease, height .3s ease; }
+  .tf-title h2 { transition: font-size .25s ease; }
+  .tf-head.stuck { grid-template-columns: 72px 1fr auto 30px; padding-top: 12px; padding-bottom: 12px; }
+  .tf-head.stuck .badge { width: 72px; height: 72px; }
+  .tf-head.stuck .tf-desc { display: none; }
+  .tf-head.stuck .tf-title h2 { font-size: 24px; margin: 4px 0 2px; }
 
-  /* Two large theme cards */
-  .theme-cards{
-    display: grid; grid-template-columns: 1fr; gap: 24px;
-  }
-  .theme-card{
-    display: grid;
-    grid-template-columns: 220px 1fr auto;
-    gap: 48px;
-    align-items: center;
-    padding: 56px 48px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    text-decoration: none;
-    color: var(--fg);
-    position: relative;
-    transition: transform .25s ease, border-color .25s ease, background .25s ease;
-  }
-  .theme-card:hover{ background:#fff; border-color:var(--fg); transform: translateY(-2px); }
-  .theme-card:hover .tc-arrow{ transform: translateX(6px); color: var(--accent); }
-
-  .tc-num{
-    font-family:'Geist Mono',monospace; font-size:11px;
-    letter-spacing:.15em; text-transform:uppercase; color:var(--muted);
-  }
-  .tc-num strong{
-    display:block; font-family:'Newsreader',serif;
-    font-size: 84px; font-weight: 300; color: var(--accent);
-    line-height: 1; margin-top: 8px;
-    font-style: italic;
-    letter-spacing: -0.02em;
-  }
-  .tc-body h2{
-    font-family:'Newsreader',serif; font-size: 44px; line-height: 1.05;
-    font-weight: 400; letter-spacing:-0.02em; margin: 0 0 16px;
-    text-wrap: balance;
-  }
-  .tc-body h2 em{ font-style:italic; color: var(--accent); }
-  .tc-body p{
-    font-family:'Newsreader',serif; font-size: 18px;
-    line-height: 1.55; font-weight: 300;
-    margin: 0; color: var(--fg);
-    max-width: 56ch;
-  }
-  .tc-body .tc-meta{
-    margin-top: 20px;
-    display:flex; gap: 28px; flex-wrap: wrap;
-    font-family:'Geist Mono',monospace; font-size:10px;
-    letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
-  }
-  .tc-body .tc-meta strong{ color: var(--fg); font-weight: 500; }
-  .tc-arrow{
-    font-family:'Newsreader',serif;
-    font-size: 56px; line-height: 1; color: var(--muted);
-    transition: transform .25s ease, color .25s ease;
-    align-self: center;
-    padding-left: 16px;
-  }
-
-  /* Footer / footnav */
-  .footnav{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:24px 0 16px;border-top:1px solid var(--line);margin-top:96px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-  .footnav a{color:var(--fg);text-decoration:none}.footnav a:hover{color:var(--accent)}
-  .footnav .fn-dot{color:var(--line)}
-  .footnav .fn-cv{color:var(--accent);border-bottom:1px solid var(--accent)}
-  .footer{margin-top:0;padding:24px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--muted)}
-  .footer a{color:var(--fg);text-decoration:none}.footer a:hover{color:var(--accent)}
-  .footer .links{display:flex;gap:20px}
-
-  @media (max-width: 900px){
-    .shell{padding: 24px 24px 80px}
-    .page-hero h1{font-size: 56px}
-    .theme-card{grid-template-columns: 1fr; gap: 24px; padding: 40px 28px}
-    .tc-body h2{font-size: 32px}
-    .tc-arrow{display:none}
-  }
-
-  @media (max-width: 600px) {
-    .page-hero h1 { font-size: 38px; line-height: 1.05; }
-    .page-hero .lede { font-size: 17px; }
-    .theme-card { padding: 28px 20px; gap: 16px; }
-    .tc-num strong { font-size: 56px; }
-    .tc-body h2 { font-size: 26px; }
-    .tc-body p { font-size: 15px; }
+  @media (max-width: 900px) {
+    .tf-head { position: static; grid-template-columns: 90px 1fr 20px; gap: 18px; padding: 18px 20px; }
+    .tf-head .badge { width: 90px; height: 90px; }
+    .tf-count { display: none; }
+    .tf-title h2 { font-size: 24px; }
+    .tf-body-inner { padding: 0 20px; }
+    .pub-full .pf-row { grid-template-columns: 1fr; grid-template-areas: "year" "h3" "meta" "links"; gap: 6px; }
+    .pub-full .pf-year small { display: inline; margin-left: 6px; }
+    .pub-full .pf-abstract-inner, .pub-full.open .pf-abstract-inner { padding-left: 12px; }
+    .pub-full .pf-toggle { display: none; }
+    .pub-full .pf-row > h3 { white-space: normal; }
+    .pub-full .pf-links { justify-content: flex-start; flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -149,82 +174,652 @@
     <a class="mark" href="../index.html">Yang Cheng</a>
     <nav>
       <a href="../about.html">About</a>
-      <span class="navgroup">
-        <span class="navgroup-label" aria-current="page">Research<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="index.html"><span class="nm-kicker">Overview</span>All research themes</a>
-          <a href="livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
-          <a href="workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
-          <a href="migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
-        </div>
-      </span>
-      <span class="navgroup">
-        <span class="navgroup-label">Make an Impact<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="../impact/index.html"><span class="nm-kicker">Overview</span>The full record</a>
-          <a href="../impact/teaching.html"><span class="nm-kicker">01</span>Teaching &amp; Mentoring</a>
-          <a href="../impact/policy-briefings.html"><span class="nm-kicker">02</span>Policy Briefings &amp; Reports</a>
-          <a href="../impact/talks.html"><span class="nm-kicker">03</span>Conference &amp; Talks</a>
-          <a href="../impact/extension.html"><span class="nm-kicker">04</span>Extension &amp; Outreach</a>
-          <a href="../impact/media.html"><span class="nm-kicker">05</span>Media &amp; Press</a>
-          <a href="../impact/public-good.html"><span class="nm-kicker">06</span>Public Good</a>
-        </div>
-      </span>
+      <a class="nav-soon" href="../impact/index.html">Make an Impact<small>in progress</small></a>
       <a href="../resources.html">Resources</a>
+      <a href="../life.html">Life</a>
       <a href="../contact.html">Contact</a>
     <a href="../assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
     </nav>
   </header>
 
-  <section class="page-hero">
+
+  <section class="pagehead" style="display:block">
     <div class="tag">Research</div>
-    <h1>Two threads, <em>one question.</em></h1>
-    <p class="lede">My research sits at the meeting point of two questions: how to measure what makes a rural place worth living in, and how to measure what counts as green work. One thread runs on community-capitals and spatial methods at the U.S. county scale; the other on bottom-up, NLP-built measures of green tasks and skills, applied to wage and labor-market questions.</p>
+    <h1>Three themes, <em>one page</em>.</h1>
+    <p class="desc" style="margin-top:16px">Every theme and its publications, together. Click a theme to fold or unfold its list; click any paper row for the abstract.</p>
   </section>
 
-  <div class="theme-cards">
-    <a class="theme-card" href="livability.html">
-      <div class="tc-num">Theme<strong>01</strong></div>
-      <div class="tc-body">
+  <section class="theme-fold open" id="livability" data-screen-label="livability section">
+    <button class="tf-head" type="button" aria-expanded="true" aria-controls="livability-body">
+      <svg class="badge" viewBox="22 31 582 582" role="img" aria-label="The Rural Livability Project badge with a car driving the road">
+          <defs>
+            <path id="rlproad2" d="M170 610 C 230 582, 290 551, 346 524 C 410 497, 515 481, 610 478" fill="none"/>
+            <clipPath id="rlpcirc"><circle cx="313" cy="322" r="291"/></clipPath>
+          </defs>
+          <image href="../assets/images/rlp-logo.png" x="0" y="0" width="1500" height="630"></image>
+          <g clip-path="url(#rlpcirc)">
+            <g>
+              <g transform="translate(0,-10) scale(2.6)">
+                <rect x="-11" y="-6" width="22" height="8.5" rx="3" fill="#f3c14b"/>
+                <path d="M-4.5 -6 L-2.5 -11 L4.5 -11 L7.5 -6 Z" fill="#f3c14b"/>
+                <path d="M-1.8 -6.2 L-0.6 -9.6 L3.8 -9.6 L5.6 -6.2 Z" fill="#4e8480"/>
+                <circle cx="-6" cy="2.5" r="3.1" fill="#33322e"/>
+                <circle cx="6" cy="2.5" r="3.1" fill="#33322e"/>
+                <circle cx="-6" cy="2.5" r="1.1" fill="#f4efe2"/>
+                <circle cx="6" cy="2.5" r="1.1" fill="#f4efe2"/>
+              </g>
+              <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#rlproad2" xlink:href="#rlproad2"/>
+              </animateMotion>
+            </g>
+          </g>
+        </svg>
+      <div class="tf-title">
+        <span class="tf-kicker">Theme 01</span>
         <h2>Rural <em>Livability</em> &amp; Quality of Life</h2>
-        <p>How can community-capitals data plus resident judgment be combined into spatially-informed measures of well-being at the county level? This thread compares seven index-construction techniques on a single 3,100-county dataset and reframes livability from amenity-shopping toward "place capacity" — what places possess, not just what people choose. With Tessa Conroy and Steven Deller (UW–Madison).</p>
-        <div class="tc-meta">
-          <span>Counties<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">~3,100 contiguous U.S.</strong></span>
-          <span>Method paper<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">PiRS, 2026</strong></span>
-          <span>Active since<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">2024</strong></span>
+        <p class="tf-desc">What makes a rural community a good place to live? How to define, measure, and evaluate livability and its impact on communities?</p>
+      </div>
+      <span class="tf-count"><!-- AUTO-GENERATED PUBCOUNT:livability START -->
+9 publications
+        <!-- AUTO-GENERATED PUBCOUNT:livability END --></span>
+      <span class="tf-chev">›</span>
+    </button>
+    <div class="tf-body" id="livability-body">
+      <div class="tf-body-inner">
+        <div class="pub-full-list">
+          <!-- AUTO-GENERATED PUBS:livability START · run `python3 build.py` -->
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Rural Livability: What's in the Air?</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. (2026). Rural Livability: What's in the Air?. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Economic Growth and Quality of Life: Is There a Rural-Urban Divide?</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. (2026). Economic Growth and Quality of Life: Is There a Rural-Urban Divide?. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>qol</span> <span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Prioritizing Shelter, Sacrificing Nutrition: Housing Stress, Stigma, and Rural Health</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Erin Gaede, Yang Cheng & Tessa Conroy</div>
+          <div class="pf-venue">Under review at <i>Rural Sociology</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Gaede, E., Cheng, Y., &amp; Conroy, T. (2026). Prioritizing Shelter, Sacrificing Nutrition: Housing Stress, Stigma, and Rural Health. Under review at Rural Sociology.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>This study employs a mixed-method design to examine the relationship between housing financial stress and food insecurity and its implications for rural health. We combine qualitative interviews with U.S. county-level data to identify correlations between housing financial stress and nutritional outcomes, stratified by rural-urban status, tenure, and income. Our findings demonstrate how the combined burden of housing financial stress and food insecurity shapes chronic health outcomes for low-income rural communities and the role that stigma plays in shaping how rural residents navigate these dual insecurities.</p>
+          <div class="pf-keywords"><span>rural</span> <span>housing</span> <span>health</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Article</small></div>
+        <h3>Move, Stay, and Commit: Place-based Quality of Life in the U.S.</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven C. Deller</div>
+          <div class="pf-venue">Social Indicators Research.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.1007/s11205-026-03870-4" target="_blank" rel="noopener">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. C. (2026). Move, stay, and commit: Place-based quality of life in the U.S. Social Indicators Research, 183, Article 23. https://doi.org/10.1007/s11205-026-03870-4">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Attracting and retaining people and jobs through a high quality of life is an increasingly common community development strategy. Identifying places with high quality of life, and the factors that drive it, remain challenging. This study uses a revealed-preference framework, based on people’s observed choices and behaviors, to develop an indicator of place-based quality of life. We conceptualize quality of life as a latent variable reflected in eight behaviors capturing decisions to move, stay, and invest. Using spatial Bayesian factor analysis, we construct a revealed-preference quality-of-life index that accounts for spatial spillovers and rank 3,100 U.S. counties in 2019. High-quality-of-life counties are indicated by dynamic migration patterns, strong residential retention, shorter commutes, lower homeownership rates, and higher rates of entrepreneurship and family formation. Four indicators, retention, homeownership, in-migration, and commuting, account for 87 percent of the index weight. The index reveals strong spatial spillovers, highlighting the importance of regional context. While urban counties rank higher on average, many rural counties also exhibit high quality of life.</p>
+          <div class="pf-keywords"><span>qol</span> <span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Article</small></div>
+        <h3>Multidimensional Measures of Quality of Life: A Comparison of Methods Using U.S. County-level Data</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven C. Deller</div>
+          <div class="pf-venue">Papers in Regional Science.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.1016/j.pirs.2025.100129" target="_blank" rel="noopener">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. C. (2026). Multidimensional measures of quality of life: A comparison of methods using US county-level data. Papers in Regional Science, 105(1), 100129. https://doi.org/10.1016/j.pirs.2025.100129">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>There are numerous measures of place-based quality of life, accompanied by ongoing debate over which factors should be included. Past studies have predominately relied on aspatial, subjectively weighted combinations of different place-based characteristics. Little attention has been given to the rigor and appropriateness of the methodologies used to develop these measures. In this study we conduct a sensitivity analysis of methodological choices in the construction of quality of life indices using U.S. county-level data. We evaluate six different methods for developing a composite index, comparing Geographically Weighted Principal Component Analysis (GWPCA), Spatial Principal Component Analysis (SPCA), and Spatial Bayesian Factor Analysis (SBFA) with their aspatial counterparts. Our evaluation is twofold: conceptually, by examining underlying assumptions of each method, and practically, by assessing the consistency of results. We compare U.S. county-level quality of life ranking across methods and levels of rurality. While quality of life measures are generally highly correlated across methods, we find that the choice of spatial method does affect the rankings of individual counties. Notably, the most urban and most rural counties exhibit the greatest sensitivity to methodological choice. These findings underscore the importance of sensitivity analysis, particularly in urban and rural contexts, to better understand and account for the complex and spatially varying factors shaping quality of life.</p>
+          <div class="pf-keywords"><span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>The Community Capitals for Quantitative Research: Data, Directions, and Debates</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Mckenzie Boyce, Danielle Schmidt-Larios, Erin Gaede & Yang Cheng</div>
+          <div class="pf-venue">Revise & resubmit at <i>Journal of Rural Studies</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Boyce, M., Schmidt-Larios, D., Gaede, E., &amp; Cheng, Y. (2026). The Community Capitals for Quantitative Research: Data, Directions, and Debates. Revise &amp; resubmit at Journal of Rural Studies.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Spatial Determinants of Wellbeing: a geographically weighted regression approach</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
+          <div class="pf-venue">Revise & resubmit at <i>The Review of Regional Studies</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. (2026). Spatial Determinants of Wellbeing: a geographically weighted regression approach. Revise &amp; resubmit at The Review of Regional Studies.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>rural</span> <span>qol</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Temporal Change in Quality of Life across U.S. County Typologies</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. (2026). Temporal Change in Quality of Life across U.S. County Typologies. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>qol</span> <span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Report</small></div>
+        <h3>WIndicator: The impact of housing financial stress and food insecurity on rural health</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Erin Gaede & Tessa Conroy</div>
+          <div class="pf-venue">UW–Madison Division of Extension.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.21231/pv02-aa79" target="_blank" rel="noopener">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Gaede, E., &amp; Conroy, T. (2026). WIndicator: “The impact of housing financial stress and food insecurity on rural health” [Technical report]. University of Wisconsin–Madison Division of Extension. https://doi.org/10.21231/pv02-aa79">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>In this WIndicator, we explore how poverty shapes rural health outcomes by evaluating upstream stressors such as housing financial stress and food insecurity. We first establish the association between rural health, poverty, food insecurity and housing at the national level. We then focus on Wisconsin by turning to insights gleaned from interviews to explore why these patterns emerge. We find that poverty, which is more prevalent in rural places, is associated with food insecurity and housing stress. These correlations suggest a compounding effect of housing stress and food insecurity in vulnerable households that may contribute to chronic disease. Our interviews further reveal that rural stigma and remoteness shape how housing stress and food insecurity interact: fewer food options and social pressures to hide financial struggles result in households absorbing housing stresses by cutting back on nutritious food, directly undermining health.</p>
+          <div class="pf-keywords"><span>rural</span> <span>housing</span></div>
+        </div></div>
+      </div>
+        <!-- AUTO-GENERATED PUBS:livability END -->
         </div>
       </div>
-      <div class="tc-arrow">→</div>
-    </a>
-
-    <a class="theme-card" href="workforce.html">
-      <div class="tc-num">Theme<strong>02</strong></div>
-      <div class="tc-body">
+    </div>
+  </section>
+  <section class="theme-fold open" id="workforce" data-screen-label="workforce section">
+    <button class="tf-head" type="button" aria-expanded="true" aria-controls="workforce-body">
+      <svg class="badge" viewBox="0 0 200 200" role="img" aria-label="Green workforce badge: turbine, solar panel, creek, bee bumbling between flowers">
+        <defs>
+          <clipPath id="w2"><circle cx="100" cy="100" r="96"/></clipPath>
+          <clipPath id="w2bee"><ellipse cx="0" cy="0" rx="26" ry="18"/></clipPath>
+          <path id="beeloop2" d="M178 117 C 174 109, 160 109, 148 115 C 136 121, 124 133, 126 143 C 128 152, 142 152, 152 145 C 162 138, 182 125, 178 117 Z" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#f4efe2"/>
+        <g clip-path="url(#w2)">
+          <circle cx="42" cy="44" r="14" fill="#f3c14b"/>
+          <path d="M-10 142 Q 45 114 100 136 Q 155 156 210 130 L210 210 L-10 210 Z" fill="#cfdcb4"/>
+          <path d="M-10 162 Q 60 134 120 156 Q 168 172 210 158 L210 210 L-10 210 Z" fill="#9cb56b"/>
+          <!-- solar panel -->
+          <rect x="44" y="150" width="5" height="14" rx="2" fill="#33322e"/>
+          <g transform="rotate(-16 46 148)">
+            <rect x="30" y="140" width="33" height="15" rx="2" fill="#4e8480" stroke="#f4efe2" stroke-width="2.5"/>
+            <path d="M41 141 L41 154 M52 141 L52 154 M31 147.5 L62 147.5" stroke="#f4efe2" stroke-width="1.6"/>
+          </g>
+          <!-- turbine -->
+          <path d="M81 170 L84.5 90 L91.5 90 L95 170 Z" fill="#4e8480"/>
+          <g transform="translate(88,86)">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite"/>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480"/>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480" transform="rotate(120)"/>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480" transform="rotate(240)"/>
+            </g>
+            <circle r="6" fill="#4e8480"/><circle r="2.6" fill="#f4efe2"/>
+          </g>
+          <path d="M-10 182 Q 62 160 124 178 Q 172 190 210 180 L210 210 L-10 210 Z" fill="#4a5d3a"/>
+          <!-- creek -->
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#f4efe2" stroke-width="17"/>
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#a9cbc4" stroke-width="12"/>
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 8">
+            <animate attributeName="stroke-dashoffset" from="0" to="-15" dur="1.3s" repeatCount="indefinite"/>
+          </path>
+          <!-- flowers -->
+          <path d="M140 166 C 139 158 138 152 137 147" stroke="#4a5d3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <g transform="translate(137,138) scale(.8)">
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(0) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(72) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(144) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(216) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(288) translate(0,-11)"/>
+            <circle r="5.5" fill="#f0a04b"/>
+          </g>
+          <path d="M172 154 C 171 146 170 138 169 132" stroke="#4a5d3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <g transform="translate(169,124) scale(.7)">
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(0) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(72) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(144) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(216) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(288) translate(0,-11)"/>
+            <circle r="5.5" fill="#f3c14b"/>
+          </g>
+          <!-- bee -->
+          <g>
+            <g transform="scale(.48)">
+              <g>
+                <animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur=".9s" repeatCount="indefinite"/>
+                <g transform="rotate(16 10 -24)">
+                  <ellipse cx="10" cy="-24" rx="9" ry="13" fill="#cfdcb4">
+                    <animateTransform attributeName="transform" type="rotate" values="-9 10 -12;11 10 -12;-9 10 -12" dur=".18s" repeatCount="indefinite" additive="sum"/>
+                  </ellipse>
+                </g>
+                <g transform="rotate(-12 -6 -25)">
+                  <ellipse cx="-6" cy="-25" rx="10" ry="15" fill="#a9cbc4">
+                    <animateTransform attributeName="transform" type="rotate" values="10 -6 -12;-12 -6 -12;10 -6 -12" dur=".18s" repeatCount="indefinite" additive="sum"/>
+                  </ellipse>
+                </g>
+                <path d="M-26 0 L-37 -3.5 L-37 3.5 Z" fill="#33322e"/>
+                <ellipse rx="26" ry="18" fill="#f3c14b" stroke="#f4efe2" stroke-width="3"/>
+                <g clip-path="url(#w2bee)">
+                  <rect x="-15" y="-20" width="8" height="40" rx="4" fill="#33322e"/>
+                  <rect x="-2" y="-20" width="8" height="40" rx="4" fill="#33322e"/>
+                </g>
+                <circle cx="28" cy="0" r="9.5" fill="#33322e"/>
+                <circle cx="30.5" cy="-2" r="2" fill="#f4efe2"/>
+                <path d="M32 -8 C 36 -14, 42 -16, 47 -15" stroke="#33322e" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M28 -10 C 29 -17, 33 -21, 38 -23" stroke="#33322e" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </g>
+            </g>
+            <animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyPoints="0;0.32;0.5;0.82;1" keyTimes="0;0.25;0.5;0.75;1">
+              <mpath href="#beeloop2" xlink:href="#beeloop2"/>
+            </animateMotion>
+          </g>
+        </g>
+      </svg>
+      <div class="tf-title">
+        <span class="tf-kicker">Theme 02</span>
         <h2>Workforce &amp; the <em>Green Economy</em></h2>
-        <p>What counts as a green job, and where are green skills concentrated? This thread builds bottom-up greenness measures from O*NET task content using natural language processing — the Task Greenness Score and the Occupational Greenness Potential (OGP) Index — and uses them to track the green wage premium from 2006 through 2024. With Susan Chen and Andrew Katz (Virginia Tech).</p>
-        <div class="tc-meta">
-          <span>Greenness measure<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">OGP Index</strong></span>
-          <span>Wage panel<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">BLS-OES 2006–2024</strong></span>
-          <span>Active since<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">2022</strong></span>
+        <p class="tf-desc">I study what green skills, tasks, and jobs are, and the impact of the green transition on the workforce.</p>
+      </div>
+      <span class="tf-count"><!-- AUTO-GENERATED PUBCOUNT:workforce START -->
+8 publications
+        <!-- AUTO-GENERATED PUBCOUNT:workforce END --></span>
+      <span class="tf-chev">›</span>
+    </button>
+    <div class="tf-body" id="workforce-body">
+      <div class="tf-body-inner">
+        <div class="pub-full-list">
+          <!-- AUTO-GENERATED PUBS:workforce START · run `python3 build.py` -->
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>A Green Skill-based Recommendation System</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng & Susan Chen</div>
+          <div class="pf-venue">Under review at <i>PLOS ONE</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Chen, S. (2026). A Green Skill-based Recommendation System. Under review at PLOS ONE.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Shifts in the energy mix can lead to long-term structural changes in the labor market, including the displacement of labor. Technological investments in green energy and the development of green industries have led to an evolution of new green jobs and a demand for a new set of workplace skills. Displaced workers may require new skills to transition into greener jobs, while workers new to the labor market may need to acquire the skills to find employment in a greener economy. For both types of workers, understanding the skill needed for these new jobs, as well as their transferability and overlap with existing jobs, is important. In this paper, we develop a green skill-based recommendation system. We first identify a core set of green skills by regressing a job’s “greenness” score on the full set of skills using least absolute shrinkage and selection operator regression. Then we measure how dissimilar those jobs are with a Euclidean distance across green skills. The system identifies transition options between jobs within the same level of career preparation by visually displaying similar jobs that utilize their existing skills. By decomposing the dissimilarity through a comparison of green skills, the system clearly outlines the re-skilling requirements for successful transitions. This system equips job seekers, career switchers, and policymakers with information about potential green career options and the re-skilling requirement based on their current skill endowments.</p>
+          <div class="pf-keywords"><span>green</span> <span>datasci</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Occupational Green Potential: A Continuous Task-based Measure of Green Work</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Susan Chen, Yang Cheng & Andrew Katz</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Chen, S., Cheng, Y., &amp; Katz, A. (2026). Occupational Green Potential: A Continuous Task-based Measure of Green Work. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Amidst the challenges of climate change and energy insecurity, many economies worldwide are undergoing a transformation towards enhanced environmental sustainability, reduced emissions, and improved energy security. However, there is no consensus on how to determine the greenness of jobs from an occupational perspective. We propose a task-based approach that uses natural language processing to measure the greenness of jobs. We embed task descriptions into a vector space, cluster all tasks in the economy, and use green task labels from O*NET to score each cluster. We then aggregate task-level scores into an Occupational Green Potential index for all 923 occupations. The Occupational Green Potential index is continuous and captures the degree to which a job’s tasks and underlying skills align with those of green occupations. We validate the index against existing measures and find high correlations. Our approach also detects green potential in occupations not typically classified as green, whose tasks involve environmental controls and land remediation. By grounding the measurement of green jobs in the skills and tasks workers actually perform, our approach offers a new way to assess the green potential of jobs that can be extended to different economies and updated over time as the content of work evolves.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Clustering Occupations in the Green Economy</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y. (2026). Clustering Occupations in the Green Economy. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>The Readiness of the Appalachian Workforce for the Green Transition</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng & Susan Chen</div>
+          <div class="pf-venue">Under review at <i>Applied Geography</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Chen, S. (2026). The Readiness of the Appalachian Workforce for the Green Transition. Under review at Applied Geography.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>This paper develops a readiness index of the workforce for the green transition, with a focus on Appalachia. Drawing on the Occupational Greenness Potential measures, the index summarizes how prepared local labor markets are, given their current occupation and skill mix, to take up green work.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>The Role of Green Skills: Evidence from Green Initiatives in the 2009 Recovery Act</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y. (2026). The Role of Green Skills: Evidence from Green Initiatives in the 2009 Recovery Act. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2024<small>Dissertation</small></div>
+        <h3>Tasks, Skills, and Jobs in the Green Economy</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng (advisor: Susan E. Chen)</div>
+          <div class="pf-venue">Ph.D., Virginia Tech, Department of Agricultural & Applied Economics.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y. (2024). Tasks, Skills, and Jobs in the Green Economy. Ph.D., Virginia Tech, Department of Agricultural &amp; Applied Economics.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Three-chapter dissertation. Chapter 1 builds the Task Greenness Score and the Occupational Greenness Potential (OGP) Index from O*NET task content via NLP and clustering, identifying five occupation groups and a ~3% unconditional green wage premium for 2019–2020. Chapter 2 maps green-skill exposure across the U.S. with a focus on Appalachian coal-mining communities. Chapter 3 examines green ARRA stimulus and finds it negatively correlated with wages and job creation, with cross-region manufacturing spillovers. Committee: Andrew Katz, Suqin Ge, Jeffrey Alwang.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>The Green Wage Premium in the U.S.</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y. (2026). The Green Wage Premium in the U.S. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          
+          <div class="pf-keywords"><span>green</span> <span>datasci</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Green Technology and Local Employment in China: A Task-Based Analysis of Green and Brown Jobs</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng & Lianyi Hu</div>
+          <div class="pf-venue">Under review at <i>Research Policy</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Hu, L. (2026). Green Technology and Local Employment in China: A Task-Based Analysis of Green and Brown Jobs. Under review at Research Policy.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>This paper examines the impact of green technology innovation on employment in China between 1990 and 2015. Green technologies create new employment opportunities while displacing jobs in polluting industries within local labor markets. To assess their employment effects within a task-based framework, we classify green and brown jobs and trace their creation and destruction through job titles and descriptions. We then use Chinese Population Census data to construct measures of overall, green, and brown employment at the prefecture level, and link them to patent-based indicators of green innovation. Our findings show that green technology has no significant effect on aggregate employment because its positive impact on green employment is offset by a reduction in brown employment across prefectures. Further analysis indicates that demand effects, defined as changes in existing jobs, account for most of the impact, while the creation of new green jobs also contributes, though to a smaller extent. The effects are particularly pronounced in commercial occupations and among less educated workers. These results highlight the distributional consequences of green technological change and the need for re-skilling policies to support a green transition.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+        <!-- AUTO-GENERATED PUBS:workforce END -->
         </div>
       </div>
-      <div class="tc-arrow">→</div>
-    </a>
-
-    <a class="theme-card" href="migration.html">
-      <div class="tc-num">Theme<strong>03</strong></div>
-      <div class="tc-body">
+    </div>
+  </section>
+  <section class="theme-fold open" id="migration" data-screen-label="migration section">
+    <button class="tf-head" type="button" aria-expanded="true" aria-controls="migration-body">
+      <svg class="badge" viewBox="0 0 200 200" role="img" aria-label="Migration badge: crane high in the sky, moving truck and car driving from the house toward the pin">
+        <defs>
+          <clipPath id="w3"><circle cx="100" cy="100" r="96"/></clipPath>
+          <path id="flyway3" d="M-44 92 C 10 82, 40 66, 78 57 C 112 49, 160 50, 236 40" fill="none"/>
+          <path id="moveroad" d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#a9cbc4"/>
+        <g clip-path="url(#w3)">
+          <circle cx="42" cy="48" r="12" fill="#f3c14b"/>
+          <path d="M-10 138 Q 50 112 110 132 Q 160 148 210 126 L210 210 L-10 210 Z" fill="#cfdcb4"/>
+          <path d="M-10 160 Q 58 134 122 154 Q 170 168 210 154 L210 210 L-10 210 Z" fill="#9cb56b"/>
+          <path d="M-10 182 Q 64 162 130 178 Q 176 188 210 180 L210 210 L-10 210 Z" fill="#4a5d3a"/>
+          <!-- old house -->
+          <g stroke="#f4efe2" stroke-width="2.5" stroke-linejoin="round">
+            <rect x="30" y="122" width="26" height="20" rx="2" fill="#f0a04b"/>
+            <path d="M26 124 L43 110 L60 124 Z" fill="#4a5d3a"/>
+            <rect x="38" y="130" width="9" height="12" rx="1.5" fill="#f4efe2"/>
+          </g>
+          <!-- road -->
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#f4efe2" stroke-width="20"/>
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#587072" stroke-width="15"/>
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 8"/>
+          <!-- moving truck -->
+          <g>
+            <g transform="translate(0,-3.5)">
+              <rect x="-14" y="-12.5" width="18" height="12" rx="1.5" fill="#f4efe2" stroke="#587072" stroke-width="1"/>
+              <path d="M4 -0.5 L4 -10 L10.5 -10 L14.5 -4.5 L14.5 -0.5 Z" fill="#e05a44"/>
+              <path d="M6 -8.5 L10 -8.5 L12.6 -4.8 L6 -4.8 Z" fill="#a9cbc4"/>
+              <circle cx="-8" cy="0" r="3" fill="#33322e"/>
+              <circle cx="9" cy="0" r="3" fill="#33322e"/>
+              <circle cx="-8" cy="0" r="1.1" fill="#f4efe2"/>
+              <circle cx="9" cy="0" r="1.1" fill="#f4efe2"/>
+            </g>
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#moveroad" xlink:href="#moveroad"/>
+            </animateMotion>
+          </g>
+          <!-- little car following -->
+          <g>
+            <g transform="translate(0,-3.5) scale(.85)">
+              <rect x="-11" y="-6" width="22" height="8.5" rx="3" fill="#e05a44"/>
+              <path d="M-4.5 -6 L-2.5 -11 L4.5 -11 L7.5 -6 Z" fill="#e05a44"/>
+              <path d="M-1.8 -6.2 L-0.6 -9.6 L3.8 -9.6 L5.6 -6.2 Z" fill="#f4efe2"/>
+              <circle cx="-6" cy="2.5" r="3.1" fill="#33322e"/>
+              <circle cx="6" cy="2.5" r="3.1" fill="#33322e"/>
+              <circle cx="-6" cy="2.5" r="1.1" fill="#f4efe2"/>
+              <circle cx="6" cy="2.5" r="1.1" fill="#f4efe2"/>
+            </g>
+            <animateMotion dur="7s" begin="-3.2s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#moveroad" xlink:href="#moveroad"/>
+            </animateMotion>
+          </g>
+          <!-- pin at destination (gentle pulse) -->
+          <g transform="translate(168,126)">
+            <g>
+              <animateTransform attributeName="transform" type="scale" values="1;1.07;1" dur="2.4s" repeatCount="indefinite"/>
+              <path d="M0 -20 C -15 -20 -22 -5 -14 7 L0 26 L14 7 C 22 -5 15 -20 0 -20 Z" fill="#e05a44" stroke="#f4efe2" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="0" cy="-6" r="5.5" fill="#f4efe2"/>
+            </g>
+          </g>
+          <!-- Y-formation flock, high in the sky -->
+          <g>
+            <g>
+              <g transform="translate(0,0)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-11,-7) scale(.85)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.14s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-22,-13) scale(.72)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.28s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-33,-18) scale(.6)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.4s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-11,7) scale(.8)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.2s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-22,13) scale(.66)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.34s" repeatCount="indefinite"/>
+                </path>
+              </g>
+            </g>
+            <animateMotion dur="13s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#flyway3" xlink:href="#flyway3"/>
+            </animateMotion>
+          </g>
+        </g>
+      </svg>
+      <div class="tf-title">
+        <span class="tf-kicker">Theme 03</span>
         <h2>Migration &amp; <em>Place Choice</em></h2>
-        <p>How do life-cycle stage, housing market conditions, and place characteristics shape where people move and why? A newer thread that takes the spatial-livability framing into household decisions over the life course — pulling from the life-course migration, housing-constraint, and demographic-subgroup literatures.</p>
-        <div class="tc-meta">
-          <span>Stage<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">Lit-review complete</strong></span>
-          <span>Audience<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">NERSA Early Career</strong></span>
-          <span>Active since<strong style="display:block;margin-top:3px;font-family:'Geist',sans-serif;text-transform:none;letter-spacing:0;font-size:13px">2026</strong></span>
-        </div>
+        <p class="tf-desc">Life-cycle migration and quality of life: who moves, who stays, and how life stage shapes the choice of place.</p>
       </div>
-      <div class="tc-arrow">→</div>
-    </a>
-  </div>
+      <span class="tf-count"><!-- AUTO-GENERATED PUBCOUNT:migration START -->
+Lit-review stage
+        <!-- AUTO-GENERATED PUBCOUNT:migration END --></span>
+      <span class="tf-chev">›</span>
+    </button>
+    <div class="tf-body" id="migration-body">
+      <div class="tf-body-inner">
+        <div class="pub-full-list">
+          <!-- AUTO-GENERATED PUBS:migration START · run `python3 build.py` -->
+        <!-- AUTO-GENERATED PUBS:migration END -->
+        </div>
+        <p class="tf-note">This thread is at the literature-review stage — 261 references mapped, analysis design in progress. Papers will appear here as the work advances.</p>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="sf-col">
@@ -232,12 +827,13 @@
       <div class="sf-nav">
         <a href="index.html">Research</a>
         <div class="sf-sub">
-          <a href="livability.html">Rural Livability</a>
-          <a href="workforce.html">Green Economy</a>
-          <a href="migration.html">Migration</a>
+          <a href="#livability">Rural Livability</a>
+          <a href="#workforce">Green Economy</a>
+          <a href="#migration">Migration</a>
         </div>
-        <a href="../impact/index.html">Make an Impact</a>
+        <a class="sf-soon" href="../impact/index.html">Make an Impact<small>in progress</small></a>
         <a href="../resources.html">Resources</a>
+        <a href="../life.html">Life</a>
         <a href="../contact.html">Contact</a>
       </div>
     </div>
@@ -250,20 +846,86 @@
         <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
         <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
       </div>
-      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+      <div class="sf-disclaimer">All opinions and errors are my own. © 2026 Yang Cheng. Made with Claude Design by Anthropic.</div>
     </div>
   </footer>
-  <div class="site-footer-bottom">
-    <span>© 2026 Yang Cheng</span>
-  </div>
 </div>
 <script>
+  // Fold/unfold theme sections
+  document.querySelectorAll('.tf-head').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      const sec = btn.closest('.theme-fold');
+      sec.classList.toggle('open');
+      btn.setAttribute('aria-expanded', sec.classList.contains('open') ? 'true' : 'false');
+    });
+  });
+  // Expand/collapse abstracts
+  document.querySelectorAll('.pub-full .pf-row').forEach(row => {
+    row.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      row.parentElement.classList.toggle('open');
+    });
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('role', 'button');
+    row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.parentElement.classList.toggle('open'); }
+    });
+  });
+  // Sticky theme-header handoff: compact when pinned, fade/scale as the next section pushes in
+  (function(){
+    var TOP = 58;
+    var secs = Array.prototype.slice.call(document.querySelectorAll('.theme-fold'));
+    var ticking = false;
+    function update(){
+      ticking = false;
+      secs.forEach(function(sec){
+        var head = sec.querySelector('.tf-head');
+        if (!head) return;
+        var r = sec.getBoundingClientRect();
+        var open = sec.classList.contains('open');
+        var pinned = open && r.top <= TOP + 1 && r.bottom > TOP;
+        head.classList.toggle('stuck', pinned);
+        var fade = '', tr = '';
+        if (pinned) {
+          var remaining = r.bottom - TOP - head.offsetHeight;
+          if (remaining < 140) {
+            var t = Math.max(0.1, remaining / 140);
+            fade = String(0.3 + 0.7 * t);
+            tr = 'scale(' + (0.96 + 0.04 * t).toFixed(4) + ')';
+          }
+        }
+        head.style.opacity = fade;
+        head.style.transform = tr;
+        head.style.transformOrigin = 'top left';
+      });
+    }
+    function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onScroll, {passive: true});
+    update();
+  })();
+  // Topbar shadow
   (function(){
     var tb = document.querySelector('.topbar');
     if(!tb) return;
     var on = function(){ tb.classList.toggle('scrolled', window.scrollY > 8); };
     window.addEventListener('scroll', on, {passive:true}); on();
   })();
+  // Cite buttons: copy APA citation to clipboard
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.pf-cite');
+    if (!a) return;
+    e.preventDefault();
+    var txt = a.getAttribute('data-cite') || '';
+    var done = function(){ a.textContent = 'Copied'; setTimeout(function(){ a.textContent = 'Cite'; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, done);
+    else done();
+  });
+  // Reduced motion: pause badge animations
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('svg').forEach(function(s){ if (s.pauseAnimations) s.pauseAnimations(); });
+  }
 </script>
 </body>
 </html>

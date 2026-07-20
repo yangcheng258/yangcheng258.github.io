@@ -4,6 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Resources — Yang Cheng</title>
+  <meta name="description" content="Tutorials, posts, datasets, and reading lists from Yang Cheng’s research — the living library.">
+  <link rel="canonical" href="https://yangcheng258.github.io/resources.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Resources — Yang Cheng">
+  <meta property="og:description" content="Tutorials, posts, datasets, and reading lists from Yang Cheng’s research — the living library.">
+  <meta property="og:url" content="https://yangcheng258.github.io/resources.html">
+  <meta property="og:image" content="https://yangcheng258.github.io/assets/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
@@ -15,51 +25,24 @@
     <a class="mark" href="index.html">Yang Cheng</a>
     <nav>
       <a href="about.html">About</a>
-      <span class="navgroup">
-        <span class="navgroup-label">Research<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="research/index.html"><span class="nm-kicker">Overview</span>All research themes</a>
-          <a href="research/livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
-          <a href="research/workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
-          <a href="research/migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
-        </div>
-      </span>
-      <span class="navgroup">
-        <span class="navgroup-label">Make an Impact<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="impact/index.html"><span class="nm-kicker">Overview</span>The full record</a>
-          <a href="impact/teaching.html"><span class="nm-kicker">01</span>Teaching &amp; Mentoring</a>
-          <a href="impact/policy-briefings.html"><span class="nm-kicker">02</span>Policy Briefings &amp; Reports</a>
-          <a href="impact/talks.html"><span class="nm-kicker">03</span>Conference &amp; Talks</a>
-          <a href="impact/extension.html"><span class="nm-kicker">04</span>Extension &amp; Outreach</a>
-          <a href="impact/media.html"><span class="nm-kicker">05</span>Media &amp; Press</a>
-          <a href="impact/public-good.html"><span class="nm-kicker">06</span>Public Good</a>
-        </div>
-      </span>
+      <a class="nav-soon" href="impact/index.html">Make an Impact<small>in progress</small></a>
       <a href="resources.html" aria-current="page">Resources</a>
+      <a href="life.html">Life</a>
       <a href="contact.html">Contact</a>
     <a href="assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
     </nav>
   </header>
 
-  <a class="backlink" href="index.html">← Back to home</a>
 
-  <section class="pagehead">
+  <section class="pagehead" style="display:block">
     <div class="tag">The library</div>
-    <div>
-      <h1>Resources &amp; <em>writing</em></h1>
-      <p class="desc">The living library — tutorials, posts, datasets, code, and reading lists, updated as I work. Papers live under Research; talks, teaching &amp; briefings under Make an Impact. Filter by type or research theme; both combine.</p>
-    </div>
-    <div class="sidemeta">
-      Items<strong>24 total</strong>
-      Types<strong>10</strong>
-      Themes<strong>7</strong>
-    </div>
+    <h1>Resources &amp; <em>writing</em></h1>
+    <p class="desc" style="margin-top:16px">The living library — tutorials, posts, datasets, and reading lists, updated as I work. Papers live under Research; talks, code &amp; teaching under Make an Impact. Filter by type or research theme; both combine.</p>
   </section>
 
   <div class="view-toggle" role="tablist" aria-label="View mode">
-    <button data-view="grid" class="is-active" role="tab" aria-selected="true"><span class="vt-icon">▦</span> Grid</button>
-    <button data-view="list" role="tab" aria-selected="false"><span class="vt-icon">≡</span> Sections</button>
+    <button data-view="grid" role="tab" aria-selected="false"><span class="vt-icon">▦</span> Grid</button>
+    <button data-view="list" class="is-active" role="tab" aria-selected="true"><span class="vt-icon">≡</span> Sections</button>
   </div>
 
   <div class="filter-bar">
@@ -67,11 +50,12 @@
       <span class="fb-label">Type</span>
       <button class="fb-chip is-active" data-type="all">All</button>
       <button class="fb-chip" data-type="tutorial">Tutorial</button>
-      <button class="fb-chip" data-type="news">News</button>
+      <button class="fb-chip" data-type="post">Post</button>
       <button class="fb-chip" data-type="dataset">Dataset</button>
-      <button class="fb-chip" data-type="code">Code</button>
       <button class="fb-chip" data-type="reading">Reading list</button>
+      <!-- LAUNCH HOLDBACK: restore with the CV section below.
       <button class="fb-chip" data-type="cv">CV</button>
+      -->
     </div>
     <div class="fb-group" data-group="theme">
       <span class="fb-label">Theme</span>
@@ -87,39 +71,18 @@
   </div>
 
   <!-- ─────────── GRID VIEW (default) ─────────── -->
-  <div data-view-target="grid" class="is-active">
+  <div data-view-target="grid">
     <div class="posts-grid">
 
       <!-- AUTO-GENERATED RESOURCES GRID START · run `python3 build.py` -->
-      <a class="post-card" href="posts/2026-05-09-example-post.html" data-type="news" data-theme="rural">
-        <div class="pc-thumb thumb t-rural"></div>
-        <div class="pc-tags"><span class="pc-chip pc-type">News</span><span class="pc-chip">Rural Livability</span></div>
-        <h3>Example post: the build script works</h3>
-        <p class="pc-desc">A short example post demonstrating that the build script works — delete or replace when you have a real post.</p>
-        <div class="pc-date">May 09, 2026</div>
-      </a>
-      <a class="post-card" href="https://github.com/yangcheng258/Housing_health" target="_blank" rel="noopener" data-type="code" data-theme="rural">
-        <div class="pc-thumb thumb t-rural"></div>
-        <div class="pc-tags"><span class="pc-chip pc-type">Code</span><span class="pc-chip">Rural Livability</span></div>
-        <h3>Housing_health · R analysis pipeline</h3>
-        <p class="pc-desc">Replication code for the rural health, food insecurity, and housing burden papers. ACS, SAIPE, PLACES, CHR, MMG, FEA pulls; OLS, quantile, lavaan models. R / RMarkdown.</p>
-        <div class="pc-date">In progress · 2026</div>
-      </a>
-      <a class="post-card" href="#" data-type="code" data-theme="datasci">
-        <div class="pc-thumb thumb t-datasci"></div>
-        <div class="pc-tags"><span class="pc-chip pc-type">Code</span><span class="pc-chip">Data Science</span></div>
-        <h3>OGP Index — open governance performance index</h3>
-        <p class="pc-desc">An open, replicable index of local governance performance across U.S. counties, with full source data and methodology notes.</p>
-        <div class="pc-date">v1.2 · 2025</div>
-      </a>
         <!-- AUTO-GENERATED RESOURCES GRID END -->
 
     </div>
-    <p class="empty-state" hidden>No items match the current filter combination.</p>
+    <p class="empty-state" hidden>Tutorials land here as they’re written — nothing matches this filter yet.</p>
   </div>
 
   <!-- ─────────── SECTIONS VIEW ─────────── -->
-  <div data-view-target="list">
+  <div data-view-target="list" class="is-active">
 
     <section class="record-section" data-section-type="tutorial">
       <h2><em>Tutorials</em></h2>
@@ -127,27 +90,17 @@
       <div class="record-list">
         <!-- AUTO-GENERATED POSTS SECTION:tutorial START · run `python3 build.py` -->
         <!-- AUTO-GENERATED POSTS SECTION:tutorial END -->
-        <a class="record-row" href="#" data-type="tutorial" data-theme="ai"><span class="rr-date">Apr 08, 2026</span><h4>How I'm actually using AI in my research workflow — six months in</h4><span class="rr-venue">AI · Tutorial</span><span class="rr-arrow">Read →</span></a>
-        <a class="record-row" href="#" data-type="tutorial" data-theme="datasci"><span class="rr-date">Mar 22, 2026</span><h4>A practical guide to DiD when your parallel trends don't cooperate</h4><span class="rr-venue">Data Science · Tutorial</span><span class="rr-arrow">Read →</span></a>
-        <a class="record-row" href="#" data-type="tutorial" data-theme="rural"><span class="rr-date">Nov 04, 2025</span><h4>Three small things that made fieldwork easier this fall</h4><span class="rr-venue">Rural Livability · Tutorial</span><span class="rr-arrow">Read →</span></a>
       </div>
     </section>
 
-    <section class="record-section" data-section-type="news">
-      <h2><em>News</em> &amp; notes</h2>
-      <p class="rs-desc">Reading notes, project updates, dataset releases, and the occasional brief reflection.</p>
+    <section class="record-section" data-section-type="post">
+      <h2><em>Posts</em></h2>
+      <p class="rs-desc">Project updates, reading notes, and the occasional brief reflection.</p>
       <div class="record-list">
-        <!-- AUTO-GENERATED POSTS SECTION:news START · run `python3 build.py` -->
-        <a class="record-row" href="posts/2026-05-09-example-post.html" data-type="news" data-theme="rural"><span class="rr-date">May 09, 2026</span><h4>Example post: the build script works</h4><span class="rr-venue">Rural Livability · News</span><span class="rr-arrow">Read →</span></a>
-        <!-- AUTO-GENERATED POSTS SECTION:news END -->
-        <a class="record-row" href="#" data-type="news" data-theme="qol"><span class="rr-date">Feb 17, 2026</span><h4>Reading notes: Desmond's <i>Poverty, by America</i></h4><span class="rr-venue">Quality of Life · Notes</span><span class="rr-arrow">Read →</span></a>
-        <a class="record-row" href="#" data-type="news" data-theme="ai"><span class="rr-date">Jan 30, 2026</span><h4>On staying curious inside the information firehose</h4><span class="rr-venue">AI · Note</span><span class="rr-arrow">Read →</span></a>
-        <a class="record-row" href="#" data-type="news" data-theme="rural"><span class="rr-date">Dec 12, 2025</span><h4>Dissertation update — chapter two &amp; what surprised me in the data</h4><span class="rr-venue">Rural Livability · Update</span><span class="rr-arrow">Read →</span></a>
-        <a class="record-row" href="#" data-type="news" data-theme="housing"><span class="rr-date">May 02, 2025</span><h4>Open dataset release: WI county housing trajectories 2010–2024</h4><span class="rr-venue">Housing · Release</span><span class="rr-arrow">Read →</span></a>
+        <!-- AUTO-GENERATED POSTS SECTION:post START · run `python3 build.py` -->
+        <!-- AUTO-GENERATED POSTS SECTION:post END -->
       </div>
     </section>
-
-
 
     <section class="record-section" data-section-type="dataset">
       <h2><em>Datasets</em></h2>
@@ -155,17 +108,6 @@
       <div class="record-list">
         <!-- AUTO-GENERATED DATASET START · run `python3 build.py` -->
         <!-- AUTO-GENERATED DATASET END -->
-      </div>
-    </section>
-
-    <section class="record-section" data-section-type="code">
-      <h2><em>Code</em></h2>
-      <p class="rs-desc">R packages and Python utilities, MIT-licensed and on GitHub.</p>
-      <div class="record-list">
-        <!-- AUTO-GENERATED CODE START · run `python3 build.py` -->
-        <a class="record-row" href="https://github.com/yangcheng258/Housing_health" target="_blank" rel="noopener" data-type="code" data-theme="rural"><span class="rr-date">In progress · 2026</span><h4>Housing_health · R analysis pipeline</h4><span class="rr-venue">Rural Livability · Replication code for the rural health, food insecurity, and ...</span><span class="rr-arrow">GitHub →</span></a>
-        <a class="record-row" href="#" data-type="code" data-theme="datasci"><span class="rr-date">v1.2 · 2025</span><h4>OGP Index — open governance performance index</h4><span class="rr-venue">Data Science · An open, replicable index of local governance performance ac...</span><span class="rr-arrow">Link →</span></a>
-        <!-- AUTO-GENERATED CODE END -->
       </div>
     </section>
 
@@ -180,30 +122,32 @@
       </div>
     </section>
 
+    <!-- LAUNCH HOLDBACK: restore when assets/pdfs/CV.pdf exists.
     <section class="record-section" data-section-type="cv">
       <h2><em>CV</em> &amp; archive</h2>
       <p class="rs-desc">The current CV plus a small archive of miscellaneous research materials.</p>
       <div class="record-list">
-        <a class="record-row" href="#" data-type="cv"><span class="rr-date">Apr 2026</span><h4>Curriculum Vitae</h4><span class="rr-venue">Full CV · PDF</span><span class="rr-arrow">Download →</span></a>
-        <a class="record-row" href="#" data-type="cv" data-theme="rural"><span class="rr-date">2024</span><h4>Fieldwork photo journal</h4><span class="rr-venue">Rural Livability · Archive</span><span class="rr-arrow">View →</span></a>
+        <a class="record-row" href="assets/pdfs/CV.pdf" target="_blank" data-type="cv"><span class="rr-date">2026</span><h4>Curriculum Vitae</h4><span class="rr-venue">Full CV · PDF</span><span class="rr-arrow">Download →</span></a>
       </div>
     </section>
+    -->
 
-    <p class="empty-state" hidden>No items match the current filter combination.</p>
+    <p class="empty-state" hidden>Tutorials land here as they’re written — nothing matches this filter yet.</p>
   </div>
 
   <footer class="site-footer">
     <div class="sf-col">
       <h4>Navigate</h4>
       <div class="sf-nav">
-        <a href="research/index.html">Research</a>
+        <a href="index.html#research">Research</a>
         <div class="sf-sub">
-          <a href="research/livability.html">Rural Livability</a>
-          <a href="research/workforce.html">Green Economy</a>
-          <a href="research/migration.html">Migration</a>
+          <a href="index.html#livability">Rural Livability</a>
+          <a href="index.html#workforce">Green Economy</a>
+          <a href="index.html#migration">Migration</a>
         </div>
-        <a href="impact/index.html">Make an Impact</a>
+        <a class="sf-soon" href="impact/index.html">Make an Impact<small>in progress</small></a>
         <a href="resources.html">Resources</a>
+        <a href="life.html">Life</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
@@ -216,12 +160,9 @@
         <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
         <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
       </div>
-      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+      <div class="sf-disclaimer">All opinions and errors are my own. © 2026 Yang Cheng. Made with Claude Design by Anthropic.</div>
     </div>
   </footer>
-  <div class="site-footer-bottom">
-    <span>© 2026 Yang Cheng</span>
-  </div>
 </div>
 <script>
   (function(){
@@ -275,6 +216,9 @@
         });
       });
     });
+
+    // Initial pass — hides empty sections, reveals empty-state message
+    applyFilters();
 
     // View toggle (Grid / Sections)
     var toggle = document.querySelector('.view-toggle');

@@ -36,7 +36,7 @@ Each folder has a `_template.html` you copy for new entries. The build script (`
 `published` · `in-revision` · `in-progress` · `drafted`
 
 ### Publication `sections` (comma-separated)
-`livability-A` (Methods) · `livability-B` (Wellbeing) · `livability-C` (Housing & rural health) · `workforce-A` (OGP Index) · `workforce-B` (Wage premium) · `migration` · `resources`
+`livability` · `workforce` · `migration` — one flat publication list per theme page (legacy `livability-A`-style keys are normalized automatically)
 
 ### Code/data `subtype`
 `dataset` · `code`
@@ -59,14 +59,14 @@ Each folder has a `_template.html` you copy for new entries. The build script (`
 > Generate a file at `content/publications/[slug].html` using the schema in `content/publications/_template.html`. Here are the details:
 >
 > - **Title:** [paste title]
-> - **Authors:** [Lastname, F. & ...]
+> - **Authors:** [Full Name, Full Name & Full Name — spelled out]
 > - **Venue:** [journal name + volume OR "Working paper, targeting X"]
 > - **Year:** [YYYY]
 > - **Type:** article | working-paper | book-chapter | report | dissertation
 > - **Status:** published | in-revision | in-progress | drafted
 > - **Themes:** [from allowed list above]
-> - **Sections:** [livability-A, livability-B, livability-C, workforce-A, workforce-B, migration, resources — pick all that apply]
-> - **PDF / DOI / Code URLs:** [optional, leave blank if not available]
+> - **Sections:** [livability, workforce, migration — pick all that apply]
+> - **PDF / Slides / DOI / Code / Data URLs:** [optional, leave blank if not available]
 > - **Abstract:** [paste 1-3 paragraphs]
 >
 > Reply with the full file contents I can save directly. Filename should be `YYYY-short-slug.html`.
@@ -127,15 +127,14 @@ Each folder has a `_template.html` you copy for new entries. The build script (`
 
 | Content type | Where it appears on the site |
 |---|---|
-| Publication (`pub:sections=livability-A`) | livability.html Section A pub-list |
-| Publication (`pub:sections=resources`) | resources.html Paper section (grid + list view) |
+| Publication (`pub:sections=livability`) | livability.html pub list + auto page at papers/<slug>.html |
 | Code/data (`code:sections=resources`) | resources.html Datasets / Code section |
 | Code/data (`code:sections=impact-public-good`) | impact/public-good.html record list |
 | Talk (`talk:sections=impact-talks`) | impact/talks.html record list |
 | Briefing (`brief:sections=impact-briefings`) | impact/policy-briefings.html record list |
 | Course (`teach:sections=impact-teaching`) | impact/teaching.html record list |
 
-You can list multiple sections in one entry — e.g. `pub:sections="livability-A,resources"` puts a paper in BOTH livability Section A AND on the resources page.
+You can list multiple sections in one entry — e.g. `pub:sections="livability,workforce"` puts a paper on BOTH theme pages.
 
 ---
 

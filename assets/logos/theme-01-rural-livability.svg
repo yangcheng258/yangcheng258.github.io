@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="22 31 582 582" width="480" height="480" role="img" aria-label="The Rural Livability Project badge with a car driving the road">
+          <defs>
+            <path id="rlproad2" d="M170 610 C 230 582, 290 551, 346 524 C 410 497, 515 481, 610 478" fill="none"></path>
+            <clipPath id="rlpcirc"><circle cx="313" cy="322" r="291"></circle></clipPath>
+          </defs>
+          <image x="0" y="0" width="1500" height="630"></image>
+          <g clip-path="url(#rlpcirc)">
+            <g>
+              <g transform="translate(0,-10) scale(2.6)">
+                <rect x="-11" y="-6" width="22" height="8.5" rx="3" fill="#f3c14b"></rect>
+                <path d="M-4.5 -6 L-2.5 -11 L4.5 -11 L7.5 -6 Z" fill="#f3c14b"></path>
+                <path d="M-1.8 -6.2 L-0.6 -9.6 L3.8 -9.6 L5.6 -6.2 Z" fill="#4e8480"></path>
+                <circle cx="-6" cy="2.5" r="3.1" fill="#33322e"></circle>
+                <circle cx="6" cy="2.5" r="3.1" fill="#33322e"></circle>
+                <circle cx="-6" cy="2.5" r="1.1" fill="#f4efe2"></circle>
+                <circle cx="6" cy="2.5" r="1.1" fill="#f4efe2"></circle>
+              </g>
+              
+            </g>
+          </g>
+        </svg>

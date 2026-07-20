@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Research Theme Logos v3 — Animated</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4ef; --fg:#1a1a1a; --muted:#6a6a66; --line:#d8d4ca; --card:#fbfaf6;
+    --moss:#4a5d3a; --olive:#9cb56b; --sage:#cfdcb4; --teal:#a9cbc4; --tealdeep:#4e8480;
+    --orange:#f0a04b; --red:#e05a44; --yellow:#f3c14b; --cream:#f4efe2; --ink:#33322e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Geist',ui-sans-serif,system-ui,sans-serif;color:var(--fg)}
+  a{color:var(--moss);text-decoration:none;border-bottom:1px solid var(--moss)}
+  a:hover{color:var(--tealdeep);border-color:var(--tealdeep)}
+
+  .frame{position:absolute}
+  .head{width:960px;background:transparent}
+  .head h1{font-family:'Newsreader',serif;font-weight:300;font-size:44px;letter-spacing:-0.02em;margin:0 0 10px}
+  .head h1 em{font-style:italic;color:var(--moss)}
+  .head p{margin:0;font-size:14px;color:var(--muted);max-width:74ch;line-height:1.5}
+
+  .card{width:700px;background:var(--card);border:1px solid var(--line);padding:26px 32px 22px}
+  .opt{
+    font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:22px;
+  }
+  .opt b{color:var(--fg);font-weight:500}
+  .opt span{white-space:nowrap}
+  .row{display:flex;align-items:center;gap:36px}
+  .badge{width:240px;height:240px;flex:0 0 auto}
+
+  .lockup{display:flex;flex-direction:column;gap:2px}
+  .lk-kicker{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .lk-main{font-weight:800;font-size:33px;line-height:1.06;letter-spacing:.05em;text-transform:uppercase;color:var(--moss)}
+  .lk-sub{font-family:'Newsreader',serif;font-style:italic;font-size:18px;color:var(--ink);margin-top:8px}
+  /* RLP-logo-style lockup */
+  .lk-the{font-weight:600;font-size:27px;color:#3a3a38;line-height:1}
+  .lk-big{font-weight:700;font-size:38px;line-height:1.12;letter-spacing:.04em;text-transform:uppercase;color:#6f8c3e;margin:6px 0 4px}
+  .lk-small{font-weight:500;font-size:24px;color:#3a3a38;line-height:1.15}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+  .cap{font-size:12px;color:var(--muted);font-family:'Newsreader',serif;font-style:italic}
+  .anim{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--tealdeep);white-space:nowrap}
+</style>
+</head>
+<body>
+
+  <div class="frame head" style="left:40px;top:32px" data-screen-label="Header">
+    <h1>Animated theme marks — <em>round three</em></h1>
+    <p>Livability is now the original Rural Livability Project artwork, untouched — the only addition is a car looping along its road. Workforce: trail circle removed, livelier bee. Migration: a small Y-formation flock crosses the sky (no track) while the movers drive from the old house toward the pin.</p>
+  </div>
+
+  <!-- ───────── 01 · Rural Livability — faithful RLP badge + car ───────── -->
+  <div class="frame card" style="left:40px;top:190px" data-screen-label="Livability — RLP badge + car loop">
+    <div class="opt"><span><b>Theme 01</b> · Rural Livability</span><span>Animated</span></div>
+    <div class="row">
+      <svg class="badge" viewBox="22 31 582 582" role="img" aria-label="The Rural Livability Project badge with a car driving the road">
+          <defs>
+            <path id="rlproad2" d="M170 610 C 230 582, 290 551, 346 524 C 410 497, 515 481, 610 478" fill="none"/>
+            <clipPath id="rlpcirc"><circle cx="313" cy="322" r="291"/></clipPath>
+          </defs>
+          <image href="assets/images/rlp-logo.png" x="0" y="0" width="1500" height="630"></image>
+          <g clip-path="url(#rlpcirc)">
+            <g>
+              <g transform="translate(0,-10) scale(2.6)">
+                <rect x="-11" y="-6" width="22" height="8.5" rx="3" fill="#f3c14b"/>
+                <path d="M-4.5 -6 L-2.5 -11 L4.5 -11 L7.5 -6 Z" fill="#f3c14b"/>
+                <path d="M-1.8 -6.2 L-0.6 -9.6 L3.8 -9.6 L5.6 -6.2 Z" fill="#4e8480"/>
+                <circle cx="-6" cy="2.5" r="3.1" fill="#33322e"/>
+                <circle cx="6" cy="2.5" r="3.1" fill="#33322e"/>
+                <circle cx="-6" cy="2.5" r="1.1" fill="#f4efe2"/>
+                <circle cx="6" cy="2.5" r="1.1" fill="#f4efe2"/>
+              </g>
+              <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#rlproad2" xlink:href="#rlproad2"/>
+              </animateMotion>
+            </g>
+          </g>
+        </svg>
+      <div class="lockup">
+        <div class="lk-the">the</div>
+        <div class="lk-big">Rural<br>Livability</div>
+        <div class="lk-small">project</div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="anim">Loop · car drives the road, 7s</span>
+      <span class="cap">Original RLP artwork — only the car is added</span>
+    </div>
+  </div>
+
+  <!-- ───────── 02 · Workforce — bee bumbles, creek runs ───────── -->
+  <div class="frame card" style="left:780px;top:190px" data-screen-label="Workforce — bee among flowers + creek">
+    <div class="opt"><span><b>Theme 02</b> · Green Workforce</span><span>Animated</span></div>
+    <div class="row">
+      <svg class="badge" viewBox="0 0 200 200" role="img" aria-label="Green workforce badge: turbine, solar panel, creek, bee bumbling between flowers">
+        <defs>
+          <clipPath id="w2"><circle cx="100" cy="100" r="96"/></clipPath>
+          <clipPath id="w2bee"><ellipse cx="0" cy="0" rx="26" ry="18"/></clipPath>
+          <path id="beeloop2" d="M178 117 C 174 109, 160 109, 148 115 C 136 121, 124 133, 126 143 C 128 152, 142 152, 152 145 C 162 138, 182 125, 178 117 Z" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#f4efe2"/>
+        <g clip-path="url(#w2)">
+          <circle cx="42" cy="44" r="14" fill="#f3c14b"/>
+          <path d="M-10 142 Q 45 114 100 136 Q 155 156 210 130 L210 210 L-10 210 Z" fill="#cfdcb4"/>
+          <path d="M-10 162 Q 60 134 120 156 Q 168 172 210 158 L210 210 L-10 210 Z" fill="#9cb56b"/>
+          <!-- solar panel -->
+          <rect x="44" y="150" width="5" height="14" rx="2" fill="#33322e"/>
+          <g transform="rotate(-16 46 148)">
+            <rect x="30" y="140" width="33" height="15" rx="2" fill="#4e8480" stroke="#f4efe2" stroke-width="2.5"/>
+            <path d="M41 141 L41 154 M52 141 L52 154 M31 147.5 L62 147.5" stroke="#f4efe2" stroke-width="1.6"/>
+          </g>
+          <!-- turbine -->
+          <path d="M81 170 L84.5 90 L91.5 90 L95 170 Z" fill="#4e8480"/>
+          <g transform="translate(88,86)">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite"/>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480"/>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480" transform="rotate(120)"/>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480" transform="rotate(240)"/>
+            </g>
+            <circle r="6" fill="#4e8480"/><circle r="2.6" fill="#f4efe2"/>
+          </g>
+          <path d="M-10 182 Q 62 160 124 178 Q 172 190 210 180 L210 210 L-10 210 Z" fill="#4a5d3a"/>
+          <!-- creek -->
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#f4efe2" stroke-width="17"/>
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#a9cbc4" stroke-width="12"/>
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 8">
+            <animate attributeName="stroke-dashoffset" from="0" to="-15" dur="1.3s" repeatCount="indefinite"/>
+          </path>
+          <!-- flowers -->
+          <path d="M140 166 C 139 158 138 152 137 147" stroke="#4a5d3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <g transform="translate(137,138) scale(.8)">
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(0) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(72) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(144) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(216) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(288) translate(0,-11)"/>
+            <circle r="5.5" fill="#f0a04b"/>
+          </g>
+          <path d="M172 154 C 171 146 170 138 169 132" stroke="#4a5d3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <g transform="translate(169,124) scale(.7)">
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(0) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(72) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(144) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(216) translate(0,-11)"/>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(288) translate(0,-11)"/>
+            <circle r="5.5" fill="#f3c14b"/>
+          </g>
+          <!-- bee -->
+          <g>
+            <g transform="scale(.48)">
+              <g>
+                <animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur=".9s" repeatCount="indefinite"/>
+                <g transform="rotate(16 10 -24)">
+                  <ellipse cx="10" cy="-24" rx="9" ry="13" fill="#cfdcb4">
+                    <animateTransform attributeName="transform" type="rotate" values="-9 10 -12;11 10 -12;-9 10 -12" dur=".18s" repeatCount="indefinite" additive="sum"/>
+                  </ellipse>
+                </g>
+                <g transform="rotate(-12 -6 -25)">
+                  <ellipse cx="-6" cy="-25" rx="10" ry="15" fill="#a9cbc4">
+                    <animateTransform attributeName="transform" type="rotate" values="10 -6 -12;-12 -6 -12;10 -6 -12" dur=".18s" repeatCount="indefinite" additive="sum"/>
+                  </ellipse>
+                </g>
+                <path d="M-26 0 L-37 -3.5 L-37 3.5 Z" fill="#33322e"/>
+                <ellipse rx="26" ry="18" fill="#f3c14b" stroke="#f4efe2" stroke-width="3"/>
+                <g clip-path="url(#w2bee)">
+                  <rect x="-15" y="-20" width="8" height="40" rx="4" fill="#33322e"/>
+                  <rect x="-2" y="-20" width="8" height="40" rx="4" fill="#33322e"/>
+                </g>
+                <circle cx="28" cy="0" r="9.5" fill="#33322e"/>
+                <circle cx="30.5" cy="-2" r="2" fill="#f4efe2"/>
+                <path d="M32 -8 C 36 -14, 42 -16, 47 -15" stroke="#33322e" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M28 -10 C 29 -17, 33 -21, 38 -23" stroke="#33322e" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </g>
+            </g>
+            <animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyPoints="0;0.32;0.5;0.82;1" keyTimes="0;0.25;0.5;0.75;1">
+              <mpath href="#beeloop2" xlink:href="#beeloop2"/>
+            </animateMotion>
+          </g>
+        </g>
+      </svg>
+      <div class="lockup">
+        <div class="lk-the">the</div>
+        <div class="lk-big">Green<br>Workforce</div>
+        <div class="lk-small">tasks, skills, and jobs</div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="anim">Loop · blades 9s · bee bumbles · creek runs</span>
+      <span class="cap">Wind, solar, running water &amp; the worker bee</span>
+    </div>
+  </div>
+
+  <!-- ───────── 03 · Migration — small crane overhead, movers on the road ───────── -->
+  <div class="frame card" style="left:1520px;top:190px" data-screen-label="Migration — crane overhead + moving cars">
+    <div class="opt"><span><b>Theme 03</b> · Migration</span><span>Animated</span></div>
+    <div class="row">
+      <svg class="badge" viewBox="0 0 200 200" role="img" aria-label="Migration badge: crane high in the sky, moving truck and car driving from the house toward the pin">
+        <defs>
+          <clipPath id="w3"><circle cx="100" cy="100" r="96"/></clipPath>
+          <path id="flyway3" d="M-44 92 C 10 82, 40 66, 78 57 C 112 49, 160 50, 236 40" fill="none"/>
+          <path id="moveroad" d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#a9cbc4"/>
+        <g clip-path="url(#w3)">
+          <circle cx="42" cy="48" r="12" fill="#f3c14b"/>
+          <path d="M-10 138 Q 50 112 110 132 Q 160 148 210 126 L210 210 L-10 210 Z" fill="#cfdcb4"/>
+          <path d="M-10 160 Q 58 134 122 154 Q 170 168 210 154 L210 210 L-10 210 Z" fill="#9cb56b"/>
+          <path d="M-10 182 Q 64 162 130 178 Q 176 188 210 180 L210 210 L-10 210 Z" fill="#4a5d3a"/>
+          <!-- old house -->
+          <g stroke="#f4efe2" stroke-width="2.5" stroke-linejoin="round">
+            <rect x="30" y="122" width="26" height="20" rx="2" fill="#f0a04b"/>
+            <path d="M26 124 L43 110 L60 124 Z" fill="#4a5d3a"/>
+            <rect x="38" y="130" width="9" height="12" rx="1.5" fill="#f4efe2"/>
+          </g>
+          <!-- road -->
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#f4efe2" stroke-width="20"/>
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#587072" stroke-width="15"/>
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 8"/>
+          <!-- moving truck -->
+          <g>
+            <g transform="translate(0,-3.5)">
+              <rect x="-14" y="-12.5" width="18" height="12" rx="1.5" fill="#f4efe2" stroke="#587072" stroke-width="1"/>
+              <path d="M4 -0.5 L4 -10 L10.5 -10 L14.5 -4.5 L14.5 -0.5 Z" fill="#e05a44"/>
+              <path d="M6 -8.5 L10 -8.5 L12.6 -4.8 L6 -4.8 Z" fill="#a9cbc4"/>
+              <circle cx="-8" cy="0" r="3" fill="#33322e"/>
+              <circle cx="9" cy="0" r="3" fill="#33322e"/>
+              <circle cx="-8" cy="0" r="1.1" fill="#f4efe2"/>
+              <circle cx="9" cy="0" r="1.1" fill="#f4efe2"/>
+            </g>
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#moveroad" xlink:href="#moveroad"/>
+            </animateMotion>
+          </g>
+          <!-- little car following -->
+          <g>
+            <g transform="translate(0,-3.5) scale(.85)">
+              <rect x="-11" y="-6" width="22" height="8.5" rx="3" fill="#e05a44"/>
+              <path d="M-4.5 -6 L-2.5 -11 L4.5 -11 L7.5 -6 Z" fill="#e05a44"/>
+              <path d="M-1.8 -6.2 L-0.6 -9.6 L3.8 -9.6 L5.6 -6.2 Z" fill="#f4efe2"/>
+              <circle cx="-6" cy="2.5" r="3.1" fill="#33322e"/>
+              <circle cx="6" cy="2.5" r="3.1" fill="#33322e"/>
+              <circle cx="-6" cy="2.5" r="1.1" fill="#f4efe2"/>
+              <circle cx="6" cy="2.5" r="1.1" fill="#f4efe2"/>
+            </g>
+            <animateMotion dur="7s" begin="-3.2s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#moveroad" xlink:href="#moveroad"/>
+            </animateMotion>
+          </g>
+          <!-- pin at destination (gentle pulse) -->
+          <g transform="translate(168,126)">
+            <g>
+              <animateTransform attributeName="transform" type="scale" values="1;1.07;1" dur="2.4s" repeatCount="indefinite"/>
+              <path d="M0 -20 C -15 -20 -22 -5 -14 7 L0 26 L14 7 C 22 -5 15 -20 0 -20 Z" fill="#e05a44" stroke="#f4efe2" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="0" cy="-6" r="5.5" fill="#f4efe2"/>
+            </g>
+          </g>
+          <!-- Y-formation flock, high in the sky -->
+          <g>
+            <g>
+              <g transform="translate(0,0)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-11,-7) scale(.85)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.14s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-22,-13) scale(.72)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.28s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-33,-18) scale(.6)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.4s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-11,7) scale(.8)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.2s" repeatCount="indefinite"/>
+                </path>
+              </g>
+              <g transform="translate(-22,13) scale(.66)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  <animateTransform attributeName="transform" type="scale" values="1 1;1 .55;1 1" dur=".55s" begin="-.34s" repeatCount="indefinite"/>
+                </path>
+              </g>
+            </g>
+            <animateMotion dur="13s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#flyway3" xlink:href="#flyway3"/>
+            </animateMotion>
+          </g>
+        </g>
+      </svg>
+      <div class="lockup">
+        <div class="lk-the">the</div>
+        <div class="lk-big">Migration</div>
+        <div class="lk-small">choice of location</div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="anim">Loop · movers 7s · flock 13s</span>
+      <span class="cap">The flock heads out; the household drives</span>
+    </div>
+  </div>
+
+<script>
+  // Respect reduced-motion: freeze all SVG animations
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('svg').forEach(function(s){ if (s.pauseAnimations) s.pauseAnimations(); });
+  }
+</script>
+</body>
+</html>

@@ -4,10 +4,78 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Make an Impact — Yang Cheng</title>
+  <meta name="description" content="Where research meets practice — policy briefings, talks, extension, teaching, and public-good contributions.">
+  <link rel="canonical" href="https://yangcheng258.github.io/impact/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Make an Impact — Yang Cheng">
+  <meta property="og:description" content="Where research meets practice — policy briefings, talks, extension, teaching, and public-good contributions.">
+  <meta property="og:url" content="https://yangcheng258.github.io/impact/index.html">
+  <meta property="og:image" content="https://yangcheng258.github.io/assets/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared.css">
+<style>
+  .bento { display: grid; grid-template-columns: 1.65fr 1fr; gap: 22px; margin-bottom: 22px; }
+  .bento-right { display: grid; gap: 22px; grid-template-rows: 1fr auto; }
+  .bento2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .bx {
+    border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    background: var(--card); display: flex; flex-direction: column; min-width: 0;
+  }
+  #bx-extension { --accent: #4a5d3a; }
+  #bx-outloud   { --accent: #7a3d30; }
+  #bx-repro     { --accent: #43706b; }
+  #bx-talks     { --accent: #8a5c2e; }
+  #bx-teaching  { --accent: #3d5570; }
+  .bx-more-soon { color: var(--muted); cursor: default; display: inline-flex; align-items: center; gap: 7px; }
+  .bx-more-soon small { font-family: 'Geist Mono', monospace; font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--line); padding: 1px 5px; border-radius: 999px; white-space: nowrap; }
+  .bx-media { aspect-ratio: 21 / 7; border-bottom: 1px solid var(--line); position: relative; }
+  .bx-big .bx-media { aspect-ratio: auto; flex: 1 1 auto; min-height: 180px; }
+  .bx-media image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bx-body { padding: 10px 18px 10px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+  .bx-kicker {
+    font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); font-weight: 500;
+  }
+  .bx h2 {
+    font-family: 'Newsreader', serif; font-size: 22px; font-weight: 400;
+    letter-spacing: -0.01em; line-height: 1.12; margin: 0; text-wrap: balance;
+  }
+  .bx-big h2 { font-size: 28px; }
+  .bx h2 em { font-style: italic; color: var(--accent); }
+  .bx-desc { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+  .bx-entries { border-top: 1px solid var(--line); margin-top: 3px; }
+  .bx-entry {
+    display: flex; align-items: center; gap: 10px;
+    padding: 5px 2px; border-bottom: 1px solid var(--line);
+    font-size: 13px; line-height: 1.4; color: var(--fg); text-decoration: none;
+  }
+  .bx-entry .be-thumb { width: 34px; height: 34px; flex: 0 0 auto; }
+  .bx-entry .be-txt { min-width: 0; }
+  .bx-entry b { font-weight: 600; }
+  a.bx-entry:hover b { color: var(--accent); }
+  .bx-entry span {
+    display: block; font-family: 'Geist Mono', monospace; font-size: 9.5px;
+    letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-top: 3px;
+  }
+  .bx-entry.is-soon { color: var(--muted); }
+  .bx-entry.is-soon span { color: var(--accent); }
+  .bx-more {
+    margin-top: auto; align-self: flex-start; padding-top: 8px;
+    font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--fg); text-decoration: none;
+    border-bottom: 1px solid var(--line); padding-bottom: 2px;
+  }
+  .bx-more:hover { color: var(--accent); border-color: var(--accent); }
+  @media (max-width: 900px) {
+    .bento, .bento2 { grid-template-columns: 1fr; }
+    .bx-big h2 { font-size: 27px; }
+  }
+</style>
 </head>
 <body>
 <div class="shell">
@@ -15,201 +83,123 @@
     <a class="mark" href="../index.html">Yang Cheng</a>
     <nav>
       <a href="../about.html">About</a>
-      <span class="navgroup">
-        <span class="navgroup-label">Research<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="../research/index.html"><span class="nm-kicker">Overview</span>All research themes</a>
-          <a href="../research/livability.html"><span class="nm-kicker">Theme 01</span>Rural Livability &amp; Quality of Life</a>
-          <a href="../research/workforce.html"><span class="nm-kicker">Theme 02</span>Workforce &amp; the Green Economy</a>
-          <a href="../research/migration.html"><span class="nm-kicker">Theme 03</span>Migration &amp; Place Choice</a>
-        </div>
-      </span>
-      <span class="navgroup" data-current="page">
-        <span class="navgroup-label" aria-current="page">Make an Impact<span class="ng-caret">▾</span></span>
-        <div class="navmenu">
-          <a href="index.html"><span class="nm-kicker">Overview</span>The full record</a>
-          <a href="teaching.html"><span class="nm-kicker">01</span>Teaching &amp; Mentoring</a>
-          <a href="policy-briefings.html"><span class="nm-kicker">02</span>Policy Briefings &amp; Reports</a>
-          <a href="talks.html"><span class="nm-kicker">03</span>Conference &amp; Talks</a>
-          <a href="extension.html"><span class="nm-kicker">04</span>Extension &amp; Outreach</a>
-          <a href="media.html"><span class="nm-kicker">05</span>Media &amp; Press</a>
-          <a href="public-good.html"><span class="nm-kicker">06</span>Public Good</a>
-        </div>
-      </span>
+      <a class="nav-soon" href="index.html">Make an Impact<small>in progress</small></a>
       <a href="../resources.html">Resources</a>
+      <a href="../life.html">Life</a>
       <a href="../contact.html">Contact</a>
     <a href="../assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
     </nav>
   </header>
 
-  <a class="backlink" href="../index.html">← Back to home</a>
 
-  <section class="pagehead">
-    <div class="tag">Public record</div>
-    <div>
-      <h1>Make an <em>impact</em></h1>
-      <p class="desc">The full, ongoing record of how the research meets practice — teaching, briefings, talks, extension projects, media, and the public tools that come out of the work. Research only matters when it arrives in the hands of the people making decisions; this page is the receipt.</p>
-    </div>
-    <div class="sidemeta">
-      Active<strong>2 confirmed entries</strong>
-      Status<strong>Filling in over time</strong>
-      Updated<strong>May 2026</strong>
-    </div>
+  <section class="pagehead" style="display:block">
+    <div class="tag">Impact</div>
+    <h1>Make an <em>impact</em></h1>
+    <p class="desc" style="margin-top:16px">Beyond research, I share my findings and ideas in five ways: extension work with Wisconsin communities, the public conversation, reproducible tools, conference talks, and teaching.</p>
   </section>
 
-  <div class="view-toggle" role="tablist" aria-label="View mode">
-    <button data-view="blocks" class="is-active" role="tab" aria-selected="true">
-      <span class="vt-icon">▦</span> Blocks
-    </button>
-    <button data-view="list" role="tab" aria-selected="false">
-      <span class="vt-icon">≡</span> List
-    </button>
-  </div>
-
-  <!-- ─────────── BLOCKS VIEW (default) ─────────── -->
-  <div data-view-target="blocks" class="is-active">
-    <div class="impact-grid">
-
-            <a class="impact-cat is-soon" href="teaching.html">
-        <div class="ic-thumb thumb t-teaching"></div>
-        <div class="ic-num">01 · Teaching</div>
-        <h3>Teaching &amp; Mentoring</h3>
-        <p class="ic-desc">Graduate seminars, undergraduate methods courses, and one-on-one advising — building research literacy in the next cohort of policy-minded scholars.</p>
-        <div class="ic-soon">Page in progress — detail &amp; listing for this impact area will live here <span>→</span></div>
-      </a>
-
-      <a class="impact-cat" href="policy-briefings.html">
-        <div class="ic-thumb thumb t-policy"></div>
-        <div class="ic-num">02 · Briefing</div>
-        <h3>Policy Briefings &amp; Reports</h3>
-        <p class="ic-desc">Indicator reports and decision-ready memos for county boards and Wisconsin agencies — research distilled for the people making local decisions.</p>
-        <div class="ic-entries">
-          <div class="ic-entry"><div class="ie-thumb thumb t-policy"></div><div><h4>WIndicator: a Wisconsin community-indicators report</h4><p>2025 · Cheng, Gaede &amp; Conroy · UW–Madison Extension</p></div></div>
-          <!-- PLACEHOLDER · uncomment when real entries exist
-          <div class="ic-entry"><div class="ie-thumb thumb t-policy"></div><div><h4>What livability indices miss</h4><p>Mar 2026 · Wisconsin DOA</p></div></div>
-          <div class="ic-entry"><div class="ie-thumb thumb t-policy"></div><div><h4>Resident-weighted livability for small-city budgets</h4><p>Oct 2025 · WI League of Municipalities</p></div></div>
+  <div class="bento">
+    <article class="bx bx-big" id="bx-extension" data-screen-label="Extension &amp; outreach (big)">
+      <div class="bx-media"><image-slot id="impact-extension" src="../assets/images/green-lake-map.jpg" shape="rect" placeholder="Drop a photo — extension work in the field"></image-slot></div>
+      <div class="bx-body">
+        <span class="bx-kicker">01 · Working with communities</span>
+        <h2>Working <em>with</em> Wisconsin communities</h2>
+        <p class="bx-desc">Where the research meets the county board meeting — indicator reports, local data help, and ongoing partner projects with UW–Madison Extension.</p>
+        <div class="bx-entries">
+          <a class="bx-entry" href="https://economicdevelopment.extension.wisc.edu/articles/windicators-the-impact-of-housing-financial-stress-and-food-insecurity-on-rural-health/" target="_blank" rel="noopener"><div class="be-thumb" style="background-image:url('../assets/images/windicator-cover.png');background-size:cover;background-position:top center"></div><div class="be-txt"><b>WIndicator</b> — The impact of housing financial stress and food insecurity on rural health<span>June 2026 · UW–Madison Division of Extension · with Erin Gaede &amp; Tessa Conroy</span></div></a>
+          <!-- LAUNCH HOLDBACK (not enough material yet):
+          <a class="bx-entry is-soon" href="../index.html#livability"><div class="be-thumb thumb t-housing"></div><div class="be-txt"><b>Housing financial stress &amp; rural health</b> — analysis for county audiences<span>In motion · working paper</span></div></a>
+          <div class="bx-entry is-soon"><div class="be-thumb thumb t-extension"></div><div class="be-txt"><b>Partner projects</b> — applied livability &amp; workforce collaborations<span>In motion · UW–Extension</span></div></div>
           -->
         </div>
-      </a>
+        <span class="bx-more bx-more-soon">Communities page<small>in progress</small></span>
+      </div>
+    </article>
 
-            <a class="impact-cat is-soon" href="talks.html">
-        <div class="ic-thumb thumb t-talks"></div>
-        <div class="ic-num">03 · Talk</div>
-        <h3>Conference &amp; Talks</h3>
-        <p class="ic-desc">Keynotes, peer-reviewed conference papers, and invited lectures across the planning, geography, and economics disciplines.</p>
-        <div class="ic-soon">Page in progress — detail &amp; listing for this impact area will live here <span>→</span></div>
-      </a>
-
-            <a class="impact-cat is-soon" href="extension.html">
-        <div class="ic-thumb thumb t-extension"></div>
-        <div class="ic-num">04 · Extension</div>
-        <h3>Extension &amp; Outreach</h3>
-        <p class="ic-desc">Ongoing collaborations with UW–Extension and Wisconsin community partners on applied livability and workforce projects.</p>
-        <div class="ic-soon">Page in progress — detail &amp; listing for this impact area will live here <span>→</span></div>
-      </a>
-
-            <a class="impact-cat is-soon" href="media.html">
-        <div class="ic-thumb thumb t-media"></div>
-        <div class="ic-num">05 · Media</div>
-        <h3>Media &amp; Press</h3>
-        <p class="ic-desc">Op-eds, podcasts, and press appearances — the slower public conversation that surrounds the work.</p>
-        <div class="ic-soon">Page in progress — detail &amp; listing for this impact area will live here <span>→</span></div>
-      </a>
-
-      <a class="impact-cat" href="public-good.html">
-        <div class="ic-thumb thumb t-publicgood"></div>
-        <div class="ic-num">06 · Public Good</div>
-        <h3>Public Good</h3>
-        <p class="ic-desc">Open data, public tools, and community resources for practitioners and researchers — released under permissive licenses.</p>
-        <div class="ic-entries">
-          <div class="ic-entry"><div class="ie-thumb thumb t-publicgood"></div><div><h4>OGP Index — open governance performance</h4><p>v1.2 · 2025 · methodology + replication</p></div></div>
-          <!-- PLACEHOLDER · uncomment when real entries exist
-          <div class="ic-entry"><div class="ie-thumb thumb t-publicgood"></div><div><h4>wisc-livability R package</h4><p>2026 · resident-weighted index toolkit</p></div></div>
-          <div class="ic-entry"><div class="ie-thumb thumb t-publicgood"></div><div><h4>Field interview codebook</h4><p>2024– · open methodology repository</p></div></div>
-          -->
+    <div class="bento-right">
+      <article class="bx" id="bx-outloud" data-screen-label="Research out loud">
+        <div class="bx-media"><image-slot id="impact-outloud" src="../assets/images/talk-mcrsa-2026.jpg" shape="rect" placeholder="Drop a photo — talks, press, posts"></image-slot></div>
+        <div class="bx-body">
+          <span class="bx-kicker">02 · Media, press &amp; public talks</span>
+          <h2>Talking <em>beyond</em> the journals</h2>
+          <div class="bx-entries">
+            <a class="bx-entry" href="https://aae.wisc.edu/2026/04/27/measures-of-livability-defining-and-comparing-county-level-rankings/" target="_blank" rel="noopener"><div class="be-thumb thumb t-media"></div><div class="be-txt"><b>Measures of livability</b> — defining and comparing county-level rankings<span>Apr 2026 · UW–Madison AAE news</span></div></a>
+            <!-- LAUNCH HOLDBACK:
+            <a class="bx-entry" href="https://www.linkedin.com/in/yangcheng2019/recent-activity/all/" target="_blank" rel="noopener"><div class="be-thumb thumb t-media"></div><div class="be-txt"><b>Research updates &amp; field notes</b><span>Ongoing · LinkedIn</span></div></a>
+            -->
+            <!-- LAUNCH HOLDBACK (not enough material yet):
+            <div class="bx-entry is-soon"><div class="be-thumb thumb t-media"></div><div class="be-txt"><b>Press &amp; op-eds</b><span>In motion · as they land</span></div></div>
+            -->
+          </div>
+          <span class="bx-more bx-more-soon">Media &amp; talks page<small>in progress</small></span>
         </div>
-      </a>
+      </article>
 
+      <article class="bx" id="bx-talks" data-screen-label="Conference talks">
+        <div class="bx-media"><image-slot id="impact-talks" src="../assets/images/talk-c2er-2026.jpg" shape="rect" placeholder="Drop a presentation photo"></image-slot></div>
+        <div class="bx-body">
+          <span class="bx-kicker">03 · Conferences</span>
+          <h2>Academic <em>communities</em></h2>
+          <div class="bx-entries">
+            <a class="bx-entry" href="https://www.linkedin.com/posts/yangcheng2019_rurallivability-rural-economicdevelopment-ugcPost-7475310966981677056-g1i3/" target="_blank" rel="noopener"><div class="be-thumb thumb t-talks" style="display:flex;align-items:center;justify-content:center;color:#fff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></div><div class="be-txt"><b>Rural Livability</b> — C2ER + LMI Institute Annual Conference<span>Jun 17, 2026 · Memphis, TN · post on LinkedIn</span></div></a>
+            <!-- LAUNCH HOLDBACK (one entry per box):
+            <a class="bx-entry" href="https://www.linkedin.com/in/yangcheng2019/recent-activity/all/" target="_blank" rel="noopener"><div class="be-thumb thumb t-talks"></div><div class="be-txt"><b>Temporal Change in Quality of Life across U.S. County Typologies</b> — 56th MCRSA Conference &amp; IMPLAN Summit<span>Jun 12, 2026 · with Tessa Conroy &amp; Steven Deller</span></div></a>
+            <a class="bx-entry" href="../index.html#livability"><div class="be-thumb thumb t-talks"></div><div class="be-txt"><b>Spatial determinants of wellbeing</b> — NARSC meetings<span>2025 · North American Regional Science Council</span></div></a>
+            -->
+          </div>
+          <span class="bx-more bx-more-soon">Academic community page<small>in progress</small></span>
+        </div>
+      </article>
     </div>
   </div>
 
-  <!-- ─────────── LIST VIEW ─────────── -->
-  <div data-view-target="list">
-
-        <section class="record-section" id="teaching">
-      <h2>Teaching &amp; <em>Mentoring</em></h2>
-      <p class="rs-desc">Graduate seminars, undergraduate methods courses, and one-on-one advising at UW–Madison's La Follette School of Public Affairs.</p>
-      <div class="record-list">
-        <a class="record-row is-soon" href="teaching.html"><span class="rr-date">Soon</span><h4>Page in progress — detail &amp; listing for this impact area will live here</h4><span class="rr-venue">See overview for the current record</span><span class="rr-arrow">Open →</span></a>
+  <div class="bento2">
+    <article class="bx" id="bx-repro" data-screen-label="Reproducibility">
+      <!-- LAUNCH HOLDBACK: restore when a figure is ready.
+      <div class="bx-media"><image-slot id="impact-repro" shape="rect" placeholder="Drop a figure — maps, measures, code"></image-slot></div>
+      -->
+      <div class="bx-body">
+        <span class="bx-kicker">04 · Research tools</span>
+        <h2>Measures, <em>code &amp; data</em></h2>
+        <div class="bx-entries">
+          <a class="bx-entry" href="https://github.com/yangcheng258" target="_blank" rel="noopener"><div class="be-thumb thumb t-green"></div><div class="be-txt"><b>OGP Index</b> — Occupational Greenness Potential measures<span>v1.2 · 2025 · methodology + replication</span></div></a>
+          <div class="bx-entry is-soon"><div class="be-thumb thumb t-qol"></div><div class="be-txt"><b>Move, Stay, and Commit QoL Index</b> — county-level quality-of-life index<span>In development · will be updated here</span></div></div>
+          <div class="bx-entry is-soon"><div class="be-thumb thumb t-rural"></div><div class="be-txt"><b>Community Assets Index</b> — county-level community assets<span>In development · will be updated here</span></div></div>
+          <!-- LAUNCH HOLDBACK (one entry per box):
+          <a class="bx-entry" href="https://github.com/yangcheng258/Housing_health" target="_blank" rel="noopener"><div class="be-thumb thumb t-publicgood"></div><div class="be-txt"><b>Housing_health</b> — R analysis pipeline<span>Open code · GitHub</span></div></a>
+          <div class="bx-entry is-soon"><div class="be-thumb thumb t-datasci"></div><div class="be-txt"><b>Wage-panel replication files</b> — BLS-OES 2006–2024 + SOC crosswalk<span>In motion · packaging for release</span></div></div>
+          -->
+        </div>
+        <span class="bx-more bx-more-soon">Research tools page<small>in progress</small></span>
       </div>
-    </section>
+    </article>
 
-    <section class="record-section" id="policy">
-      <h2>Policy <em>briefings</em> &amp; reports</h2>
-      <p class="rs-desc">Indicator reports and decision-ready memos for Wisconsin agencies and county boards.</p>
-      <div class="record-list">
-        <a class="record-row" href="policy-briefings.html"><span class="rr-date">2025</span><h4>WIndicator: a Wisconsin community-indicators report for county boards</h4><span class="rr-venue">UW–Madison Extension · Cheng, Gaede &amp; Conroy</span><span class="rr-arrow">PDF →</span></a>
-        <!-- PLACEHOLDER · uncomment when real entries exist
-        <a class="record-row" href="policy-briefings.html"><span class="rr-date">Mar 2026</span><h4>What livability indices miss: a briefing for the Wisconsin Dept. of Administration</h4><span class="rr-venue">Wisconsin DOA</span><span class="rr-arrow">PDF →</span></a>
-        <a class="record-row" href="policy-briefings.html"><span class="rr-date">Jan 2026</span><h4>Retraining after manufacturing closures: what has worked, what hasn't</h4><span class="rr-venue">Dane County Board</span><span class="rr-arrow">PDF →</span></a>
-        <a class="record-row" href="policy-briefings.html"><span class="rr-date">Oct 2025</span><h4>Resident-weighted livability for small-city budget decisions</h4><span class="rr-venue">WI League of Municipalities</span><span class="rr-arrow">PDF →</span></a>
-        <a class="record-row" href="policy-briefings.html"><span class="rr-date">May 2025</span><h4>Post-plant-closure adjustment: a data note for WEDC</h4><span class="rr-venue">WI Econ. Dev. Corp.</span><span class="rr-arrow">PDF →</span></a>
-        -->
+    <article class="bx" id="bx-teaching" data-screen-label="Teaching &amp; mentoring">
+      <div class="bx-media"><image-slot id="impact-teaching" src="../assets/images/vt-symposium.jpg" shape="rect" placeholder="Drop a classroom or workshop photo"></image-slot></div>
+      <div class="bx-body">
+        <span class="bx-kicker">05 · Teaching &amp; mentoring</span>
+        <h2>Passing it on to the <em>next generation</em></h2>
+        <div class="bx-entries">
+          <div class="bx-entry is-soon"><div class="be-thumb thumb t-teaching"></div><div class="be-txt"><b>Teaching &amp; TA record</b> — courses, workshops, advising<span>In motion · being assembled</span></div></div>
+        </div>
+        <span class="bx-more bx-more-soon">Teaching &amp; mentoring page<small>in progress</small></span>
       </div>
-    </section>
-
-        <section class="record-section" id="talks">
-      <h2><em>Conference</em> &amp; talks</h2>
-      <p class="rs-desc">Keynotes, invited lectures, peer-reviewed conference papers, discussant roles, and organized sessions.</p>
-      <div class="record-list">
-        <a class="record-row is-soon" href="talks.html"><span class="rr-date">Soon</span><h4>Page in progress — detail &amp; listing for this impact area will live here</h4><span class="rr-venue">See overview for the current record</span><span class="rr-arrow">Open →</span></a>
-      </div>
-    </section>
-
-        <section class="record-section" id="extension">
-      <h2><em>Extension</em> &amp; outreach</h2>
-      <p class="rs-desc">Ongoing collaborations with UW–Extension and Wisconsin community partners on applied livability and workforce projects.</p>
-      <div class="record-list">
-        <a class="record-row is-soon" href="extension.html"><span class="rr-date">Soon</span><h4>Page in progress — detail &amp; listing for this impact area will live here</h4><span class="rr-venue">See overview for the current record</span><span class="rr-arrow">Open →</span></a>
-      </div>
-    </section>
-
-        <section class="record-section" id="media">
-      <h2>Media &amp; <em>press</em></h2>
-      <p class="rs-desc">Op-eds, longer-form reports, podcast appearances, radio interviews, and press inquiries.</p>
-      <div class="record-list">
-        <a class="record-row is-soon" href="media.html"><span class="rr-date">Soon</span><h4>Page in progress — detail &amp; listing for this impact area will live here</h4><span class="rr-venue">See overview for the current record</span><span class="rr-arrow">Open →</span></a>
-      </div>
-    </section>
-
-    <section class="record-section" id="publicgood">
-      <h2>Public <em>good</em></h2>
-      <p class="rs-desc">Open data, public tools, and community resources for practitioners and researchers — released under permissive licenses.</p>
-      <div class="record-list">
-        <a class="record-row" href="public-good.html"><span class="rr-date">v1.2 · 2025</span><h4>OGP Index — open governance performance index</h4><span class="rr-venue">Open methodology + replication</span><span class="rr-arrow">Site →</span></a>
-        <!-- PLACEHOLDER · uncomment when real entries exist
-        <a class="record-row" href="public-good.html"><span class="rr-date">2026</span><h4>wisc-livability — resident-weighted index R toolkit</h4><span class="rr-venue">MIT licensed</span><span class="rr-arrow">GitHub →</span></a>
-        <a class="record-row" href="public-good.html"><span class="rr-date">2024–</span><h4>Field interview codebook — open methodology repository</h4><span class="rr-venue">GitHub</span><span class="rr-arrow">Repo →</span></a>
-        -->
-      </div>
-    </section>
-
-    <p class="rs-desc" style="margin-top: 56px; text-align: center; font-style: italic; color: var(--muted);">More to come — teaching, talks, extension projects, media appearances.</p>
-
+    </article>
   </div>
 
   <footer class="site-footer">
     <div class="sf-col">
       <h4>Navigate</h4>
       <div class="sf-nav">
-        <a href="../research/index.html">Research</a>
+        <a href="../index.html#research">Research</a>
         <div class="sf-sub">
-          <a href="../research/livability.html">Rural Livability</a>
-          <a href="../research/workforce.html">Green Economy</a>
-          <a href="../research/migration.html">Migration</a>
+          <a href="../index.html#livability">Rural Livability</a>
+          <a href="../index.html#workforce">Green Economy</a>
+          <a href="../index.html#migration">Migration</a>
         </div>
-        <a href="index.html">Make an Impact</a>
+        <a class="sf-soon" href="index.html">Make an Impact<small>in progress</small></a>
         <a href="../resources.html">Resources</a>
+        <a href="../life.html">Life</a>
         <a href="../contact.html">Contact</a>
       </div>
     </div>
@@ -222,13 +212,11 @@
         <a href="https://scholar.google.com/citations?user=6o_n2I4AAAAJ&hl=en&oi=sra" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Google Scholar</a>
         <a href="https://orcid.org/0009-0007-6102-4742" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.16 39.74c5.93 0 10.74 4.81 10.74 10.74s-4.81 10.74-10.74 10.74-10.74-4.81-10.74-10.74 4.81-10.74 10.74-10.74zM76.56 185.66V77.13h19.2v108.53H76.56zm99.65-36.13c-7.13 18.97-25.81 31.61-46.21 31.61H94.74V77.13h35.26c20.4 0 39.08 12.64 46.21 31.61 7.13 18.97 7.13 18.36 0 41.79z"/></svg>ORCID</a>
       </div>
-      <div class="sf-disclaimer">All opinions and errors are my own.</div>
+      <div class="sf-disclaimer">All opinions and errors are my own. © 2026 Yang Cheng. Made with Claude Design by Anthropic.</div>
     </div>
   </footer>
-  <div class="site-footer-bottom">
-    <span>© 2026 Yang Cheng</span>
-  </div>
 </div>
+<script src="../assets/js/image-slot.js"></script>
 <script>
   (function(){
     var tb = document.querySelector('.topbar');
@@ -236,22 +224,6 @@
       var on = function(){ tb.classList.toggle('scrolled', window.scrollY > 8); };
       window.addEventListener('scroll', on, {passive:true}); on();
     }
-
-    // View toggle (Blocks / List)
-    var toggle = document.querySelector('.view-toggle');
-    if(!toggle) return;
-    toggle.querySelectorAll('button').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var view = btn.dataset.view;
-        toggle.querySelectorAll('button').forEach(function(b){
-          b.classList.toggle('is-active', b === btn);
-          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
-        });
-        document.querySelectorAll('[data-view-target]').forEach(function(el){
-          el.classList.toggle('is-active', el.dataset.viewTarget === view);
-        });
-      });
-    });
   })();
 </script>
 </body>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="480" height="480" role="img" aria-label="Green workforce badge: turbine, solar panel, creek, bee bumbling between flowers">
+        <defs>
+          <clipPath id="w2"><circle cx="100" cy="100" r="96"></circle></clipPath>
+          <clipPath id="w2bee"><ellipse cx="0" cy="0" rx="26" ry="18"></ellipse></clipPath>
+          <path id="beeloop2" d="M178 117 C 174 109, 160 109, 148 115 C 136 121, 124 133, 126 143 C 128 152, 142 152, 152 145 C 162 138, 182 125, 178 117 Z" fill="none"></path>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#f4efe2"></circle>
+        <g clip-path="url(#w2)">
+          <circle cx="42" cy="44" r="14" fill="#f3c14b"></circle>
+          <path d="M-10 142 Q 45 114 100 136 Q 155 156 210 130 L210 210 L-10 210 Z" fill="#cfdcb4"></path>
+          <path d="M-10 162 Q 60 134 120 156 Q 168 172 210 158 L210 210 L-10 210 Z" fill="#9cb56b"></path>
+          
+          <rect x="44" y="150" width="5" height="14" rx="2" fill="#33322e"></rect>
+          <g transform="rotate(-16 46 148)">
+            <rect x="30" y="140" width="33" height="15" rx="2" fill="#4e8480" stroke="#f4efe2" stroke-width="2.5"></rect>
+            <path d="M41 141 L41 154 M52 141 L52 154 M31 147.5 L62 147.5" stroke="#f4efe2" stroke-width="1.6"></path>
+          </g>
+          
+          <path d="M81 170 L84.5 90 L91.5 90 L95 170 Z" fill="#4e8480"></path>
+          <g transform="translate(88,86)">
+            <g>
+              
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480"></path>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480" transform="rotate(120)"></path>
+              <path d="M0 -4 C 6.5 -13, 7 -36, 0 -46 C -7 -36, -6.5 -13, 0 -4 Z" fill="#4e8480" transform="rotate(240)"></path>
+            </g>
+            <circle r="6" fill="#4e8480"></circle><circle r="2.6" fill="#f4efe2"></circle>
+          </g>
+          <path d="M-10 182 Q 62 160 124 178 Q 172 190 210 180 L210 210 L-10 210 Z" fill="#4a5d3a"></path>
+          
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#f4efe2" stroke-width="17"></path>
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#a9cbc4" stroke-width="12"></path>
+          <path d="M-12 196 C 30 186, 60 198, 100 192 C 140 186, 170 196, 212 188" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 8">
+            
+          </path>
+          
+          <path d="M140 166 C 139 158 138 152 137 147" stroke="#4a5d3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+          <g transform="translate(137,138) scale(.8)">
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(0) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(72) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(144) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(216) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#cfdcb4" transform="rotate(288) translate(0,-11)"></ellipse>
+            <circle r="5.5" fill="#f0a04b"></circle>
+          </g>
+          <path d="M172 154 C 171 146 170 138 169 132" stroke="#4a5d3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+          <g transform="translate(169,124) scale(.7)">
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(0) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(72) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(144) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(216) translate(0,-11)"></ellipse>
+            <ellipse rx="5.5" ry="10" fill="#e05a44" transform="rotate(288) translate(0,-11)"></ellipse>
+            <circle r="5.5" fill="#f3c14b"></circle>
+          </g>
+          
+          <g>
+            <g transform="scale(.48)">
+              <g>
+                
+                <g transform="rotate(16 10 -24)">
+                  <ellipse cx="10" cy="-24" rx="9" ry="13" fill="#cfdcb4">
+                    
+                  </ellipse>
+                </g>
+                <g transform="rotate(-12 -6 -25)">
+                  <ellipse cx="-6" cy="-25" rx="10" ry="15" fill="#a9cbc4">
+                    
+                  </ellipse>
+                </g>
+                <path d="M-26 0 L-37 -3.5 L-37 3.5 Z" fill="#33322e"></path>
+                <ellipse rx="26" ry="18" fill="#f3c14b" stroke="#f4efe2" stroke-width="3"></ellipse>
+                <g clip-path="url(#w2bee)">
+                  <rect x="-15" y="-20" width="8" height="40" rx="4" fill="#33322e"></rect>
+                  <rect x="-2" y="-20" width="8" height="40" rx="4" fill="#33322e"></rect>
+                </g>
+                <circle cx="28" cy="0" r="9.5" fill="#33322e"></circle>
+                <circle cx="30.5" cy="-2" r="2" fill="#f4efe2"></circle>
+                <path d="M32 -8 C 36 -14, 42 -16, 47 -15" stroke="#33322e" stroke-width="2" fill="none" stroke-linecap="round"></path>
+                <path d="M28 -10 C 29 -17, 33 -21, 38 -23" stroke="#33322e" stroke-width="2" fill="none" stroke-linecap="round"></path>
+              </g>
+            </g>
+            
+          </g>
+        </g>
+      </svg>

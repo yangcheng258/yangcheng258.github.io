@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="480" height="480" role="img" aria-label="Migration badge: crane high in the sky, moving truck and car driving from the house toward the pin">
+        <defs>
+          <clipPath id="w3"><circle cx="100" cy="100" r="96"></circle></clipPath>
+          <path id="flyway3" d="M-44 92 C 10 82, 40 66, 78 57 C 112 49, 160 50, 236 40" fill="none"></path>
+          <path id="moveroad" d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none"></path>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#a9cbc4"></circle>
+        <g clip-path="url(#w3)">
+          <circle cx="42" cy="48" r="12" fill="#f3c14b"></circle>
+          <path d="M-10 138 Q 50 112 110 132 Q 160 148 210 126 L210 210 L-10 210 Z" fill="#cfdcb4"></path>
+          <path d="M-10 160 Q 58 134 122 154 Q 170 168 210 154 L210 210 L-10 210 Z" fill="#9cb56b"></path>
+          <path d="M-10 182 Q 64 162 130 178 Q 176 188 210 180 L210 210 L-10 210 Z" fill="#4a5d3a"></path>
+          
+          <g stroke="#f4efe2" stroke-width="2.5" stroke-linejoin="round">
+            <rect x="30" y="122" width="26" height="20" rx="2" fill="#f0a04b"></rect>
+            <path d="M26 124 L43 110 L60 124 Z" fill="#4a5d3a"></path>
+            <rect x="38" y="130" width="9" height="12" rx="1.5" fill="#f4efe2"></rect>
+          </g>
+          
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#f4efe2" stroke-width="20"></path>
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#587072" stroke-width="15"></path>
+          <path d="M-14 200 C 40 192, 80 172, 120 168 C 155 165, 185 168, 214 164" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 8"></path>
+          
+          <g>
+            <g transform="translate(0,-3.5)">
+              <rect x="-14" y="-12.5" width="18" height="12" rx="1.5" fill="#f4efe2" stroke="#587072" stroke-width="1"></rect>
+              <path d="M4 -0.5 L4 -10 L10.5 -10 L14.5 -4.5 L14.5 -0.5 Z" fill="#e05a44"></path>
+              <path d="M6 -8.5 L10 -8.5 L12.6 -4.8 L6 -4.8 Z" fill="#a9cbc4"></path>
+              <circle cx="-8" cy="0" r="3" fill="#33322e"></circle>
+              <circle cx="9" cy="0" r="3" fill="#33322e"></circle>
+              <circle cx="-8" cy="0" r="1.1" fill="#f4efe2"></circle>
+              <circle cx="9" cy="0" r="1.1" fill="#f4efe2"></circle>
+            </g>
+            
+          </g>
+          
+          <g>
+            <g transform="translate(0,-3.5) scale(.85)">
+              <rect x="-11" y="-6" width="22" height="8.5" rx="3" fill="#e05a44"></rect>
+              <path d="M-4.5 -6 L-2.5 -11 L4.5 -11 L7.5 -6 Z" fill="#e05a44"></path>
+              <path d="M-1.8 -6.2 L-0.6 -9.6 L3.8 -9.6 L5.6 -6.2 Z" fill="#f4efe2"></path>
+              <circle cx="-6" cy="2.5" r="3.1" fill="#33322e"></circle>
+              <circle cx="6" cy="2.5" r="3.1" fill="#33322e"></circle>
+              <circle cx="-6" cy="2.5" r="1.1" fill="#f4efe2"></circle>
+              <circle cx="6" cy="2.5" r="1.1" fill="#f4efe2"></circle>
+            </g>
+            
+          </g>
+          
+          <g transform="translate(168,126)">
+            <g>
+              
+              <path d="M0 -20 C -15 -20 -22 -5 -14 7 L0 26 L14 7 C 22 -5 15 -20 0 -20 Z" fill="#e05a44" stroke="#f4efe2" stroke-width="3" stroke-linejoin="round"></path>
+              <circle cx="0" cy="-6" r="5.5" fill="#f4efe2"></circle>
+            </g>
+          </g>
+          
+          <g>
+            <g>
+              <g transform="translate(0,0)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  
+                </path>
+              </g>
+              <g transform="translate(-11,-7) scale(.85)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  
+                </path>
+              </g>
+              <g transform="translate(-22,-13) scale(.72)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  
+                </path>
+              </g>
+              <g transform="translate(-33,-18) scale(.6)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  
+                </path>
+              </g>
+              <g transform="translate(-11,7) scale(.8)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  
+                </path>
+              </g>
+              <g transform="translate(-22,13) scale(.66)">
+                <path d="M-6 0 Q 0 -5.5 6 0 Q 0 -2.2 -6 0 Z" fill="#f4efe2">
+                  
+                </path>
+              </g>
+            </g>
+            
+          </g>
+        </g>
+      </svg>

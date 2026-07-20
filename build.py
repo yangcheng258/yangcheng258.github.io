@@ -43,7 +43,7 @@ THEME_LABEL = {
     'qol': 'Quality of Life', 'green': 'Green Economy', 'housing': 'Housing', 'health': 'Health',
 }
 POST_TYPE_LABEL = {
-    'tutorial': 'Tutorial', 'news': 'News', 'paper': 'Paper', 'event': 'Event',
+    'tutorial': 'Tutorial', 'post': 'Post', 'news': 'News', 'paper': 'Paper', 'event': 'Event',
 }
 PUB_TYPE_LABEL = {
     'article': 'Article', 'working-paper': 'Working paper',
@@ -77,6 +77,15 @@ def first_theme_label(themes_str: str) -> str:
         if t in THEME_LABEL:
             return THEME_LABEL[t]
     return themes_str.split()[0] if themes_str.split() else ''
+
+
+def normalize_section(sec: str) -> str:
+    """Map legacy sub-section keys (livability-A, workforce-B, ...) to the theme key.
+    July 2026 simplification: each theme page shows ONE flat publication list."""
+    for theme in ('livability', 'workforce', 'migration'):
+        if sec == theme or sec.startswith(theme + '-'):
+            return theme
+    return sec
 
 
 def parse_file(path: str, ns: str) -> dict | None:
@@ -176,6 +185,42 @@ def gen_post_section_row(p: dict) -> str:
 
 
 # ─── Generators: publications ────────────────────────────────────────────────
+def apa_authors(authors: str) -> str:
+    """'Yang Cheng, Tessa Conroy & Steven Deller' → 'Cheng, Y., Conroy, T., & Deller, S.'"""
+    authors = re.sub(r'\s*\([^)]*\)', '', authors)  # drop parentheticals like '(advisor: ...)'
+    names = [n.strip() for n in re.split(r',|&', authors) if n.strip()]
+    out = []
+    for n in names:
+        parts = n.split()
+        if len(parts) == 1:
+            out.append(parts[0])
+            continue
+        family = parts[-1]
+        initials = ' '.join(p[0] + '.' for p in parts[:-1])
+        out.append(f'{family}, {initials}')
+    if len(out) > 1:
+        return ', '.join(out[:-1]) + ', & ' + out[-1]
+    return out[0] if out else ''
+
+
+def apa_citation(m: dict) -> str:
+    """APA-style one-liner for the Cite button. pub:cite (non-URL) overrides the generated text."""
+    custom = m.get('cite', '').strip()
+    if custom and not custom.startswith('http'):
+        apa = custom
+    else:
+        venue_plain = re.sub(r'<[^>]+>', '', m.get('venue', ''))
+        doi = m.get('doi', '').strip()
+        if doi and not doi.startswith('http'):
+            doi = 'https://doi.org/' + doi
+        title = m.get('title', '').rstrip()
+        title_sep = '' if title.endswith('.') else '.'  # avoid ".." after titles ending in "U.S." etc.
+        apa = f"{apa_authors(m.get('authors', ''))} ({m.get('year', '')}). {title}{title_sep} {venue_plain}."
+        if doi:
+            apa += f' {doi}'
+    return apa.replace('&', '&amp;').replace('"', '&quot;')
+
+
 def gen_pub_full_block(p: dict) -> str:
     """Render a paper as a <div class="pub-full"> for theme pages."""
     m = p['meta']
@@ -193,25 +238,35 @@ def gen_pub_full_block(p: dict) -> str:
     keywords = ' '.join(f'<span>{t}</span>' for t in m.get('themes', '').split())
 
     links = []
-    for label, key in [('PDF', 'pdf'), ('DOI', 'doi'), ('Code', 'code'), ('Cite', 'cite')]:
+    for label, key in [('Slides', 'slides'), ('DOI', 'doi')]:
         url = m.get(key, '').strip()
+        if key == 'doi' and url and not url.startswith('http'):
+            url = 'https://doi.org/' + url
         if url:
             links.append(f'<a href="{url}" target="_blank" rel="noopener">{label}</a>')
         else:
             links.append(f'<a href="#">{label}</a>')
-    links_html = '\n          '.join(links)
+    # Repo: one button for code/data (pub:code, falling back to pub:data)
+    repo = m.get('code', '').strip() or m.get('data', '').strip()
+    if repo:
+        links.append(f'<a href="{repo}" target="_blank" rel="noopener">Repo</a>')
+    else:
+        links.append('<a href="#">Repo</a>')
+    # Cite always works: copies an APA citation to the clipboard (JS in research/index.html)
+    links.append(f'<a href="#cite" class="pf-cite" data-cite="{apa_citation(m)}">Cite</a>')
+    links_html = '\n            '.join(links)
 
     return (
         f'      <div class="pub-full">\n'
         f'        <div class="pf-row">\n'
         f'        <div class="pf-year">{year}<small>{type_lbl}</small></div>\n'
-        f'        <div class="pf-title">\n'
-        f'          <h3>{title}</h3>\n'
+        f'        <h3>{title}</h3>\n'
+        f'        <div class="pf-meta">\n'
         f'          <div class="pf-authors">{authors}</div>\n'
+        f'          <div class="pf-venue">{venue}.</div>\n'
         f'        </div>\n'
-        f'        <div class="pf-venue">{venue}.<span class="pf-status">{status}</span></div>\n'
         f'        <div class="pf-links">\n'
-        f'          {links_html}\n'
+        f'            {links_html}\n'
         f'        </div>\n'
         f'        <div class="pf-toggle">›</div>\n'
         f'        </div>\n'
@@ -326,18 +381,20 @@ def inject_publications_to_theme_pages(pubs: list[dict]):
     by_section: dict[str, list[dict]] = {}
     for p in pubs:
         for sec in p['meta'].get('sections', '').split(','):
-            sec = sec.strip()
-            if sec:
-                by_section.setdefault(sec, []).append(p)
+            sec = normalize_section(sec.strip())
+            if sec and p not in by_section.setdefault(sec, []):
+                by_section[sec].append(p)
 
-    # Sort each section by year desc
+    # Sort each section: explicit pub:order first (ascending), then year desc
     for sec in by_section:
         by_section[sec].sort(key=lambda p: p['meta'].get('year', ''), reverse=True)
+        by_section[sec].sort(key=lambda p: (0, int(p['meta']['order'])) if p['meta'].get('order', '').strip().isdigit() else (1, 0))
 
+    # July 2026: all three lists live on the one-page research/index.html.
+    # The old per-theme pages are retired (kept on disk, no longer injected).
     targets = [
-        ('research/livability.html', ['livability-A', 'livability-B', 'livability-C']),
-        ('research/workforce.html',  ['workforce-A', 'workforce-B']),
-        ('research/migration.html',  ['migration']),
+        ('research/index.html', ['livability', 'workforce', 'migration']),
+        ('index.html', ['livability', 'workforce', 'migration']),
     ]
 
     for filepath, sections in targets:
@@ -348,51 +405,62 @@ def inject_publications_to_theme_pages(pubs: list[dict]):
         for sec in sections:
             items = by_section.get(sec, [])
             body = '\n'.join(gen_pub_full_block(p) for p in items)
-            # Theme pages live in research/ — fix root-relative asset/post links
-            body = body.replace('href="assets/', 'href="../assets/').replace('href="posts/', 'href="../posts/')
+            # research/ pages live one level down — fix root-relative asset/post links there only
+            if filepath.startswith('research/'):
+                body = body.replace('href="assets/', 'href="../assets/').replace('href="posts/', 'href="../posts/').replace('href="papers/', 'href="../papers/')
             html = replace_marker(html, f'PUBS:{sec}', body)
         write_if_changed(filepath, html)
 
 
+# ─── Inject: research overview (publication count per theme card) ───────────
+def inject_theme_counts(pubs: list[dict]):
+    counts: dict[str, int] = {}
+    for p in pubs:
+        secs = {normalize_section(s.strip()) for s in p['meta'].get('sections', '').split(',')}
+        for t in ('livability', 'workforce', 'migration'):
+            if t in secs:
+                counts[t] = counts.get(t, 0) + 1
+    for path in ('research/index.html', 'index.html'):
+        if not os.path.isfile(path):
+            continue
+        with open(path) as f:
+            html = f.read()
+        for t in ('livability', 'workforce', 'migration'):
+            n = counts.get(t, 0)
+            label = (f'{n} publication' + ('s' if n != 1 else '')) if n else 'Lit-review stage'
+            html = replace_marker(html, f'PUBCOUNT:{t}', label)
+        write_if_changed(path, html)
+
+
 # ─── Inject: resources.html ──────────────────────────────────────────────────
 def inject_into_resources(posts: list[dict], pubs: list[dict], code_data: list[dict]):
+    """resources.html = tutorials + posts + datasets + reading lists + CV.
+    News-type posts are retired; code-subtype releases live under
+    impact/public-good.html (Research Tools, hand-edited)."""
     if not os.path.isfile(RESOURCES_FILE):
         return
     with open(RESOURCES_FILE) as f:
         html = f.read()
 
-    # Filter pubs that should appear on resources.html
-    res_pubs = [p for p in pubs if 'resources' in p['meta'].get('sections', '')]
-    res_code = [c for c in code_data if 'resources' in c['meta'].get('sections', '')]
+    def by_date(items):
+        return sorted(items, key=lambda p: p['meta'].get('date', ''), reverse=True)
 
-    # Sort everything by date/year desc for the unified grid
-    posts_sorted = sorted(posts, key=lambda p: p['meta'].get('date', ''), reverse=True)
-    pubs_sorted  = sorted(res_pubs, key=lambda p: p['meta'].get('year', ''), reverse=True)
-    code_sorted  = sorted(res_code, key=lambda c: c['meta'].get('year', ''), reverse=True)
+    tutorials = by_date([p for p in posts if p['meta'].get('type') == 'tutorial'])
+    gen_posts = by_date([p for p in posts if p['meta'].get('type') == 'post'])
+    datasets = sorted([c for c in code_data
+                       if c['meta'].get('subtype') == 'dataset' and 'resources' in c['meta'].get('sections', '')],
+                      key=lambda c: c['meta'].get('year', ''), reverse=True)
 
-    # === GRID VIEW: unified marker — posts + pubs + code-data ===
-    # Papers no longer appear on resources.html — they live on the research theme pages.
-    grid_cards = (
-        [gen_post_grid_card(p) for p in posts_sorted]
-        + [gen_code_grid_card(c) for c in code_sorted]
-    )
-    html = replace_marker(html, 'RESOURCES GRID', '\n'.join(grid_cards))
+    # === GRID VIEW: tutorials + posts + datasets ===
+    grid = ([gen_post_grid_card(p) for p in tutorials + gen_posts]
+            + [gen_code_grid_card(c) for c in datasets])
+    html = replace_marker(html, 'RESOURCES GRID', '\n'.join(grid))
 
-    # === SECTIONS VIEW: posts split by type ===
-    # (paper/event sections removed — papers → research pages, events → impact)
-    for stype in ('tutorial', 'news'):
-        stype_posts = [p for p in posts_sorted if p['meta'].get('type') == stype]
-        rows = '\n'.join(gen_post_section_row(p) for p in stype_posts)
-        html = replace_marker(html, f'POSTS SECTION:{stype}', rows)
-
-    # === SECTIONS VIEW: code-data split by subtype ===
-    datasets = [c for c in code_sorted if c['meta'].get('subtype') == 'dataset']
-    code_only = [c for c in code_sorted if c['meta'].get('subtype') == 'code']
+    # === SECTIONS VIEW ===
+    html = replace_marker(html, 'POSTS SECTION:tutorial', '\n'.join(gen_post_section_row(p) for p in tutorials))
+    html = replace_marker(html, 'POSTS SECTION:post', '\n'.join(gen_post_section_row(p) for p in gen_posts))
     html = replace_marker(html, 'DATASET', '\n'.join(gen_code_section_row(c) for c in datasets))
-    html = replace_marker(html, 'CODE',    '\n'.join(gen_code_section_row(c) for c in code_only))
-
-    # Empty markers (no content yet) — pass empty bodies
-    html = replace_marker(html, 'READING',  '')
+    html = replace_marker(html, 'READING', '')
 
     write_if_changed(RESOURCES_FILE, html)
 
@@ -419,6 +487,9 @@ def main():
 
     print('\nInjecting into theme pages...')
     inject_publications_to_theme_pages(pubs)
+
+    print('Injecting theme pub counts into research/index.html...')
+    inject_theme_counts(pubs)
 
     print('Injecting into resources.html...')
     inject_into_resources(posts, pubs, code_data)

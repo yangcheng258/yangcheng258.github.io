@@ -4,7 +4,7 @@
 
 The site is **template-driven**. Every paper, post, dataset, code release, talk, briefing, and course is one small HTML file. A build script (`python3 build.py`) reads them and rewrites the rest of the site automatically.
 
-You do not edit research/livability.html, research/workforce.html, resources.html, or any other "main" page to add a paper. You add a content file and run the build.
+You do not edit research/index.html, resources.html, or any other "main" page to add a paper. You add a content file and run the build.
 
 ---
 
@@ -52,11 +52,11 @@ That's it. No HTML editing across multiple files, no copy-paste between cards.
    ```
 2. Edit the meta tags + abstract in the new file. The most important meta tag is:
    ```html
-   <meta name="pub:sections" content="livability-B">
+   <meta name="pub:sections" content="livability">
    ```
    This tells the build script which page-sections to feature the paper on. Multi-section is just comma-separated.
 
-   Allowed sections for papers: `livability-A` · `livability-B` · `livability-C` · `workforce-A` · `workforce-B` · `migration`. (Papers no longer appear on resources.html — that page carries posts, datasets, code, and reading lists.)
+   Allowed sections for papers: `livability` · `workforce` · `migration` — each theme page shows one flat list, newest first. (Papers no longer appear on resources.html — that page carries posts, datasets, code, and reading lists.)
 3. Run `python3 build.py`. The paper appears on every named section.
 
 ### A new code release / dataset
@@ -77,7 +77,7 @@ Same pattern: copy the template in `content/talks/`, `content/briefings/`, or `c
 ```
 cp posts/_template-post.html posts/2026-05-15-my-post.html
 ```
-Fill in metadata + body. Run build. Card appears on resources.html.
+Fill in metadata + body (type: tutorial or post to appear on resources.html). Run build.
 
 ---
 
@@ -87,9 +87,9 @@ Fill in metadata + body. Run build. Card appears on resources.html.
 
 Open `content/publications/2026-pirs-methods.html`. Change the `<meta name="pub:title">` value. Run build. Every page that lists this paper updates.
 
-### Move a paper to a different theme section
+### Move a paper to a different theme page
 
-Open the paper's content file. Change `<meta name="pub:sections">` (e.g. `livability-A` → `livability-B`). Run build. Paper moves to the new section, disappears from the old.
+Open the paper's content file. Change `<meta name="pub:sections">` (e.g. `livability` → `workforce`). Run build. Paper moves to the new page, disappears from the old.
 
 ### Delete a paper
 
@@ -128,10 +128,10 @@ Save Claude's reply to disk. Run build. Done.
 | `pub:type` | `article` · `working-paper` · `book-chapter` · `dissertation` · `report` |
 | `pub:status` | `published` · `in-revision` · `in-progress` · `drafted` |
 | `pub:themes` (space-sep) | `rural` · `qol` · `green` · `housing` · `health` · `datasci` · `ai` |
-| `pub:sections` (comma-sep) | `livability-A` · `livability-B` · `livability-C` · `workforce-A` · `workforce-B` · `migration` |
+| `pub:sections` (comma-sep) | `livability` · `workforce` · `migration` |
 | `code:subtype` | `dataset` · `code` |
 | `code:sections` | `resources` · `impact-public-good` |
-| `post:type` | `tutorial` · `news` · `paper` · `event` |
+| `post:type` | `tutorial` · `post` · `news` · `paper` · `event` |
 | `post:theme` (single) | from same theme list above |
 
 ---
@@ -189,13 +189,13 @@ When you run it:
 2. Parses each file's `<meta name="ns:...">` tags + `<body>` content
 3. Sorts by date (newest first)
 4. Generates the right HTML format per destination:
-   - Theme pages (livability/workforce/migration) get `<div class="pub-full">` blocks (papers)
+   - Theme pages (livability/workforce/migration) get `<div class="pub-full">` blocks (papers), one flat list per page
    - resources.html grid gets `<a class="post-card">` cards (posts + code-data only)
    - resources.html sections get `<a class="record-row">` rows (tutorials, news, datasets, code)
 5. Writes inside `<!-- AUTO-GENERATED ... START / END -->` markers
 6. Leaves everything outside the markers untouched
 
-If a paper has `pub:sections="livability-A"`, the build generates a `pub-full` block for research/livability.html Section A. Papers appear only on theme pages; resources.html is the home of posts, datasets, code, and reading lists.
+If a paper has `pub:sections="livability"`, the build generates a `pub-full` block in research/livability.html's publication list (newest first). Papers appear only on the research page; resources.html carries tutorials, posts, datasets, reading lists, and the CV.
 
 All from one source file. Edit it once, propagates everywhere.
 
