@@ -72,6 +72,7 @@ Available section keys:
 | `impact/index.html` | Make-an-Impact — bento: 1 big card (Extension) + 4 small (Research out loud / Reproducibility / Talks / Teaching), each led by an <image-slot> photo the user drops in | hand-edited |
 | `resources.html` | Living library: tutorials + posts + datasets + reading lists + CV (news/code removed — code lives on impact Research Tools) | 5 marker pairs |
 | `contact.html` | Email/address + "How to reach out" intent cards | hand-edited only |
+| `cv.html` | Inline CV viewer — `<object>` embed of assets/pdfs/CV.pdf + "Download PDF" and "Open in new tab" buttons; last-updated date in sidemeta. Nav CV links across the site point here so viewers see the PDF in-browser instead of triggering a download. | hand-edited only |
 | `life.html` | "Life, off the clock" — 6 image-slot photo grid + cavalier runner; nav tab between Resources and Contact | hand-edited |
 | `impact/{extension,media,talks,public-good,teaching}.html` | The 5 category pages: 01 Working with Communities · 02 Media, Press & Public Talks · 03 Academic Community · 04 Research Tools · 05 Teaching & Mentoring | hand-edited |
 
@@ -231,10 +232,21 @@ The user asked, right before this session ended:
 ## Launch holdbacks (July 19 2026 — site published imperfect on purpose)
 
 Hidden until real material exists; each is marked "LAUNCH HOLDBACK" at the spot:
-1. CV button + Resources tab/footer links — two CSS rules at the bottom of shared.css (delete rule to restore). Restore CV when assets/pdfs/CV.pdf is dropped; restore Resources when there's a first real post + CV row.
+1. ~~CV button~~ RESTORED Nov 2026: `assets/pdfs/CV.pdf` is in place and the `.nav-cv{display:none}` rule in shared.css was removed. Nav CV links now point to `/cv.html` (an inline PDF viewer, see below), not the PDF directly. Resources tab/footer links — one CSS rule at the bottom of shared.css (delete rule to restore). Restore Resources when there's a first real post.
 2. life.html — 5 empty photo figures commented out (pup photo remains).
 3. impact/index.html — cards 04/05 bx-media commented out (text-only cards).
 4. posts/2026-05-09-example-post.html DELETED; its generated entries manually stripped from resources.html (identical to a build.py rerun).
+
+## Nov 2026 updates (this commit)
+
+- **Community Capitals paper published** (`content/publications/2026-rural-livability-chapter.html`, filename unchanged): title → *The Community Capitals Dataset: Quantifying the Community Capitals Framework in the United States*; venue → *Journal of Rural Studies* 129, 104487, year 2027; DOI 10.1016/j.jrurstud.2026.104487; linked dataset at Harvard Dataverse (doi:10.7910/DVN/G1LSZV) via new `pub:data` meta; separate dataset citation via new `pub:cite_data` meta; highlights (no abstract released) in body.
+- **Spatial Determinants paper published**: title → *Spatial Determinants of Community Well-Being: A Geographically Weighted Regression Analysis of U.S. Counties*; authors are now **Cheng & Boyce** (not Conroy & Deller); venue *Review of Regional Studies* 56(3), 2026; DOI 10.52324/001c.175408; abstract from the journal page.
+- **Rethinking (Rural) Livability** (was "What's in the Air?"): renamed, authors = Cheng, Conroy & Boyce, under review at *Regional Studies*; status `in-progress`.
+- **Occupational Green Potential** (NLP paper): now under review at *Ecological Economics*.
+- **Prioritizing Shelter, Sacrificing Nutrition**: back to working-paper venue (no journal) while it's between venues.
+- **PiRS Methods** year corrected to 2025 (matches DOI 10.1016/j.pirs.2025.100129).
+- **`pub:cite_data` meta** added: when present, the chip row shows "Cite article" + "Cite data"; stored APA for the Community Capitals dataset is `Boyce, M., Schmidt-Larios, D., Gaede, E., & Cheng, Y. (2026). The Community Capitals Dataset: Quantifying the Community Capitals Framework in the United States (V1) [Data set]. Harvard Dataverse. https://doi.org/10.7910/DVN/G1LSZV`.
+- **Chip CSS** (inline in research/index.html and index.html): grid → flex-wrap, `padding: 1px 6px`, `min-width: 54px`, `max-width: 180px` on the container so longer labels like "Cite article" fit without clipping.
 
 ## Publication display conventions (July 2026, per user)
 
@@ -245,7 +257,7 @@ Hidden until real material exists; each is marked "LAUNCH HOLDBACK" at the spot:
 - Author-order corrections applied July 2026 (housing-health: Gaede first; livability chapter: Boyce, Schmidt-Larios, Gaede, Cheng — now R&R at Journal of Rural Studies, type working-paper).
 - "Under review at Rural Sociology" (housing-health): journal name from user's note ("journal of rural sociology") — CONFIRM whether Rural Sociology or Journal of Rural Social Sciences.
 - DOI-verified July 2026: PiRS title corrected to official "Multidimensional Measures of Quality of Life: A Comparison of Methods Using U.S. County-level Data"; Deller = "Steven C. Deller" on both published papers; exact APA set in pub:cite for PiRS + Move-Stay-Commit.
-- Link chips on research/index.html: single row of 4 — Slides / DOI / Repo (pub:code, falls back to pub:data) / Cite; PDF button removed July 2026; green fill, azurite hover, unavailable = muted outline chips.
+- Link chips on research/index.html: flex-wrap row of up to 5 — Slides / DOI / Repo-or-Dataset / Cite (or "Cite article") / Cite data. Label is "Dataset" when only pub:data is set (data-only paper); "Repo" when pub:code is set. When pub:cite_data meta is present, the main cite becomes "Cite article" and a second "Cite data" chip is appended (used for the Community Capitals Dataset paper, which has a separate Harvard Dataverse citation). PDF button removed July 2026; green fill, azurite hover, unavailable = muted outline chips.
 
 ## Homepage research block (July 2026)
 
@@ -254,5 +266,5 @@ Hidden until real material exists; each is marked "LAUNCH HOLDBACK" at the spot:
 - Copied research-page styles/scripts live inline in index.html; tf-head is hidden there (tabs replace fold headers).
 - July 2026: Research DROPPED from topbar nav on all pages (homepage #research section replaces it; tab-switcher honors #livability/#workforce/#migration hashes). Footer Navigate links now point to index.html#research + theme hashes. research/index.html KEPT on disk (still built by build.py) but no longer linked — restore its navgroup from git history if ever needed.
 - Abstracts (July 2026, per user): only REAL abstracts are shown — official texts in housing-health + move-stay-commit; other working papers have EMPTY abstract divs (expander shows only theme chips). Don't invent abstracts.
-- pub:order meta (July 2026): optional integer; ordered papers sort first (ascending), rest follow year-desc. Used on workforce papers (target order 1-7: 1 recsys, 2 NLP, 3 clustering [pending], 4 Appalachia readiness [pending], 5 transition shock [pending], 6 dissertation, 7 wage premium). build.py sort updated to match.
+- **Publication sort (Nov 2026 rewrite, build.py `_pub_sort_key`)**: within each theme section papers are sorted by (1) year DESC, (2) type priority — article/book-chapter → under-review working paper (venue contains "under review" / "revise" / "r&r") → working paper → report → dissertation — (3) Yang-as-first-author first, (4) title alpha. The old pub:order override was dropped; `pub:order` tags in content files are now ignored (safe to delete).
 - July 2026: "Make an Impact" links KEPT but flagged: topbar + footer show a plain link with an "in progress" chip (.nav-soon/.sf-soon, CSS at bottom of shared.css); the navgroup dropdown is removed (subpages reachable from the overview cards). Restore the dropdown from git history when complete.
