@@ -246,14 +246,23 @@ def gen_pub_full_block(p: dict) -> str:
             links.append(f'<a href="{url}" target="_blank" rel="noopener">{label}</a>')
         else:
             links.append(f'<a href="#">{label}</a>')
-    # Repo: one button for code/data (pub:code, falling back to pub:data)
-    repo = m.get('code', '').strip() or m.get('data', '').strip()
+    # Repo/Dataset: one button for code/data. Label "Dataset" when it's data-only, else "Repo".
+    code_url = m.get('code', '').strip()
+    data_url = m.get('data', '').strip()
+    repo = code_url or data_url
+    repo_label = 'Repo' if code_url else ('Dataset' if data_url else 'Repo')
     if repo:
-        links.append(f'<a href="{repo}" target="_blank" rel="noopener">Repo</a>')
+        links.append(f'<a href="{repo}" target="_blank" rel="noopener">{repo_label}</a>')
     else:
-        links.append('<a href="#">Repo</a>')
-    # Cite always works: copies an APA citation to the clipboard (JS in research/index.html)
-    links.append(f'<a href="#cite" class="pf-cite" data-cite="{apa_citation(m)}">Cite</a>')
+        links.append(f'<a href="#">{repo_label}</a>')
+    # Cite always works: copies an APA citation to the clipboard (JS in research/index.html).
+    # When pub:cite_data is present, show two cite buttons: "Cite article" + "Cite data".
+    cite_data = m.get('cite_data', '').strip()
+    article_cite_label = 'Cite article' if cite_data else 'Cite'
+    links.append(f'<a href="#cite" class="pf-cite" data-cite="{apa_citation(m)}">{article_cite_label}</a>')
+    if cite_data:
+        cite_data_esc = cite_data.replace('&', '&amp;').replace('"', '&quot;')
+        links.append(f'<a href="#cite" class="pf-cite" data-cite="{cite_data_esc}">Cite data</a>')
     links_html = '\n            '.join(links)
 
     return (
@@ -385,10 +394,37 @@ def inject_publications_to_theme_pages(pubs: list[dict]):
             if sec and p not in by_section.setdefault(sec, []):
                 by_section[sec].append(p)
 
-    # Sort each section: explicit pub:order first (ascending), then year desc
+    # Sort each section:
+    #   1. year DESC (primary)
+    #   2. within year: published articles > under-review/R&R > working papers > reports/dissertation
+    #   3. Yang-as-first-author bumps up
+    #   4. title alpha (stable final tiebreaker)
+    def _pub_sort_key(p):
+        m = p['meta']
+        try:
+            year_neg = -int(m.get('year', '0').strip() or '0')
+        except ValueError:
+            year_neg = 0
+        typ = m.get('type', '').strip()
+        venue = m.get('venue', '').lower()
+        is_under_review = ('under review' in venue) or ('revise' in venue) or ('r&r' in venue)
+        if typ in ('article', 'book-chapter'):
+            type_pri = 0
+        elif typ == 'working-paper' and is_under_review:
+            type_pri = 1
+        elif typ == 'working-paper':
+            type_pri = 2
+        elif typ == 'report':
+            type_pri = 3
+        elif typ == 'dissertation':
+            type_pri = 4
+        else:
+            type_pri = 5
+        authors = m.get('authors', '').strip()
+        yang_first = 0 if authors.lower().startswith('yang cheng') else 1
+        return (year_neg, type_pri, yang_first, m.get('title', '').lower())
     for sec in by_section:
-        by_section[sec].sort(key=lambda p: p['meta'].get('year', ''), reverse=True)
-        by_section[sec].sort(key=lambda p: (0, int(p['meta']['order'])) if p['meta'].get('order', '').strip().isdigit() else (1, 0))
+        by_section[sec].sort(key=_pub_sort_key)
 
     # July 2026: all three lists live on the one-page research/index.html.
     # The old per-theme pages are retired (kept on disk, no longer injected).

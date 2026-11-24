@@ -288,12 +288,13 @@
     font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--muted); margin-top: 3px;
   }
-  .pub-full .pf-links { display: grid; grid-template-columns: repeat(2, 54px); gap: 3px; justify-content: end; align-self: end; width: 100%; }
+  .pub-full .pf-links { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; align-self: end; width: 100%; max-width: 180px; margin-left: auto; }
   .pub-full .pf-links a {
-    display: inline-block; padding: 1px 0; text-align: center; background: var(--accent); color: var(--bg);
+    display: inline-block; padding: 1px 6px; text-align: center; background: var(--accent); color: var(--bg);
     border: 1px solid var(--accent); text-decoration: none; white-space: nowrap;
     font-family: 'Geist Mono', monospace; font-size: 8px;
     letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.15s;
+    min-width: 54px; box-sizing: border-box;
   }
   .pub-full .pf-links a:hover { background: var(--azurite); border-color: var(--azurite); color: var(--bg); }
 
@@ -335,7 +336,7 @@
       <a href="resources.html">Resources</a>
       <a href="life.html">Life</a>
       <a href="contact.html">Contact</a>
-    <a href="assets/pdfs/CV.pdf" target="_blank" class="nav-cv">CV ↗</a>
+    <a href="cv.html" class="nav-cv">CV ↗</a>
     </nav>
   </header>
 
@@ -466,17 +467,87 @@
           <!-- AUTO-GENERATED PUBS:livability START · run `python3 build.py` -->
       <div class="pub-full">
         <div class="pf-row">
-        <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>Rural Livability: What's in the Air?</h3>
+        <div class="pf-year">2027<small>Article</small></div>
+        <h3>The Community Capitals Dataset: Quantifying the Community Capitals Framework in the United States</h3>
         <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
-          <div class="pf-venue">Working paper.</div>
+          <div class="pf-authors">Mckenzie Boyce, Danielle Schmidt-Larios, Erin Gaede & Yang Cheng</div>
+          <div class="pf-venue">Journal of Rural Studies.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.1016/j.jrurstud.2026.104487" target="_blank" rel="noopener">DOI</a>
+            <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/G1LSZV" target="_blank" rel="noopener">Dataset</a>
+            <a href="#cite" class="pf-cite" data-cite="Boyce, M., Schmidt-Larios, D., Gaede, E., &amp; Cheng, Y. (2027). The Community Capitals Dataset: Quantifying the Community Capitals Framework in the United States. Journal of Rural Studies, 129, Article 104487. https://doi.org/10.1016/j.jrurstud.2026.104487">Cite article</a>
+            <a href="#cite" class="pf-cite" data-cite="Boyce, M., Schmidt-Larios, D., Gaede, E., &amp; Cheng, Y. (2026). The Community Capitals Dataset: Quantifying the Community Capitals Framework in the United States (V1) [Data set]. Harvard Dataverse. https://doi.org/10.7910/DVN/G1LSZV">Cite data</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p><strong>Highlights</strong></p>
+<ul>
+<li>Community Capital measurement varies across studies with little consensus.</li>
+<li>Social, cultural, and political capitals are inherently abstract and contextual.</li>
+<li>County data can approximate Community Capitals, but limitations persist.</li>
+<li>The Community Capitals Dataset advances measurement theory and accessibility.</li>
+</ul>
+          <div class="pf-keywords"><span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Article</small></div>
+        <h3>Move, Stay, and Commit: Place-based Quality of Life in the U.S.</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven C. Deller</div>
+          <div class="pf-venue">Social Indicators Research.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.1007/s11205-026-03870-4" target="_blank" rel="noopener">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. C. (2026). Move, stay, and commit: Place-based quality of life in the U.S. Social Indicators Research, 183, Article 23. https://doi.org/10.1007/s11205-026-03870-4">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>Attracting and retaining people and jobs through a high quality of life is an increasingly common community development strategy. Identifying places with high quality of life, and the factors that drive it, remain challenging. This study uses a revealed-preference framework, based on people’s observed choices and behaviors, to develop an indicator of place-based quality of life. We conceptualize quality of life as a latent variable reflected in eight behaviors capturing decisions to move, stay, and invest. Using spatial Bayesian factor analysis, we construct a revealed-preference quality-of-life index that accounts for spatial spillovers and rank 3,100 U.S. counties in 2019. High-quality-of-life counties are indicated by dynamic migration patterns, strong residential retention, shorter commutes, lower homeownership rates, and higher rates of entrepreneurship and family formation. Four indicators, retention, homeownership, in-migration, and commuting, account for 87 percent of the index weight. The index reveals strong spatial spillovers, highlighting the importance of regional context. While urban counties rank higher on average, many rural counties also exhibit high quality of life.</p>
+          <div class="pf-keywords"><span>qol</span> <span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Article</small></div>
+        <h3>Spatial Determinants of Community Well-Being: A Geographically Weighted Regression Analysis of U.S. Counties</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng & Mckenzie Boyce</div>
+          <div class="pf-venue">Review of Regional Studies.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.52324/001c.175408" target="_blank" rel="noopener">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Boyce, M. (2026). Spatial determinants of community well-being: A geographically weighted regression analysis of U.S. counties. Review of Regional Studies, 56(3). https://doi.org/10.52324/001c.175408">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>As well-being gains traction as an economic development strategy, scholars and practitioners face two key challenges: the large number of factors associated with community well-being and the heterogeneity of places, which necessitates a local perspective on these relationships. Following Isserman et al. (2009), we construct a U.S. county-level well-being index using four well-being indicators. We then apply Bayesian model averaging to select from 77 candidate community variables, organized within the Community Capitals Framework, and estimate a geographically weighted regression to assess whether these associations vary across space. We find that the variables most associated with community well-being span four capital types: human, social, financial, and natural, with human capital measures dominating. We also find most community variables show significant spatial variation. Together, these findings suggest that policies aimed at improving community well-being should prioritize investments in people while remaining responsive to local assets and contextual conditions.</p>
+          <div class="pf-keywords"><span>rural</span> <span>qol</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Rethinking (Rural) Livability: Why Existing Methods Fall Short and A New Approach to Measurement Using Community Assets</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Mckenzie Boyce</div>
+          <div class="pf-venue">Under review at <i>Regional Studies</i>.</div>
         </div>
         <div class="pf-links">
             <a href="#">Slides</a>
             <a href="#">DOI</a>
             <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. (2026). Rural Livability: What's in the Air?. Working paper.">Cite</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Boyce, M. (2026). Rethinking (Rural) Livability: Why Existing Methods Fall Short and A New Approach to Measurement Using Community Assets. Under review at Regional Studies.">Cite</a>
         </div>
         <div class="pf-toggle">›</div>
         </div>
@@ -509,111 +580,6 @@
       <div class="pub-full">
         <div class="pf-row">
         <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>Prioritizing Shelter, Sacrificing Nutrition: Housing Stress, Stigma, and Rural Health</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Erin Gaede, Yang Cheng & Tessa Conroy</div>
-          <div class="pf-venue">Under review at <i>Rural Sociology</i>.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="#">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Gaede, E., Cheng, Y., &amp; Conroy, T. (2026). Prioritizing Shelter, Sacrificing Nutrition: Housing Stress, Stigma, and Rural Health. Under review at Rural Sociology.">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          <p>This study employs a mixed-method design to examine the relationship between housing financial stress and food insecurity and its implications for rural health. We combine qualitative interviews with U.S. county-level data to identify correlations between housing financial stress and nutritional outcomes, stratified by rural-urban status, tenure, and income. Our findings demonstrate how the combined burden of housing financial stress and food insecurity shapes chronic health outcomes for low-income rural communities and the role that stigma plays in shaping how rural residents navigate these dual insecurities.</p>
-          <div class="pf-keywords"><span>rural</span> <span>housing</span> <span>health</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Article</small></div>
-        <h3>Move, Stay, and Commit: Place-based Quality of Life in the U.S.</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven C. Deller</div>
-          <div class="pf-venue">Social Indicators Research.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="https://doi.org/10.1007/s11205-026-03870-4" target="_blank" rel="noopener">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. C. (2026). Move, stay, and commit: Place-based quality of life in the U.S. Social Indicators Research, 183, Article 23. https://doi.org/10.1007/s11205-026-03870-4">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          <p>Attracting and retaining people and jobs through a high quality of life is an increasingly common community development strategy. Identifying places with high quality of life, and the factors that drive it, remain challenging. This study uses a revealed-preference framework, based on people’s observed choices and behaviors, to develop an indicator of place-based quality of life. We conceptualize quality of life as a latent variable reflected in eight behaviors capturing decisions to move, stay, and invest. Using spatial Bayesian factor analysis, we construct a revealed-preference quality-of-life index that accounts for spatial spillovers and rank 3,100 U.S. counties in 2019. High-quality-of-life counties are indicated by dynamic migration patterns, strong residential retention, shorter commutes, lower homeownership rates, and higher rates of entrepreneurship and family formation. Four indicators, retention, homeownership, in-migration, and commuting, account for 87 percent of the index weight. The index reveals strong spatial spillovers, highlighting the importance of regional context. While urban counties rank higher on average, many rural counties also exhibit high quality of life.</p>
-          <div class="pf-keywords"><span>qol</span> <span>rural</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Article</small></div>
-        <h3>Multidimensional Measures of Quality of Life: A Comparison of Methods Using U.S. County-level Data</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven C. Deller</div>
-          <div class="pf-venue">Papers in Regional Science.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="https://doi.org/10.1016/j.pirs.2025.100129" target="_blank" rel="noopener">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. C. (2026). Multidimensional measures of quality of life: A comparison of methods using US county-level data. Papers in Regional Science, 105(1), 100129. https://doi.org/10.1016/j.pirs.2025.100129">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          <p>There are numerous measures of place-based quality of life, accompanied by ongoing debate over which factors should be included. Past studies have predominately relied on aspatial, subjectively weighted combinations of different place-based characteristics. Little attention has been given to the rigor and appropriateness of the methodologies used to develop these measures. In this study we conduct a sensitivity analysis of methodological choices in the construction of quality of life indices using U.S. county-level data. We evaluate six different methods for developing a composite index, comparing Geographically Weighted Principal Component Analysis (GWPCA), Spatial Principal Component Analysis (SPCA), and Spatial Bayesian Factor Analysis (SBFA) with their aspatial counterparts. Our evaluation is twofold: conceptually, by examining underlying assumptions of each method, and practically, by assessing the consistency of results. We compare U.S. county-level quality of life ranking across methods and levels of rurality. While quality of life measures are generally highly correlated across methods, we find that the choice of spatial method does affect the rankings of individual counties. Notably, the most urban and most rural counties exhibit the greatest sensitivity to methodological choice. These findings underscore the importance of sensitivity analysis, particularly in urban and rural contexts, to better understand and account for the complex and spatially varying factors shaping quality of life.</p>
-          <div class="pf-keywords"><span>rural</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>The Community Capitals for Quantitative Research: Data, Directions, and Debates</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Mckenzie Boyce, Danielle Schmidt-Larios, Erin Gaede & Yang Cheng</div>
-          <div class="pf-venue">Revise & resubmit at <i>Journal of Rural Studies</i>.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="#">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Boyce, M., Schmidt-Larios, D., Gaede, E., &amp; Cheng, Y. (2026). The Community Capitals for Quantitative Research: Data, Directions, and Debates. Revise &amp; resubmit at Journal of Rural Studies.">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          
-          <div class="pf-keywords"><span>rural</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>Spatial Determinants of Wellbeing: a geographically weighted regression approach</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
-          <div class="pf-venue">Revise & resubmit at <i>The Review of Regional Studies</i>.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="#">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. (2026). Spatial Determinants of Wellbeing: a geographically weighted regression approach. Revise &amp; resubmit at The Review of Regional Studies.">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          
-          <div class="pf-keywords"><span>rural</span> <span>qol</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Working paper</small></div>
         <h3>Temporal Change in Quality of Life across U.S. County Typologies</h3>
         <div class="pf-meta">
           <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven Deller</div>
@@ -630,6 +596,27 @@
         <div class="pf-abstract"><div class="pf-abstract-inner">
           
           <div class="pf-keywords"><span>qol</span> <span>rural</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Prioritizing Shelter, Sacrificing Nutrition: Housing Stress, Stigma, and Rural Health</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Erin Gaede, Yang Cheng & Tessa Conroy</div>
+          <div class="pf-venue">Working paper.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Gaede, E., Cheng, Y., &amp; Conroy, T. (2026). Prioritizing Shelter, Sacrificing Nutrition: Housing Stress, Stigma, and Rural Health. Working paper.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>This study employs a mixed-method design to examine the relationship between housing financial stress and food insecurity and its implications for rural health. We combine qualitative interviews with U.S. county-level data to identify correlations between housing financial stress and nutritional outcomes, stratified by rural-urban status, tenure, and income. Our findings demonstrate how the combined burden of housing financial stress and food insecurity shapes chronic health outcomes for low-income rural communities and the role that stigma plays in shaping how rural residents navigate these dual insecurities.</p>
+          <div class="pf-keywords"><span>rural</span> <span>housing</span> <span>health</span></div>
         </div></div>
       </div>
       <div class="pub-full">
@@ -651,6 +638,27 @@
         <div class="pf-abstract"><div class="pf-abstract-inner">
           <p>In this WIndicator, we explore how poverty shapes rural health outcomes by evaluating upstream stressors such as housing financial stress and food insecurity. We first establish the association between rural health, poverty, food insecurity and housing at the national level. We then focus on Wisconsin by turning to insights gleaned from interviews to explore why these patterns emerge. We find that poverty, which is more prevalent in rural places, is associated with food insecurity and housing stress. These correlations suggest a compounding effect of housing stress and food insecurity in vulnerable households that may contribute to chronic disease. Our interviews further reveal that rural stigma and remoteness shape how housing stress and food insecurity interact: fewer food options and social pressures to hide financial struggles result in households absorbing housing stresses by cutting back on nutritious food, directly undermining health.</p>
           <div class="pf-keywords"><span>rural</span> <span>housing</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2025<small>Article</small></div>
+        <h3>Multidimensional Measures of Quality of Life: A Comparison of Methods Using U.S. County-level Data</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng, Tessa Conroy & Steven C. Deller</div>
+          <div class="pf-venue">Papers in Regional Science.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="https://doi.org/10.1016/j.pirs.2025.100129" target="_blank" rel="noopener">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., Conroy, T., &amp; Deller, S. C. (2025). Multidimensional measures of quality of life: A comparison of methods using US county-level data. Papers in Regional Science, 105(1), 100129. https://doi.org/10.1016/j.pirs.2025.100129">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>There are numerous measures of place-based quality of life, accompanied by ongoing debate over which factors should be included. Past studies have predominately relied on aspatial, subjectively weighted combinations of different place-based characteristics. Little attention has been given to the rigor and appropriateness of the methodologies used to develop these measures. In this study we conduct a sensitivity analysis of methodological choices in the construction of quality of life indices using U.S. county-level data. We evaluate six different methods for developing a composite index, comparing Geographically Weighted Principal Component Analysis (GWPCA), Spatial Principal Component Analysis (SPCA), and Spatial Bayesian Factor Analysis (SBFA) with their aspatial counterparts. Our evaluation is twofold: conceptually, by examining underlying assumptions of each method, and practically, by assessing the consistency of results. We compare U.S. county-level quality of life ranking across methods and levels of rurality. While quality of life measures are generally highly correlated across methods, we find that the choice of spatial method does affect the rankings of individual counties. Notably, the most urban and most rural counties exhibit the greatest sensitivity to methodological choice. These findings underscore the importance of sensitivity analysis, particularly in urban and rural contexts, to better understand and account for the complex and spatially varying factors shaping quality of life.</p>
+          <div class="pf-keywords"><span>rural</span></div>
         </div></div>
       </div>
         <!-- AUTO-GENERATED PUBS:livability END -->
@@ -785,16 +793,58 @@
       <div class="pub-full">
         <div class="pf-row">
         <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>Occupational Green Potential: A Continuous Task-based Measure of Green Work</h3>
+        <h3>Green Technology and Local Employment in China: A Task-Based Analysis of Green and Brown Jobs</h3>
         <div class="pf-meta">
-          <div class="pf-authors">Susan Chen, Yang Cheng & Andrew Katz</div>
-          <div class="pf-venue">Working paper.</div>
+          <div class="pf-authors">Yang Cheng & Lianyi Hu</div>
+          <div class="pf-venue">Under review at <i>Research Policy</i>.</div>
         </div>
         <div class="pf-links">
             <a href="#">Slides</a>
             <a href="#">DOI</a>
             <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Chen, S., Cheng, Y., &amp; Katz, A. (2026). Occupational Green Potential: A Continuous Task-based Measure of Green Work. Working paper.">Cite</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Hu, L. (2026). Green Technology and Local Employment in China: A Task-Based Analysis of Green and Brown Jobs. Under review at Research Policy.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>This paper examines the impact of green technology innovation on employment in China between 1990 and 2015. Green technologies create new employment opportunities while displacing jobs in polluting industries within local labor markets. To assess their employment effects within a task-based framework, we classify green and brown jobs and trace their creation and destruction through job titles and descriptions. We then use Chinese Population Census data to construct measures of overall, green, and brown employment at the prefecture level, and link them to patent-based indicators of green innovation. Our findings show that green technology has no significant effect on aggregate employment because its positive impact on green employment is offset by a reduction in brown employment across prefectures. Further analysis indicates that demand effects, defined as changes in existing jobs, account for most of the impact, while the creation of new green jobs also contributes, though to a smaller extent. The effects are particularly pronounced in commercial occupations and among less educated workers. These results highlight the distributional consequences of green technological change and the need for re-skilling policies to support a green transition.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>The Readiness of the Appalachian Workforce for the Green Transition</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Yang Cheng & Susan Chen</div>
+          <div class="pf-venue">Under review at <i>Applied Geography</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Chen, S. (2026). The Readiness of the Appalachian Workforce for the Green Transition. Under review at Applied Geography.">Cite</a>
+        </div>
+        <div class="pf-toggle">›</div>
+        </div>
+        <div class="pf-abstract"><div class="pf-abstract-inner">
+          <p>This paper develops a readiness index of the workforce for the green transition, with a focus on Appalachia. Drawing on the Occupational Greenness Potential measures, the index summarizes how prepared local labor markets are, given their current occupation and skill mix, to take up green work.</p>
+          <div class="pf-keywords"><span>green</span></div>
+        </div></div>
+      </div>
+      <div class="pub-full">
+        <div class="pf-row">
+        <div class="pf-year">2026<small>Working paper</small></div>
+        <h3>Occupational Green Potential: A Continuous Task-based Measure of Green Work</h3>
+        <div class="pf-meta">
+          <div class="pf-authors">Susan Chen, Yang Cheng & Andrew Katz</div>
+          <div class="pf-venue">Under review at <i>Ecological Economics</i>.</div>
+        </div>
+        <div class="pf-links">
+            <a href="#">Slides</a>
+            <a href="#">DOI</a>
+            <a href="#">Repo</a>
+            <a href="#cite" class="pf-cite" data-cite="Chen, S., Cheng, Y., &amp; Katz, A. (2026). Occupational Green Potential: A Continuous Task-based Measure of Green Work. Under review at Ecological Economics.">Cite</a>
         </div>
         <div class="pf-toggle">›</div>
         </div>
@@ -827,22 +877,22 @@
       <div class="pub-full">
         <div class="pf-row">
         <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>The Readiness of the Appalachian Workforce for the Green Transition</h3>
+        <h3>The Green Wage Premium in the U.S.</h3>
         <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng & Susan Chen</div>
-          <div class="pf-venue">Under review at <i>Applied Geography</i>.</div>
+          <div class="pf-authors">Yang Cheng</div>
+          <div class="pf-venue">Working paper.</div>
         </div>
         <div class="pf-links">
             <a href="#">Slides</a>
             <a href="#">DOI</a>
             <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Chen, S. (2026). The Readiness of the Appalachian Workforce for the Green Transition. Under review at Applied Geography.">Cite</a>
+            <a href="#cite" class="pf-cite" data-cite="Cheng, Y. (2026). The Green Wage Premium in the U.S. Working paper.">Cite</a>
         </div>
         <div class="pf-toggle">›</div>
         </div>
         <div class="pf-abstract"><div class="pf-abstract-inner">
-          <p>This paper develops a readiness index of the workforce for the green transition, with a focus on Appalachia. Drawing on the Occupational Greenness Potential measures, the index summarizes how prepared local labor markets are, given their current occupation and skill mix, to take up green work.</p>
-          <div class="pf-keywords"><span>green</span></div>
+          
+          <div class="pf-keywords"><span>green</span> <span>datasci</span></div>
         </div></div>
       </div>
       <div class="pub-full">
@@ -884,48 +934,6 @@
         </div>
         <div class="pf-abstract"><div class="pf-abstract-inner">
           <p>Three-chapter dissertation. Chapter 1 builds the Task Greenness Score and the Occupational Greenness Potential (OGP) Index from O*NET task content via NLP and clustering, identifying five occupation groups and a ~3% unconditional green wage premium for 2019–2020. Chapter 2 maps green-skill exposure across the U.S. with a focus on Appalachian coal-mining communities. Chapter 3 examines green ARRA stimulus and finds it negatively correlated with wages and job creation, with cross-region manufacturing spillovers. Committee: Andrew Katz, Suqin Ge, Jeffrey Alwang.</p>
-          <div class="pf-keywords"><span>green</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>The Green Wage Premium in the U.S.</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng</div>
-          <div class="pf-venue">Working paper.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="#">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y. (2026). The Green Wage Premium in the U.S. Working paper.">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          
-          <div class="pf-keywords"><span>green</span> <span>datasci</span></div>
-        </div></div>
-      </div>
-      <div class="pub-full">
-        <div class="pf-row">
-        <div class="pf-year">2026<small>Working paper</small></div>
-        <h3>Green Technology and Local Employment in China: A Task-Based Analysis of Green and Brown Jobs</h3>
-        <div class="pf-meta">
-          <div class="pf-authors">Yang Cheng & Lianyi Hu</div>
-          <div class="pf-venue">Under review at <i>Research Policy</i>.</div>
-        </div>
-        <div class="pf-links">
-            <a href="#">Slides</a>
-            <a href="#">DOI</a>
-            <a href="#">Repo</a>
-            <a href="#cite" class="pf-cite" data-cite="Cheng, Y., &amp; Hu, L. (2026). Green Technology and Local Employment in China: A Task-Based Analysis of Green and Brown Jobs. Under review at Research Policy.">Cite</a>
-        </div>
-        <div class="pf-toggle">›</div>
-        </div>
-        <div class="pf-abstract"><div class="pf-abstract-inner">
-          <p>This paper examines the impact of green technology innovation on employment in China between 1990 and 2015. Green technologies create new employment opportunities while displacing jobs in polluting industries within local labor markets. To assess their employment effects within a task-based framework, we classify green and brown jobs and trace their creation and destruction through job titles and descriptions. We then use Chinese Population Census data to construct measures of overall, green, and brown employment at the prefecture level, and link them to patent-based indicators of green innovation. Our findings show that green technology has no significant effect on aggregate employment because its positive impact on green employment is offset by a reduction in brown employment across prefectures. Further analysis indicates that demand effects, defined as changes in existing jobs, account for most of the impact, while the creation of new green jobs also contributes, though to a smaller extent. The effects are particularly pronounced in commercial occupations and among less educated workers. These results highlight the distributional consequences of green technological change and the need for re-skilling policies to support a green transition.</p>
           <div class="pf-keywords"><span>green</span></div>
         </div></div>
       </div>

@@ -727,7 +727,7 @@ a.navgroup-label { text-decoration: none; cursor: pointer; }
 .record-row.is-soon .rr-date { color: var(--accent); }
 
 /* ── LAUNCH HOLDBACKS (July 19 2026) — delete a rule to restore that item ── */
-.nav-cv{display:none} /* CV button: restore when assets/pdfs/CV.pdf exists */
+/* CV button restored (assets/pdfs/CV.pdf in place) */
 a[href$="resources.html"]{display:none} /* Resources tab+footer link: restore when first real post + CV are up */
 
 /* Make an Impact: clickable but flagged in-progress (chip). Swap back to the full navgroup dropdown from git history when the section is complete. */
