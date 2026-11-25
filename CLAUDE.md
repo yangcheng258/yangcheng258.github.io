@@ -10,6 +10,7 @@ Yang Cheng's personal academic website. Static HTML/CSS/JS, no framework. Hosted
 
 **Live at:** https://iamyangcheng.com/ (custom domain via the `CNAME` file; https://yangcheng258.github.io/ 301-redirects here)
 **Repo:** https://github.com/yangcheng258/yangcheng258.github.io (public, `main` branch)
+**Single working copy (Nov 2026):** the old Hugo site (`~/Documents/GitHub/Personal_website`) and a stale July copy of this repo (`~/Documents/GitHub/Claude_Design_Website`) were moved to the macOS Trash at the user's request, to avoid confusion. The old site's GitHub repo `Personal_website_beta` was deleted Nov 25 2026 (restorable until ~Feb 23 2027 via GitHub Settings → Repositories → Deleted repositories). Same day, four old website-template repos were deleted the same way (academicpages.github.io, minimal-mistakes, jekflix-template, test.github.io) — each had GitHub Pages on, so they were serving stray old sites under iamyangcheng.com/<repo>/. This folder is the only site. If the browser preview tool launches "hugo-dev" on port 1313, that's the old site's leftover config — serve this repo on port 8000 instead.
 
 **Owner:** Yang Cheng — Postdoctoral Research Associate, Department of Agricultural & Applied Economics, UW–Madison.
 

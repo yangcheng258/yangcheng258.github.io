@@ -11,7 +11,7 @@ You do not edit research/index.html, resources.html, or any other "main" page to
 ## Folder map
 
 ```
-Personal website beta/
+yangcheng258.github.io/            ← the only website folder (Documents/GitHub/yangcheng258.github.io)
 ├── content/                       ← source-of-truth for everything
 │   ├── publications/              ← papers, working papers, book chapters, dissertation, reports
 │   ├── code-data/                 ← datasets and code releases
