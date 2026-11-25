@@ -10,7 +10,7 @@ USAGE
 From the project root (the folder containing this file):
 
     python3 build.py            # everything
-    python3 build.py --posts    # only posts.html, from the Substack feed (the weekly GitHub job runs this)
+    python3 build.py --posts    # only posts.html, from the Substack feed
 
 WHAT IT HANDLES
 ───────────────
