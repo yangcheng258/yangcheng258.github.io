@@ -2,7 +2,7 @@
 
 Static site for Yang Cheng — Postdoctoral Research Associate, Department of Agricultural & Applied Economics, University of Wisconsin–Madison.
 
-Live at **https://yangcheng258.github.io/**
+Live at **https://iamyangcheng.com/**
 
 ---
 
@@ -31,7 +31,7 @@ shared.css          ← design tokens (Geist + Newsreader, accent moss green)
 
 ## File index
 
-What every file is, at a glance. **Don't rename the `.html` files at root** — their names are the public URLs (e.g. `yangcheng258.github.io/research/livability.html`), and `index.html` is what GitHub Pages serves as the homepage.
+What every file is, at a glance. **Don't rename the `.html` files at root** — their names are the public URLs (e.g. `iamyangcheng.com/research/livability.html`), and `index.html` is what GitHub Pages serves as the homepage.
 
 ### Pages (public URLs)
 

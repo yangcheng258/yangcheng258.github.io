@@ -8,7 +8,7 @@ This file is read automatically when Claude opens this project. It captures the 
 
 Yang Cheng's personal academic website. Static HTML/CSS/JS, no framework. Hosted on GitHub Pages.
 
-**Live at:** https://yangcheng258.github.io/
+**Live at:** https://iamyangcheng.com/ (custom domain via the `CNAME` file; https://yangcheng258.github.io/ 301-redirects here)
 **Repo:** https://github.com/yangcheng258/yangcheng258.github.io (public, `main` branch)
 
 **Owner:** Yang Cheng — Postdoctoral Research Associate, Department of Agricultural & Applied Economics, UW–Madison.
@@ -137,6 +137,8 @@ Full guide for the user: `UPDATING.md` (in project root).
 The site is deployed via GitHub Pages from the `main` branch root of `yangcheng258/yangcheng258.github.io`.
 
 **Critical file: `.nojekyll`** (empty file at repo root) — disables GitHub's default Jekyll processing. Without it, Pages tries to parse the site as a Jekyll project and 404s on most pages because folders starting with `_` (like `posts/_template-post.html` or any `_template.html`) are hidden from output. Don't delete this file.
+
+**Custom domain + search (Nov 2026):** `CNAME` = `iamyangcheng.com`. Every page's `<link rel="canonical">`, `og:url` and `og:image` use `https://iamyangcheng.com/...` — new pages must too, never `github.io` (that domain only redirects). `sitemap.xml` is hand-maintained: add any new public page's canonical URL to it (resources.html and research/index.html are left out on purpose — hidden/unlinked). `robots.txt` keeps `content/`, `*.md`, `build.py`, the post template and the two design-reference pages out of search. Google Search Console property `iamyangcheng.com` verified Nov 2026.
 
 **Deploy loop:**
 ```bash

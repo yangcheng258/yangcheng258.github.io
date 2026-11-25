@@ -1,6 +1,6 @@
 # How to update the site
 
-**Live at:** https://yangcheng258.github.io/
+**Live at:** https://iamyangcheng.com/
 
 The site is **template-driven**. Every paper, post, dataset, code release, talk, briefing, and course is one small HTML file. A build script (`python3 build.py`) reads them and rewrites the rest of the site automatically.
 
@@ -162,7 +162,7 @@ Open http://localhost:8000/ in your browser.
 
 ## Deploy (push to GitHub Pages)
 
-The site is **already deployed** — every push to `main` updates https://yangcheng258.github.io/ in about 30 seconds. There's no build step on GitHub's side; Pages just serves the files in the repo as-is.
+The site is **already deployed** — every push to `main` updates https://iamyangcheng.com/ in about 30 seconds. There's no build step on GitHub's side; Pages just serves the files in the repo as-is.
 
 The deploy loop:
 

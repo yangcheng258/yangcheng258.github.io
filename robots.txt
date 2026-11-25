@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /content/
+Disallow: /posts/_template-post.html
+Disallow: /Palette%20-%20Qianli%20Jiangshan.html
+Disallow: /Research%20Theme%20Logos%20v3.html
+Disallow: /build.py
+Disallow: /*.md$
+
+Sitemap: https://iamyangcheng.com/sitemap.xml
