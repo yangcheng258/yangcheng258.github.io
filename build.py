@@ -9,7 +9,8 @@ USAGE
 ─────
 From the project root (the folder containing this file):
 
-    python3 build.py
+    python3 build.py            # everything
+    python3 build.py --posts    # only posts.html, from the Substack feed (the weekly GitHub job runs this)
 
 WHAT IT HANDLES
 ───────────────
@@ -19,6 +20,7 @@ WHAT IT HANDLES
 4. content/talks/           → impact/talks.html (when implemented)
 5. content/briefings/       → impact/policy-briefings.html (when implemented)
 6. content/teaching/        → impact/teaching.html (when implemented)
+7. Substack feed            → posts.html (needs internet; left as is when offline)
 
 Each file's metadata is in <meta name="ns:field" content="value"> tags
 (`pub:` for publications, `code:` for code-data, etc.).
@@ -28,9 +30,16 @@ See content/README.md for full schemas.
 
 from __future__ import annotations
 import os, re, sys, glob
+import urllib.request
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
+from html import escape as h_escape, unescape as h_unescape
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 RESOURCES_FILE  = 'resources.html'
+SUBSTACK_URL    = 'https://ageconyangcheng.substack.com'
+SUBSTACK_TARGET = 'posts.html'
+SUBSTACK_POSTS_SHOWN = 50
 TEMPLATE_NAMES  = {'_template-post.html', '_template.html'}
 MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
@@ -501,10 +510,77 @@ def inject_into_resources(posts: list[dict], pubs: list[dict], code_data: list[d
     write_if_changed(RESOURCES_FILE, html)
 
 
+# ─── Substack posts → posts.html ─────────────────────────────────────────────
+def _plain(text: str | None) -> str:
+    return h_unescape(re.sub(r'<[^>]+>', '', text or '')).strip()
+
+
+def fetch_substack_posts() -> list[dict] | None:
+    """Newest-first posts from the Substack feed, or None when the feed can't be read."""
+    req = urllib.request.Request(SUBSTACK_URL + '/feed', headers={'User-Agent': 'Mozilla/5.0 (site build)'})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            root = ET.fromstring(r.read())
+    except Exception as e:
+        print(f'  ⚠ Substack feed unavailable ({e}); Posts section left as is')
+        return None
+    posts = []
+    for it in root.iter('item'):
+        link = (it.findtext('link') or '').strip()
+        if not link.startswith('https://'):
+            continue
+        try:
+            date = parsedate_to_datetime(it.findtext('pubDate') or '').strftime('%Y-%m-%d')
+        except Exception:
+            date = ''
+        posts.append({'title': _plain(it.findtext('title')), 'desc': _plain(it.findtext('description')),
+                      'link': link, 'date': date})
+    posts.sort(key=lambda p: p['date'], reverse=True)
+    return posts
+
+
+def gen_substack_section(posts: list[dict]) -> str:
+    if not posts:
+        return (f'    <p class="posts-empty">First post coming soon. <a href="{SUBSTACK_URL}/subscribe" '
+                f'target="_blank" rel="noopener">Subscribe on Substack</a> to get it by email.</p>')
+    rows = [
+        f'      <a class="post-row" href="{h_escape(p["link"])}" target="_blank" rel="noopener">\n'
+        f'        <div class="pr-date">{fmt_date(p["date"])}</div>\n'
+        f'        <div class="pr-main">\n'
+        f'          <h3>{h_escape(p["title"])}</h3>\n'
+        f'          <p>{h_escape(p["desc"])}</p>\n'
+        f'        </div>\n'
+        f'        <span class="pr-more">Read on Substack ↗</span>\n'
+        f'      </a>'
+        for p in posts[:SUBSTACK_POSTS_SHOWN]
+    ]
+    return '    <div class="posts-list">\n' + '\n'.join(rows) + '\n    </div>'
+
+
+def inject_substack_posts() -> bool:
+    """Refresh posts.html from the feed. Returns False when the feed can't be read."""
+    posts = fetch_substack_posts()
+    if posts is None:
+        return False
+    with open(SUBSTACK_TARGET) as f:
+        html = f.read()
+    html = replace_marker(html, 'SUBSTACK', gen_substack_section(posts))
+    shown = f'{min(len(posts), SUBSTACK_POSTS_SHOWN)} of {len(posts)} posts'
+    if write_if_changed(SUBSTACK_TARGET, html):
+        print(f'  ✓ {SUBSTACK_TARGET} updated ({shown})')
+    else:
+        print(f'  · {SUBSTACK_TARGET} already up to date ({shown})')
+    return True
+
+
 # ─── Main ─────────────────────────────────────────────────────────────────────
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     os.chdir(here)
+
+    if '--posts' in sys.argv[1:]:
+        print('Updating posts.html from the Substack feed...')
+        sys.exit(0 if inject_substack_posts() else 1)
 
     print('Scanning content/ + posts/ ...')
     posts      = load_files('posts',                 'post')
@@ -529,6 +605,9 @@ def main():
 
     print('Injecting into resources.html...')
     inject_into_resources(posts, pubs, code_data)
+
+    print('Injecting Substack posts into posts.html...')
+    inject_substack_posts()
 
     # Future: inject_talks_to_impact, inject_briefings_to_impact, inject_teaching_to_impact
     # (skipped for now — those impact subpages need markers added first)
