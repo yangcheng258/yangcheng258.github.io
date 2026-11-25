@@ -14,10 +14,10 @@ Yang Cheng's personal academic website. Static HTML/CSS/JS, no framework. Hosted
 
 **Owner:** Yang Cheng — Postdoctoral Research Associate, Department of Agricultural & Applied Economics, UW–Madison.
 
-**Two research themes (active) + one in lit-review:**
-1. Rural Livability & Quality of Life (research/livability.html) — methods, wellbeing, housing/health
-2. Workforce & the Green Economy (research/workforce.html) — OGP Index, NLP greenness, Vona wage-premium replication
-3. Migration & Place Choice (research/migration.html) — lit-review stage
+**Two research themes (active) + one in lit-review** — shown as tabs in the homepage "Current research" section (`index.html#livability` / `#workforce` / `#migration`; the old per-theme pages were retired July 2026):
+1. Rural Livability & Quality of Life — methods, wellbeing, housing/health
+2. Workforce & the Green Economy — OGP Index, NLP greenness, Vona wage-premium replication
+3. Migration & Place Choice — lit-review stage
 
 ---
 
@@ -67,14 +67,14 @@ Available section keys:
 
 | File | Purpose | Auto-gen sections |
 |---|---|---|
-| `index.html` | Home — headshot left + name/intro right over hero; backdrop is a detail band of Wang Ximeng's 千里江山图 (assets/images/qianli-jiangshan.jpg, extracted from user's PDF; top edge feathered into cream via mask + multiply; credit line removed at user request; hero fixed ~660px tall); pup removed from home (July 2026) — runner remains on life.html (user moved it below the photo grid) | hand-edited only |
+| `index.html` | Home — headshot left + name/intro right over hero; backdrop is a detail band of Wang Ximeng's 千里江山图 (assets/images/qianli-jiangshan.jpg, extracted from user's PDF; top edge feathered into cream via mask + multiply; credit line removed at user request; hero fixed ~660px tall); pup removed from home (July 2026) — runner remains on life.html (user moved it below the photo grid); ends with the "Current research" tab section (#research) | 3 PUBS + 3 PUBCOUNT marker pairs (same as research/index.html) |
 | `about.html` | Bio + sidebar | hand-edited only |
-| `research/index.html` | ONE-PAGE research — 3 foldable theme sections (animated logo badges, sticky headers) | 3 PUBS + 3 PUBCOUNT marker pairs |
+| `research/index.html` | ONE-PAGE research — 3 foldable theme sections (animated logo badges, sticky headers). Unlinked since July 2026 (homepage #research replaces it) and left out of sitemap.xml, but still built | 3 PUBS + 3 PUBCOUNT marker pairs |
 | `impact/index.html` | Make-an-Impact — bento: 1 big card (Extension) + 4 small (Research out loud / Reproducibility / Talks / Teaching), each led by an <image-slot> photo the user drops in | hand-edited |
 | `resources.html` | Living library: tutorials + posts + datasets + reading lists + CV (news/code removed — code lives on impact Research Tools) | 5 marker pairs |
 | `contact.html` | Email/address + "How to reach out" intent cards | hand-edited only |
 | `cv.html` | Inline CV viewer — `<object>` embed of assets/pdfs/CV.pdf + "Download PDF" and "Open in new tab" buttons; last-updated date in sidemeta. Nav CV links across the site point here so viewers see the PDF in-browser instead of triggering a download. | hand-edited only |
-| `life.html` | "Life, off the clock" — 6 image-slot photo grid + cavalier runner; nav tab between Resources and Contact | hand-edited |
+| `life.html` | "Life, off the clock" — 6 image-slot photo grid + cavalier runner; nav tab before Contact (5 of the 6 photo slots are commented out — launch holdback) | hand-edited |
 | `impact/{extension,media,talks,public-good,teaching}.html` | The 5 category pages: 01 Working with Communities · 02 Media, Press & Public Talks · 03 Academic Community · 04 Research Tools · 05 Teaching & Mentoring | hand-edited |
 
 ---
@@ -93,7 +93,7 @@ Available section keys:
   - **Hover rule (July 2026): rest = moss, hover = azurite** — all interactive hover states site-wide (nav, footer, cards, arrows, chips, hero CTA) answer in `--azurite`; moss stays for identity (tags, em, aria-current, borders at rest). Reference sheet: "Palette — Qianli Jiangshan.html"
   - `--footer-bg: #e8e3d5` (slightly darker cream for footer block)
 - **Convention:** italic Newsreader serif for emphasis (`<em>`), accent color for hover states + decorative letters
-- **Topbar:** sticky, blurred bg, dropdown nav for Research themes, CV button on the right — full-bleed since July 2026 (breaks out of .shell like the footer: negative side margins + `padding: 18px max(56px, calc(50vw - 544px))`, margin-top cancels shell top padding; per-breakpoint overrides at 900/720px keep gutters aligned)
+- **Topbar:** sticky, blurred bg; nav = About · Make an Impact ("in progress" chip) · Life · Contact, CV button on the right → cv.html (Research and Resources are not in the nav — see Homepage research block / Launch holdbacks) — full-bleed since July 2026 (breaks out of .shell like the footer: negative side margins + `padding: 18px max(56px, calc(50vw - 544px))`, margin-top cancels shell top padding; per-breakpoint overrides at 900/720px keep gutters aligned)
 - **Footer:** full-width gray block with Navigate column + Contact column (email + 4 social icons + disclaimer)
 
 ---
@@ -104,7 +104,7 @@ Available section keys:
 - Identity: name, postdoc role, dept, UW–Madison, `cheng297@wisc.edu`
 - Office: 321 Taylor Hall, 427 Lorch Street, Madison WI 53705
 - PhD: Virginia Tech, Ag & Applied Economics, May 2024, dissertation *Tasks, Skills, and Jobs in the Green Economy* (advisor Susan E. Chen; committee Andrew Katz, Suqin Ge, Jeffrey Alwang)
-- 10 publications (in content/publications/); Move, Stay, and Commit (Social Indicators Research 183:23, 2026) added July 2026 from the Springer page
+- 17 publication files (in content/publications/, Nov 2026); Move, Stay, and Commit (Social Indicators Research 183:23, 2026) added July 2026 from the Springer page
 - 2 code/data items (OGP Index, Housing_health repo)
 - Frequent collaborators: Tessa Conroy, Steven Deller, Erin Gaede, Mckenzie Boyce, Susan Chen, Andrew Katz
 - Online: GitHub `yangcheng258`, LinkedIn `yangcheng2019`, Google Scholar `6o_n2I4AAAAJ`, ORCID `0009-0007-6102-4742`
@@ -124,9 +124,10 @@ Available section keys:
 | Delete a paper | Delete the file → `python3 build.py` |
 | Add a post | Copy `posts/_template-post.html` → fill in → `python3 build.py` |
 | Drop a real PDF | Save to `assets/pdfs/`, set the `pub:pdf` meta tag |
-| Update CV | Drop `assets/pdfs/CV.pdf` (no edits needed — link is hardcoded) |
+| Update CV | Replace `assets/pdfs/CV.pdf` (keep the filename) and change the "Last updated" date in `cv.html` |
 | Update bio / hero / contact text | Hand-edit `about.html` / `index.html` / `contact.html` (these are one-off) |
 | Site-wide find/replace | Search for the literal value (email, URL, etc.) and replace across files |
+| Add a new page | Copy an existing page's `<head>`; canonical/og URLs must be `https://iamyangcheng.com/...`; add the URL to `sitemap.xml` |
 | Deploy a change | `python3 build.py && git add -A && git commit -m "..." && git push` — Pages updates in ~30s |
 
 Full guide for the user: `UPDATING.md` (in project root).
@@ -139,7 +140,7 @@ The site is deployed via GitHub Pages from the `main` branch root of `yangcheng2
 
 **Critical file: `.nojekyll`** (empty file at repo root) — disables GitHub's default Jekyll processing. Without it, Pages tries to parse the site as a Jekyll project and 404s on most pages because folders starting with `_` (like `posts/_template-post.html` or any `_template.html`) are hidden from output. Don't delete this file.
 
-**Custom domain + search (Nov 2026):** `CNAME` = `iamyangcheng.com`. Every page's `<link rel="canonical">`, `og:url` and `og:image` use `https://iamyangcheng.com/...` — new pages must too, never `github.io` (that domain only redirects). `sitemap.xml` is hand-maintained: add any new public page's canonical URL to it (resources.html and research/index.html are left out on purpose — hidden/unlinked). `robots.txt` keeps `content/`, `*.md`, `build.py`, the post template and the two design-reference pages out of search. Google Search Console property `iamyangcheng.com` verified Nov 2026.
+**Custom domain + search (Nov 2026):** `CNAME` = `iamyangcheng.com`. Every page's `<link rel="canonical">`, `og:url` and `og:image` use `https://iamyangcheng.com/...` — new pages must too, never `github.io` (that domain only redirects). `sitemap.xml` is hand-maintained: add any new public page's canonical URL to it (resources.html and research/index.html are left out on purpose — hidden/unlinked). `robots.txt` keeps `content/`, `*.md`, `build.py`, the post template and the two design-reference pages out of search. Google Search Console property `iamyangcheng.com` verified Nov 2026; sitemap submitted and homepage indexing requested Nov 25 2026 (status then: "Discovered – currently not indexed"; expect 1–4 weeks). It is a **Domain property**, so the sitemap box needs the full URL `https://iamyangcheng.com/sitemap.xml` (a bare `sitemap.xml` gives "Invalid sitemap address"). The GSC URL-inspect deep link 404s — use the search bar at the top of GSC instead.
 
 **Deploy loop:**
 ```bash
@@ -191,9 +192,9 @@ The user is a researcher, not a developer. Their preferred workflow:
 
 ---
 
-## Open question for the next session
+## Open question (from an earlier session — still unanswered)
 
-The user asked, right before this session ended:
+The user asked:
 
 > "Sometimes when I want to hide some of the data or some of the files, how can I do that? A lot of people will scrape my data, so I need to make it not publicly available on GitHub. If I make it publicly available, people will be able to get it, so how do I hide it?"
 
@@ -240,7 +241,7 @@ Hidden until real material exists; each is marked "LAUNCH HOLDBACK" at the spot:
 3. impact/index.html — cards 04/05 bx-media commented out (text-only cards).
 4. posts/2026-05-09-example-post.html DELETED; its generated entries manually stripped from resources.html (identical to a build.py rerun).
 
-## Nov 2026 updates (this commit)
+## Nov 2026 updates — publications (Nov 24)
 
 - **Community Capitals paper published** (`content/publications/2026-rural-livability-chapter.html`, filename unchanged): title → *The Community Capitals Dataset: Quantifying the Community Capitals Framework in the United States*; venue → *Journal of Rural Studies* 129, 104487, year 2027; DOI 10.1016/j.jrurstud.2026.104487; linked dataset at Harvard Dataverse (doi:10.7910/DVN/G1LSZV) via new `pub:data` meta; separate dataset citation via new `pub:cite_data` meta; highlights (no abstract released) in body.
 - **Spatial Determinants paper published**: title → *Spatial Determinants of Community Well-Being: A Geographically Weighted Regression Analysis of U.S. Counties*; authors are now **Cheng & Boyce** (not Conroy & Deller); venue *Review of Regional Studies* 56(3), 2026; DOI 10.52324/001c.175408; abstract from the journal page.
@@ -257,8 +258,8 @@ Hidden until real material exists; each is marked "LAUNCH HOLDBACK" at the spot:
 - Under review / R&R shown in venue text: "Under review at <i>Journal</i>" / "Revise & resubmit at <i>Journal</i>".
 - Cite button (build.py apa_citation) copies an APA one-liner to the clipboard; pub:cite meta overrides the generated text (used for WIndicator's official suggested citation, DOI 10.21231/pv02-aa79). Copy JS lives in research/index.html (hand-edited, outside markers).
 - research/index.html generated sections were regenerated manually in-editor July 2026 to match; a build.py rerun produces the same output.
-- Author-order corrections applied July 2026 (housing-health: Gaede first; livability chapter: Boyce, Schmidt-Larios, Gaede, Cheng — now R&R at Journal of Rural Studies, type working-paper).
-- "Under review at Rural Sociology" (housing-health): journal name from user's note ("journal of rural sociology") — CONFIRM whether Rural Sociology or Journal of Rural Social Sciences.
+- Author-order corrections applied July 2026 (housing-health: Gaede first; livability chapter: Boyce, Schmidt-Larios, Gaede, Cheng — published in Journal of Rural Studies Nov 2026, see Nov 2026 updates).
+- ~~"Under review at Rural Sociology" (housing-health)~~ — moot since Nov 2026: the paper is back to "Working paper" with no journal named.
 - DOI-verified July 2026: PiRS title corrected to official "Multidimensional Measures of Quality of Life: A Comparison of Methods Using U.S. County-level Data"; Deller = "Steven C. Deller" on both published papers; exact APA set in pub:cite for PiRS + Move-Stay-Commit.
 - Link chips on research/index.html: flex-wrap row of up to 5 — Slides / DOI / Repo-or-Dataset / Cite (or "Cite article") / Cite data. Label is "Dataset" when only pub:data is set (data-only paper); "Repo" when pub:code is set. When pub:cite_data meta is present, the main cite becomes "Cite article" and a second "Cite data" chip is appended (used for the Community Capitals Dataset paper, which has a separate Harvard Dataverse citation). PDF button removed July 2026; green fill, azurite hover, unavailable = muted outline chips.
 
@@ -271,3 +272,11 @@ Hidden until real material exists; each is marked "LAUNCH HOLDBACK" at the spot:
 - Abstracts (July 2026, per user): only REAL abstracts are shown — official texts in housing-health + move-stay-commit; other working papers have EMPTY abstract divs (expander shows only theme chips). Don't invent abstracts.
 - **Publication sort (Nov 2026 rewrite, build.py `_pub_sort_key`)**: within each theme section papers are sorted by (1) year DESC, (2) type priority — article/book-chapter → under-review working paper (venue contains "under review" / "revise" / "r&r") → working paper → report → dissertation — (3) Yang-as-first-author first, (4) title alpha. The old pub:order override was dropped; `pub:order` tags in content files are now ignored (safe to delete).
 - July 2026: "Make an Impact" links KEPT but flagged: topbar + footer show a plain link with an "in progress" chip (.nav-soon/.sf-soon, CSS at bottom of shared.css); the navgroup dropdown is removed (subpages reachable from the overview cards). Restore the dropdown from git history when complete.
+
+## Online presence & AI search (Nov 2026)
+
+Goal (user, Nov 2026): show up — and get cited — when people search with Google or AI assistants.
+
+- **Done:** custom domain + Search Console (see Deployment). GEO dry-run audit of *Move, Stay, and Commit* on Nov 24 via the user-level `paper-geo-promoter` skill (`~/.claude/skills/paper-geo-promoter/`; profile `move-stay-commit-2026`, now pointing at iamyangcheng.com). Dry runs use canned fixture answers, so their numbers mean nothing; a live audit needs engine API keys (none set) and costs money — ask first.
+- **Suggested, nothing built yet:** Person + ScholarlyArticle JSON-LD on the homepage (offered Nov 25, not answered); a per-paper landing page (key findings, comparison table vs County Health Rankings / AARP / U.S. News, FAQ); earned media on domains AI answers already cite for this topic (countyhealthrankings.org, aarp.org, usnews.com; Wikipedia only as a talk-page suggestion with COI disclosure); a short YouTube explainer with the DOI; Spanish/Chinese summaries.
+- **User-side to-dos (their own accounts):** add https://iamyangcheng.com to Google Scholar (Homepage), ORCID (Websites), LinkedIn (Contact info) and the GitHub profile; GitHub bio still says "Agricultural and Applied Economics, Virginia Tech"; ask AAE to link the site from the department people page; Bing Webmaster Tools → "Import from Google Search Console".

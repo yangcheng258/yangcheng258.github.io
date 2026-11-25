@@ -103,7 +103,7 @@ Delete the file in `content/publications/`. Run build. Card gone everywhere.
 
 ### Update CV
 
-Drop new file at `assets/pdfs/CV.pdf`. The nav link is hardcoded to that path — no edits needed.
+Replace `assets/pdfs/CV.pdf` with the new file (keep the name `CV.pdf`). Then change the "Last updated" date near the top of `cv.html`. The CV button opens `cv.html`, which shows the PDF right in the browser.
 
 ### Update bio / hero / contact text
 
@@ -195,7 +195,7 @@ When you run it:
 5. Writes inside `<!-- AUTO-GENERATED ... START / END -->` markers
 6. Leaves everything outside the markers untouched
 
-If a paper has `pub:sections="livability"`, the build generates a `pub-full` block in research/livability.html's publication list (newest first). Papers appear only on the research page; resources.html carries tutorials, posts, datasets, reading lists, and the CV.
+If a paper has `pub:sections="livability"`, the build adds it to the Rural Livability tab of the homepage's "Current research" section (newest first; also to the unlinked research/index.html). Papers appear only there; resources.html carries tutorials, posts, datasets, reading lists, and the CV.
 
 All from one source file. Edit it once, propagates everywhere.
 
